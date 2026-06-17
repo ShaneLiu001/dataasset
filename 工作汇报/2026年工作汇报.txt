@@ -1,0 +1,49 @@
+2026年上半年重点工作内容：20260317交接（目前是6个迭代） 一站式立项申请：https://linkapp.htsc.com.cn/S/01bRTF
+
+1 一站式Dataops建设：
+1.1 境外中台建设（统一数据源、元数据采集、数据地图、数据稽核、数据血缘、数据安全、离线开发、离线同步、查询探索、运维看监控支持redshift数据源以及镜像源）；看板：http://eip.htsc.com.cn/paas/detail.html#/dc/space/1/filter/25757
+1.2 支持大数据引擎升级：一站式DataOps各模块（统一数据源、元数据采集、数据地图、数据稽核、数据血缘、数据安全、离线开发、离线同步、查询探索）支持StarRocks内表、mixed_iceberg、支持Oceanbase的Oralce模式
+1.3 支持用户信创：数据源：支持用户切换类型、切换绑定关系；离线同步：支持批量复制、批量提交、批量校验、批量下线、批量切换
+1.4 实时同步能力提升：支持MySQL/Oracle/Goldendb->DM、DM->Kafka\Goldendb(增量同步、全量同步);实时运维能力建设 https://linkapp.htsc.com.cn/S/01bRMI
+1.5 应对组织架构变更：支持多个owner转交、权限流程支持OA委托、作业流Owner转交联动转交owner、空间绑定指南针优化
+
+2 信创改造建设：
+2.1 完成数据稽核生产切换（合规要求）、云原生改造（容器化），旧机器下线（降成本）；完成安全扫描和地图解耦改造（松耦合）；
+2.2 统一数据源、数据血缘、元数据采集mapper改造；
+
+3 研发交付管理：整合一站式dataops
+3.1 研发管理模式升级：数据采建和管理晨会整合(20260501后：24开发商+9自有人员参与晨会)；晨会看板、集成测试看板、缺陷问题看板、临时上线看板
+3.1.1 Trinity迁移； Trinity任务批量复制（含增量自定义SQL）、批量替换变量、批量切换、批量回退能力建设 http://eip.htsc.com.cn/paas/detail.html#/dc/space/1/filter/25866
+3.1.2 数据资产信创改造；http://eip.htsc.com.cn/paas/detail.html#/dc/space/1/filter/25758 
+3.1.3 配合AI平台改造；http://eip.htsc.com.cn/paas/detail.html#/dc/space/1/filter/25467
+3.2 开发商自我提升：督促外包使用AI相关技术，提升编写UT、自动翻译mapper脚本等开发效率；
+3.3 协调人力资源池工作：支撑其他系统；支撑LLM、支撑网关、支撑大模型应用平台等；
+
+4 资产智能化提升：
+4.1 标准、码值、元数据MCP能力建设
+
+5 个人能力提升：
+5.1 学习各类名词，opencode\claudecode\codex\workbuddy\QClaw\Zcode
+5.2 mcp、提示词工程(prompt engineering)、上下文工程(context engineering)、驾驭工程（harness engineering）、循环工程(loop engineering)
+5.3 vibe coding实践：
+5.3.1 智能记录待办到wiki，笔记、并录入需求：http://gitlab.htzq.htsc.com.cn/datacenter-dev/issue-remember.git
+5.3.2 智能优化SQL：http://gitlab.htzq.htsc.com.cn/datacenter-dev/sql-optimize.git
+5.3.3 智能翻译元数据备注：http://gitlab.htzq.htsc.com.cn/datacenter-dev/intelligent-metadata.git
+
+6 目前存在问题：
+6.1 前端人员比较多，需求相对较少，人员存在一定的不匹配；
+6.2 智能化探索：需要尽快设计用户旅程，并进行方案选型；
+6.3 
+
+2026年下半年重点：
+1、继续完善境外中台建设；
+2、升级各类驱动，支持用户信创等切换场景；
+3、力争完成数据资产mapper改造、性能测试等；
+4、智能化建设：完成数据源登记专家、查表助手等建设
+
+
+展望2027年：
+1 用户需求、技术需求减少；
+2 假设没有外包，后面如何做。
+3 建设专家；建设skill；--外包内容
+4 教会外包使用大模型

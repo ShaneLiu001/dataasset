@@ -1,0 +1,167 @@
+{
+  "domain": "enterprise_data_governance",
+  "domain_label": "企业数据治理",
+  "version": "1.0.0",
+  "entities": [
+    {
+      "name": "Customer",
+      "label": "客户",
+      "description": "与公司发生业务关系的组织或个人。",
+      "owner": "客户管理部门",
+      "source_system": "CRM",
+      "attributes": [
+        {
+          "name": "customer_id",
+          "label": "客户编码",
+          "type": "string",
+          "description": "客户在主数据系统中的唯一标识。",
+          "is_primary_key": true,
+          "is_sensitive": false,
+          "source_field": "crm_customer.cust_id"
+        },
+        {
+          "name": "customer_name",
+          "label": "客户名称",
+          "type": "string",
+          "description": "客户的标准名称。",
+          "is_primary_key": false,
+          "is_sensitive": true,
+          "source_field": "crm_customer.cust_name"
+        },
+        {
+          "name": "region",
+          "label": "所属区域",
+          "type": "enum",
+          "description": "客户所属销售或经营区域。",
+          "values": ["华北", "华东", "华南", "华中", "西南", "西北", "东北"],
+          "source_field": "crm_customer.region_name"
+        },
+        {
+          "name": "customer_level",
+          "label": "客户等级",
+          "type": "enum",
+          "description": "客户分层等级。",
+          "values": ["A", "B", "C", "D"],
+          "source_field": "crm_customer.customer_level"
+        }
+      ]
+    },
+    {
+      "name": "Contract",
+      "label": "合同",
+      "description": "公司与客户签订的正式业务合同。",
+      "owner": "合同管理部门",
+      "source_system": "合同管理系统",
+      "attributes": [
+        {
+          "name": "contract_id",
+          "label": "合同编码",
+          "type": "string",
+          "description": "合同唯一标识。",
+          "is_primary_key": true,
+          "source_field": "contract.contract_id"
+        },
+        {
+          "name": "customer_id",
+          "label": "客户编码",
+          "type": "string",
+          "description": "合同所属客户编码。",
+          "source_field": "contract.customer_id"
+        },
+        {
+          "name": "signed_amount",
+          "label": "签约金额",
+          "type": "decimal",
+          "description": "合同签订时约定的金额。",
+          "unit": "CNY",
+          "source_field": "contract.signed_amount"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "name": "customer_signs_contract",
+      "label": "客户签订合同",
+      "source_entity": "Customer",
+      "predicate": "signs",
+      "target_entity": "Contract",
+      "cardinality": "one_to_many",
+      "join_condition": "Customer.customer_id = Contract.customer_id",
+      "description": "一个客户可以签订多个合同。"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "contract_revenue",
+      "label": "合同收入",
+      "description": "在统计周期内，经财务确认的合同收入金额。",
+      "formula": "sum(finance_revenue.confirmed_revenue_amount)",
+      "time_semantics": {
+        "time_field": "finance_revenue.confirmed_date",
+        "description": "按财务确认日期统计。"
+      },
+      "dimensions": ["Customer.region", "Customer.customer_level", "Contract.contract_id"],
+      "source_fields": [
+        "finance_revenue.confirmed_revenue_amount",
+        "finance_revenue.confirmed_date",
+        "finance_revenue.contract_id"
+      ]
+    }
+  ],
+  "business_rules": [
+    {
+      "name": "key_customer_rule",
+      "label": "重点客户定义",
+      "description": "客户等级为 A，或战略客户标识为是的客户，视为重点客户。",
+      "expression": "Customer.customer_level = 'A' OR Customer.is_strategic = true",
+      "applicable_scenarios": ["经营分析", "客户分析", "收入分析"]
+    },
+    {
+      "name": "current_year_rule",
+      "label": "今年定义",
+      "description": "今年默认按自然年统计，并使用指标定义中的时间字段作为过滤口径。",
+      "expression": "date >= first_day_of_current_year AND date <= current_date"
+    }
+  ],
+  "lineage": [
+    {
+      "semantic_object": "Metric.contract_revenue",
+      "depends_on": [
+        "finance_revenue.confirmed_revenue_amount",
+        "finance_revenue.confirmed_date",
+        "finance_revenue.contract_id",
+        "contract.contract_id",
+        "contract.customer_id",
+        "crm_customer.cust_id"
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "object": "Metric.contract_revenue",
+      "sensitivity_level": "confidential",
+      "allowed_roles": ["management", "finance", "data_analyst"],
+      "masking_policy": "none_for_allowed_roles"
+    },
+    {
+      "object": "Customer.customer_name",
+      "sensitivity_level": "internal",
+      "allowed_roles": ["management", "sales", "data_analyst"],
+      "masking_policy": "partial_mask_for_general_users"
+    }
+  ],
+  "examples": [
+    {
+      "question": "今年华北地区重点客户的合同收入是多少？",
+      "intent": "metric_query",
+      "metric": "contract_revenue",
+      "filters": [
+        "Customer.region = '华北'",
+        "key_customer_rule",
+        "current_year_rule"
+      ],
+      "expected_reasoning": "使用合同收入指标，按财务确认日期过滤今年，按客户区域过滤华北，并应用重点客户规则。"
+    }
+  ]
+}

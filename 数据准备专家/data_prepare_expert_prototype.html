@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>数据准备专家 HTML 原型</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --line: #d8dee9;
+      --text: #1f2937;
+      --muted: #667085;
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --green: #16803c;
+      --amber: #b7791f;
+      --red: #c2410c;
+      --purple: #7c3aed;
+      --shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+      --radius: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    header {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: 20px; font-weight: 700; }
+    h2 { font-size: 16px; font-weight: 700; }
+    h3 { font-size: 14px; font-weight: 700; }
+    button { font: inherit; }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f8fafc;
+      color: #475467;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+      min-height: calc(100vh - 64px);
+    }
+
+    .sidebar,
+    .workspace,
+    .card,
+    .modal-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .sidebar {
+      padding: 14px;
+      align-self: start;
+      position: sticky;
+      top: 18px;
+    }
+
+    .scene-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .scene-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 7px;
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+      color: #344054;
+      line-height: 1.35;
+    }
+
+    .scene-btn strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .scene-btn span { font-size: 12px; color: var(--muted); }
+    .scene-btn.active {
+      border-color: #93c5fd;
+      background: #eff6ff;
+      box-shadow: inset 3px 0 0 var(--blue);
+    }
+
+    .workspace {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+
+    .task-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .task-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .task-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 800;
+    }
+
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.25fr);
+      min-height: 0;
+    }
+
+    .chat {
+      border-right: 1px solid var(--line);
+      padding: 18px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .message {
+      max-width: 96%;
+      border-radius: 8px;
+      padding: 12px;
+      line-height: 1.55;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .message.user {
+      margin-left: auto;
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    .message.assistant {
+      margin-right: auto;
+      background: #fff;
+    }
+
+    .message .label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .progress-head {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .progress-body { padding: 12px 14px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .summary-item {
+      border: 1px solid #edf0f5;
+      border-radius: 7px;
+      padding: 9px;
+      background: #fbfcfe;
+    }
+
+    .summary-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .summary-item strong {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 22px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 9px;
+      border: 1px solid #edf0f5;
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .done .dot { background: var(--green); }
+    .active-step .dot { background: var(--blue); }
+    .waiting .dot { background: var(--amber); }
+    .blocked .dot { background: var(--red); }
+    .pending .dot { background: #98a2b3; }
+
+    .step-title { font-weight: 700; margin-bottom: 3px; }
+    .step-desc { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .status-pill {
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .done .status-pill { background: #eaf7ee; color: var(--green); }
+    .active-step .status-pill { background: #eff6ff; color: var(--blue); }
+    .waiting .status-pill { background: #fff7e6; color: var(--amber); }
+    .blocked .status-pill { background: #fff1ed; color: var(--red); }
+    .pending .status-pill { background: #f2f4f7; color: #667085; }
+
+    .stage {
+      padding: 18px;
+      overflow: auto;
+      background: #f8fafc;
+    }
+
+    .stage-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card { padding: 14px; }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+    }
+
+    .field label {
+      color: #475467;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .input,
+    .select {
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .check-row {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid #edf0f5;
+      border-radius: 7px;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .toggle {
+      width: 40px;
+      height: 22px;
+      border-radius: 999px;
+      background: #d0d5dd;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 2px;
+      left: 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .toggle.on { background: var(--blue); }
+    .toggle.on::after { left: 20px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--text);
+      height: 34px;
+      padding: 0 12px;
+      cursor: default;
+    }
+
+    .btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .btn.ghost { background: #f8fafc; }
+
+    .modal-panel {
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .modal-title {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .modal-body { padding: 14px; }
+
+    .subtasks {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .subtask {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .subtask h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .metric-row {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: #475467;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .link-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 7px;
+      padding: 12px;
+      min-height: 82px;
+    }
+
+    .link-card strong { display: block; margin-bottom: 6px; }
+    .link-card span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    @media (max-width: 1100px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .content { grid-template-columns: 1fr; }
+      .chat { border-right: 0; border-bottom: 1px solid var(--line); }
+      .link-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      header { height: auto; align-items: flex-start; flex-direction: column; padding: 14px; gap: 8px; }
+      .app { padding: 10px; gap: 10px; }
+      .task-header { align-items: flex-start; flex-direction: column; }
+      .summary-grid, .form-grid, .subtasks, .link-grid { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 22px 1fr; }
+      .status-pill { grid-column: 2; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>数据准备专家 HTML 原型</h1>
+      <div class="header-meta">流程导航 · 状态跟踪 · 自动准备 · 后续引导</div>
+    </div>
+    <div class="header-meta">
+      <span class="badge">READY_FOR_USE</span>
+      <span class="badge">PRD/UAT</span>
+      <span class="badge">安全扫描可选</span>
+    </div>
+  </header>
+
+  <main class="app">
+    <aside class="sidebar">
+      <h2>原型场景</h2>
+      <div class="scene-list" id="sceneList"></div>
+    </aside>
+
+    <section class="workspace">
+      <div class="task-header">
+        <div class="task-title">
+          <div class="task-icon">D</div>
+          <div>
+            <h2 id="sceneTitle">自然语言发起</h2>
+            <div class="header-meta" id="sceneSubtitle">识别意图并创建数据准备任务</div>
+          </div>
+        </div>
+        <div class="task-meta">
+          <span class="badge">processId: DP-20260617-001</span>
+          <span class="badge">数据源: ds_trade_mysql</span>
+          <span class="badge">环境: PRD/UAT</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <section class="chat" id="chat"></section>
+        <section class="stage">
+          <div class="stage-grid" id="stage"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const baseSummary = [
+      ["数据源 ID", "ds_trade_mysql"],
+      ["数据源类型", "MySQL"],
+      ["所属环境", "PRD/UAT 同时登记"],
+      ["当前处理人", "王经理 / 登记人"],
+      ["流程编号", "PROC-DS-20260617-001"],
+      ["当前状态", "数据准备中"]
+    ];
+
+    const scenes = [
+      {
+        id: "start",
+        title: "1. 自然语言发起",
+        subtitle: "识别登记意图，创建数据准备任务",
+        user: "帮我登记一个生产 MySQL 数据源，同时登记 PRD 和 UAT，登记后立即采集表结构并做安全扫描。",
+        assistant: "我来帮你准备数据源。已识别到数据源类型为 MySQL，登记模式为 PRD/UAT，同时开启表结构采集和安全扫描。我将打开数据源登记表单，并跟踪后续审批、采集、扫描和空间项目绑定进度。",
+        summary: baseSummary,
+        steps: [
+          step("识别登记意图", "已识别 MySQL、PRD/UAT、立即采集、安全扫描", "done"),
+          step("打开登记表单", "通过弹窗承载现有页面", "active"),
+          step("数据源登记审批", "等待用户提交表单", "pending"),
+          step("元数据采集", "待开始", "pending"),
+          step("安全扫描", "待开始", "pending"),
+          step("空间项目绑定", "待开始", "pending")
+        ],
+        stage: startStage
+      },
+      {
+        id: "form",
+        title: "2. 数据源登记弹窗",
+        subtitle: "复用现有表单，预填字段和准备选项",
+        user: "我现在填写数据源信息。",
+        assistant: "请在弹窗中填写数据源连接信息。提交后会进入数据源登记审批流程，我会继续跟踪直属领导审批和登记人复核。",
+        summary: baseSummary,
+        steps: [
+          step("登记表单填写", "PRD/UAT、立即采集、安全扫描已勾选", "active"),
+          step("直属领导审批", "待开始", "pending"),
+          step("登记人复核", "待开始", "pending"),
+          step("元数据采集", "待开始", "pending"),
+          step("安全扫描", "待开始", "pending"),
+          step("空间项目绑定", "待开始", "pending")
+        ],
+        stage: formStage
+      },
+      {
+        id: "approval",
+        title: "3. 登记审批进度",
+        subtitle: "展示直属领导审批和登记人复核",
+        user: "提交好了，现在到哪一步了？",
+        assistant: "数据源登记流程已提交。当前 PRD 等待直属领导审批，UAT 等待登记人复核。审批流消息已提供当前处理人、节点名称和待办入口。",
+        summary: [
+          ["流程编号", "PROC-DS-20260617-001"],
+          ["PRD 当前节点", "直属领导审批"],
+          ["UAT 当前节点", "登记人复核"],
+          ["当前处理人", "王经理 / 李登记"],
+          ["待办入口", "可打开"],
+          ["当前状态", "等待审批"]
+        ],
+        steps: [
+          step("数据源登记表单提交", "已生成审批流程", "done"),
+          step("直属领导审批", "PRD 进行中", "active"),
+          step("登记人复核", "UAT 待处理", "waiting"),
+          step("登记流程办结", "待开始", "pending"),
+          step("元数据采集", "待开始", "pending")
+        ],
+        stage: approvalStage
+      },
+      {
+        id: "firewall",
+        title: "4. 防火墙异步开通",
+        subtitle: "对接 IT 资源管理平台，监听办结",
+        user: "连通性检测失败了吗？",
+        assistant: "连通性检测未通过，原因是网络暂不可达。我已发起防火墙开通流程，该流程对接 IT 资源管理平台，只能异步处理。办结后我会自动重新检测连通性。",
+        summary: [
+          ["流程编号", "FW-IT-20260617-008"],
+          ["流程平台", "IT 资源管理平台"],
+          ["当前状态", "处理中"],
+          ["连通性检测", "网络不可达"],
+          ["下一步", "监听办结后重试"],
+          ["预计动作", "自动重检"]
+        ],
+        steps: [
+          step("数据源登记审批", "已办结", "done"),
+          step("连通性检测", "网络不可达", "blocked"),
+          step("防火墙开通", "IT 资源管理平台处理中", "active"),
+          step("重新检测连通性", "待流程办结", "pending"),
+          step("元数据采集", "待开始", "pending")
+        ],
+        stage: firewallStage
+      },
+      {
+        id: "metadata",
+        title: "5. 元数据采集与地图更新",
+        subtitle: "无审批步骤，系统自动推进",
+        user: "防火墙开通后继续了吗？",
+        assistant: "防火墙开通流程已办结，连通性检测通过。正在自动采集表结构，并在完成后更新数据地图、ES、Redis 和元数据对外接口。",
+        summary: [
+          ["采集任务", "META-20260617-018"],
+          ["采集范围", "表结构"],
+          ["已采集表", "126"],
+          ["地图更新", "进行中"],
+          ["安全扫描", "待触发"],
+          ["当前状态", "自动准备中"]
+        ],
+        steps: [
+          step("连通性检测", "已通过", "done"),
+          step("元数据采集", "采集中 126 张表", "active"),
+          step("数据地图更新", "待开始", "pending"),
+          step("安全扫描", "待开始", "pending"),
+          step("空间项目绑定", "待开始", "pending")
+        ],
+        stage: metadataStage
+      },
+      {
+        id: "security",
+        title: "6. 安全扫描执行中",
+        subtitle: "采集完成后自动触发安全扫描",
+        user: "安全扫描开始了吗？",
+        assistant: "表结构已采集完成，正在自动执行安全扫描。扫描完成后会生成安全等级确认总工单，请你确认后继续数据脱敏。",
+        summary: [
+          ["扫描任务", "SEC-SCAN-20260617-022"],
+          ["扫描对象", "ds_trade_mysql"],
+          ["风险摘要", "待生成"],
+          ["执行状态", "扫描中"],
+          ["总工单", "待生成"],
+          ["下一步", "安全等级确认"]
+        ],
+        steps: [
+          step("元数据采集", "已完成", "done"),
+          step("数据地图更新", "已完成", "done"),
+          step("安全扫描", "扫描中", "active"),
+          step("安全等级确认", "待开始", "pending"),
+          step("数据脱敏", "待确认后进入", "pending")
+        ],
+        stage: securityStage
+      },
+      {
+        id: "securityTicket",
+        title: "7. 安全等级确认总工单",
+        subtitle: "用户确认后可进入数据脱敏",
+        user: "扫描完之后我需要做什么？",
+        assistant: "安全扫描已完成，我已为你生成安全等级确认总工单。请确认安全等级，确认完成后即可继续配置数据脱敏规则。",
+        summary: [
+          ["工单编号", "SEC-LEVEL-20260617-006"],
+          ["当前处理人", "数据源负责人"],
+          ["安全等级", "待确认"],
+          ["敏感字段", "18 个"],
+          ["处理入口", "可打开"],
+          ["下一步", "数据脱敏"]
+        ],
+        steps: [
+          step("安全扫描", "已完成", "done"),
+          step("安全等级确认总工单", "等待用户确认", "waiting"),
+          step("数据脱敏", "确认后可进入", "pending"),
+          step("空间项目绑定", "待处理", "pending")
+        ],
+        stage: securityTicketStage
+      },
+      {
+        id: "binding",
+        title: "8. 中台空间项目绑定",
+        subtitle: "弹窗打开绑定表单，预填数据源信息",
+        user: "空间项目现在要绑定了吗？",
+        assistant: "数据源基础准备已完成，当前需要绑定中台空间项目。我已为你打开绑定表单，并预填数据源 ID、名称、负责人和所属系统。",
+        summary: [
+          ["绑定流程", "PROC-SP-20260617-011"],
+          ["空间项目", "中台交易分析空间"],
+          ["处理人", "数据源负责人"],
+          ["绑定状态", "待提交"],
+          ["预填字段", "已完成"],
+          ["下一步", "提交绑定表单"]
+        ],
+        steps: [
+          step("元数据与地图", "已完成", "done"),
+          step("安全等级确认", "已完成", "done"),
+          step("打开绑定表单", "进行中", "active"),
+          step("绑定流程办结", "待开始", "pending"),
+          step("READY_FOR_USE", "待开始", "pending")
+        ],
+        stage: bindingStage
+      },
+      {
+        id: "complete",
+        title: "9. 接入准备完成",
+        subtitle: "展示 READY_FOR_USE 和后续入口",
+        user: "现在数据源可以用了吗？",
+        assistant: "数据源 ds_trade_mysql 已完成接入准备，当前状态为 READY_FOR_USE。你可以继续进行查询探索、离线开发、数据同步、安全扫描或数据脱敏。",
+        summary: [
+          ["当前状态", "READY_FOR_USE"],
+          ["数据地图", "可查询"],
+          ["空间项目", "已绑定"],
+          ["安全等级", "已确认"],
+          ["PRD/UAT", "均完成"],
+          ["后续入口", "已生成"]
+        ],
+        steps: [
+          step("数据源登记审批", "已完成", "done"),
+          step("元数据采集与地图更新", "已完成", "done"),
+          step("安全扫描与等级确认", "已完成", "done"),
+          step("中台空间项目绑定", "已完成", "done"),
+          step("接入准备完成", "READY_FOR_USE", "done")
+        ],
+        stage: completeStage
+      }
+    ];
+
+    let current = 0;
+
+    function step(title, desc, state) {
+      return { title, desc, state };
+    }
+
+    function renderScenes() {
+      const list = document.getElementById("sceneList");
+      list.innerHTML = scenes.map((scene, idx) => `
+        <button class="scene-btn ${idx === current ? "active" : ""}" data-scene="${idx}">
+          <strong>${scene.title}</strong>
+          <span>${scene.subtitle}</span>
+        </button>
+      `).join("");
+      list.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          current = Number(btn.dataset.scene);
+          render();
+        });
+      });
+    }
+
+    function render() {
+      const scene = scenes[current];
+      document.getElementById("sceneTitle").textContent = scene.title;
+      document.getElementById("sceneSubtitle").textContent = scene.subtitle;
+      renderScenes();
+      renderChat(scene);
+      renderStage(scene);
+    }
+
+    function renderChat(scene) {
+      document.getElementById("chat").innerHTML = `
+        <div class="message user">
+          <div class="label">用户</div>
+          ${scene.user}
+        </div>
+        <div class="message assistant">
+          <div class="label">数据准备专家</div>
+          ${scene.assistant}
+        </div>
+        ${progressCard(scene)}
+      `;
+    }
+
+    function progressCard(scene) {
+      return `
+        <div class="progress-card">
+          <div class="progress-head">
+            <div>
+              <h3>数据准备进度卡片</h3>
+              <div class="step-desc">嵌入在对话流中，支持状态查询和下一步引导</div>
+            </div>
+            <span class="badge">DP-20260617-001</span>
+          </div>
+          <div class="progress-body">
+            <div class="summary-grid">
+              ${scene.summary.map(([k, v]) => `<div class="summary-item"><span>${k}</span><strong>${v}</strong></div>`).join("")}
+            </div>
+            <div class="timeline">
+              ${scene.steps.map(item => `
+                <div class="step ${stateClass(item.state)}">
+                  <div class="dot">${icon(item.state)}</div>
+                  <div>
+                    <div class="step-title">${item.title}</div>
+                    <div class="step-desc">${item.desc}</div>
+                  </div>
+                  <span class="status-pill">${stateText(item.state)}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStage(scene) {
+      document.getElementById("stage").innerHTML = scene.stage();
+    }
+
+    function stateClass(state) {
+      return {
+        done: "done",
+        active: "active-step",
+        waiting: "waiting",
+        blocked: "blocked",
+        pending: "pending"
+      }[state] || "pending";
+    }
+
+    function icon(state) {
+      return { done: "✓", active: "•", waiting: "!", blocked: "×", pending: "" }[state] || "";
+    }
+
+    function stateText(state) {
+      return { done: "已完成", active: "进行中", waiting: "等待用户", blocked: "阻塞", pending: "待开始" }[state] || "待开始";
+    }
+
+    function startStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>任务概览</h2>
+            <span class="badge">自然语言入口</span>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item"><span>识别意图</span><strong>REGISTER_DATASOURCE</strong></div>
+            <div class="summary-item"><span>预填字段</span><strong>生产、MySQL、PRD/UAT</strong></div>
+            <div class="summary-item"><span>准备选项</span><strong>立即采集、安全扫描</strong></div>
+            <div class="summary-item"><span>下一步</span><strong>打开登记弹窗</strong></div>
+          </div>
+          <div class="actions">
+            <button class="btn primary">打开登记表单</button>
+            <button class="btn">查看历史任务</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function formStage() {
+      return `
+        <div class="modal-panel">
+          <div class="modal-title">
+            <h2>数据源登记表单</h2>
+            <span class="badge">弹窗承载现有页面</span>
+          </div>
+          <div class="modal-body">
+            <div class="form-grid">
+              ${field("环境登记模式", "PRD/UAT 同时登记")}
+              ${field("数据源类型", "MySQL")}
+              ${field("PRD 数据源 ID", "prd_trade_mysql")}
+              ${field("UAT 数据源 ID", "uat_trade_mysql")}
+              ${field("IP / 域名", "trade-db.htsc.local")}
+              ${field("端口", "3306")}
+              ${field("database", "trade_dw")}
+              ${field("schema", "ods")}
+              ${field("负责人", "张三")}
+              ${field("所属系统", "交易中台")}
+            </div>
+            <div class="check-row">
+              ${check("立即采集表结构", "登记流程办结后自动采集元数据", true)}
+              ${check("立即安全扫描", "元数据采集完成后自动扫描并生成总工单", true)}
+              ${check("同时登记 PRD/UAT", "同一任务下拆分两个环境子流程", true)}
+            </div>
+            <div class="actions">
+              <button class="btn primary">提交登记流程</button>
+              <button class="btn">保存草稿</button>
+              <button class="btn ghost">取消</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function approvalStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>PRD/UAT 子任务</h2>
+            <span class="badge">审批流消息可提供节点与处理人</span>
+          </div>
+          <div class="subtasks">
+            ${subtask("PRD", "直属领导审批", "王经理", "进行中")}
+            ${subtask("UAT", "登记人复核", "李登记", "等待用户")}
+          </div>
+          <div class="actions">
+            <button class="btn primary">查看审批流程</button>
+            <button class="btn">提醒处理人</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function firewallStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>防火墙开通流程</h2>
+            <span class="badge">IT 资源管理平台</span>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item"><span>流程编号</span><strong>FW-IT-20260617-008</strong></div>
+            <div class="summary-item"><span>当前状态</span><strong>处理中</strong></div>
+            <div class="summary-item"><span>触发原因</span><strong>网络不可达</strong></div>
+            <div class="summary-item"><span>办结动作</span><strong>自动重检连通性</strong></div>
+          </div>
+          <div class="actions">
+            <button class="btn primary">查看 IT 流程</button>
+            <button class="btn">刷新状态</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function metadataStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>自动准备步骤</h2>
+            <span class="badge">无审批 · 系统推进</span>
+          </div>
+          <div class="timeline">
+            <div class="step done"><div class="dot">✓</div><div><div class="step-title">连通性检测</div><div class="step-desc">防火墙办结后重检通过</div></div><span class="status-pill">已完成</span></div>
+            <div class="step active-step"><div class="dot">•</div><div><div class="step-title">元数据采集</div><div class="step-desc">已采集 126 张表，预计 2 分钟完成</div></div><span class="status-pill">进行中</span></div>
+            <div class="step pending"><div class="dot"></div><div><div class="step-title">数据地图更新</div><div class="step-desc">待更新 ES、Redis、元数据接口</div></div><span class="status-pill">待开始</span></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function securityStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>安全扫描任务</h2>
+            <span class="badge">自动触发</span>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item"><span>扫描任务</span><strong>SEC-SCAN-20260617-022</strong></div>
+            <div class="summary-item"><span>扫描状态</span><strong>执行中</strong></div>
+            <div class="summary-item"><span>扫描对象</span><strong>126 张表</strong></div>
+            <div class="summary-item"><span>下一步</span><strong>生成安全等级确认总工单</strong></div>
+          </div>
+          <div class="actions">
+            <button class="btn primary">查看扫描任务</button>
+            <button class="btn">刷新状态</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function securityTicketStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>安全等级确认总工单</h2>
+            <span class="badge">等待用户确认</span>
+          </div>
+          <div class="summary-grid">
+            <div class="summary-item"><span>工单编号</span><strong>SEC-LEVEL-20260617-006</strong></div>
+            <div class="summary-item"><span>处理人</span><strong>张三</strong></div>
+            <div class="summary-item"><span>敏感字段</span><strong>18 个</strong></div>
+            <div class="summary-item"><span>确认后</span><strong>可进入数据脱敏</strong></div>
+          </div>
+          <div class="actions">
+            <button class="btn primary">打开总工单</button>
+            <button class="btn">查看风险摘要</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function bindingStage() {
+      return `
+        <div class="modal-panel">
+          <div class="modal-title">
+            <h2>中台空间项目绑定表单</h2>
+            <span class="badge">字段已预填</span>
+          </div>
+          <div class="modal-body">
+            <div class="form-grid">
+              ${field("数据源 ID", "ds_trade_mysql")}
+              ${field("数据源名称", "交易明细 MySQL")}
+              ${field("负责人", "张三")}
+              ${field("所属系统", "交易中台")}
+              ${field("空间项目", "中台交易分析空间")}
+              ${field("绑定关系", "生产 + UAT")}
+            </div>
+            <div class="actions">
+              <button class="btn primary">提交绑定流程</button>
+              <button class="btn">查看空间项目</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function completeStage() {
+      return `
+        <div class="card">
+          <div class="card-head">
+            <h2>后续可选入口</h2>
+            <span class="badge">READY_FOR_USE</span>
+          </div>
+          <div class="link-grid">
+            ${linkCard("查询探索", "查看表结构和样例数据")}
+            ${linkCard("离线开发", "创建开发任务")}
+            ${linkCard("数据同步", "配置同步链路")}
+            ${linkCard("安全扫描", "查看扫描结果或再次扫描")}
+            ${linkCard("数据脱敏", "基于安全等级配置规则")}
+          </div>
+        </div>
+      `;
+    }
+
+    function field(label, value) {
+      return `<div class="field"><label>${label}</label><div class="input">${value}</div></div>`;
+    }
+
+    function check(title, desc, on) {
+      return `
+        <div class="check">
+          <div>
+            <strong>${title}</strong>
+            <div class="step-desc">${desc}</div>
+          </div>
+          <div class="toggle ${on ? "on" : ""}"></div>
+        </div>
+      `;
+    }
+
+    function subtask(env, node, owner, status) {
+      return `
+        <div class="subtask">
+          <h3>${env}<span class="badge">${status}</span></h3>
+          <div class="metric-row">
+            <div>当前节点：${node}</div>
+            <div>当前处理人：${owner}</div>
+            <div>待办入口：可打开</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function linkCard(title, desc) {
+      return `<div class="link-card"><strong>${title}</strong><span>${desc}</span></div>`;
+    }
+
+    render();
+  </script>
+</body>
+</html>
