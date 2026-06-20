@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据资产盘点 - 一键智能填充原型</title>
+  <style>
+    :root {
+      --blue: #356fca;
+      --blue-weak: #eef5ff;
+      --line: #e3e7ed;
+      --text: #303846;
+      --muted: #7a8493;
+      --bg: #f5f7fa;
+      --green: #2f9b63;
+      --amber: #d99525;
+      --red: #d84a4a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-size: 14px; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+
+    .page { min-height: 100vh; background: #fff; padding: 42px 24px 70px; }
+    .section { margin-bottom: 34px; }
+    .section-title { font-size: 20px; font-weight: 650; border-left: 4px solid var(--blue); padding-left: 10px; margin: 0 0 24px; }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 70px; padding: 0 115px; }
+    .info-item { color: #5c6571; }
+    .info-item b { color: #303846; font-weight: 500; margin-right: 10px; }
+    .notice { border: 1px solid #f4cf73; background: #fff9e7; padding: 12px 18px; color: #5c5650; border-radius: 4px; }
+    .toolbar { display: flex; gap: 22px; margin: 28px 0 18px; }
+    .btn { min-height: 38px; border-radius: 4px; border: 1px solid var(--blue); padding: 0 18px; background: #fff; color: var(--blue); }
+    .btn.primary { color: #fff; background: var(--blue); }
+    .btn.ghost { border-color: #d9dee6; color: #5b6572; }
+    .btn:disabled { opacity: .5; cursor: default; }
+    .btn .sparkle { margin-right: 7px; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; background: #fafbfc; color: #323943; font-weight: 600; }
+    th, td { height: 58px; padding: 0 24px; border-bottom: 1px solid var(--line); }
+    .table-link { color: #2582dc; }
+    .action { color: #3976ce; cursor: pointer; }
+    .status { color: #444c57; }
+    .pager { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; color: #5f6772; }
+    .page-no { border: 1px solid var(--blue); color: var(--blue); padding: 5px 10px; border-radius: 4px; }
+
+    .overlay { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px; background: rgba(23, 29, 38, .44); }
+    .modal { width: min(1160px, calc(100vw - 48px)); max-height: calc(100vh - 48px); background: #fff; border-radius: 0; box-shadow: 0 18px 50px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; }
+    .modal-head { min-height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 600; }
+    .close { border: 0; background: transparent; color: #858d98; font-size: 25px; }
+    .modal-body { overflow: auto; padding: 32px 28px; }
+    .modal-foot { min-height: 68px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 22px; }
+    .panel { border: 1px solid var(--line); }
+    .panel-title { min-height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 600; }
+    .form { padding: 28px 110px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 70px; }
+    .form-row { display: grid; grid-template-columns: 110px 1fr; align-items: center; min-height: 38px; }
+    .form-row.full { grid-column: 1 / -1; grid-template-columns: 110px 1fr; }
+    .label { text-align: right; padding-right: 12px; color: #39404a; white-space: nowrap; }
+    .req { color: #ef4f4f; margin-right: 4px; }
+    .control { height: 38px; border: 1px solid #d8dde5; border-radius: 4px; padding: 0 12px; color: #343b45; background: #fff; width: 100%; }
+    .control::placeholder { color: #b7bdc6; }
+    .read { color: #6b7380; }
+
+    .field-panel { margin-top: 24px; }
+    .panel-actions { display: flex; align-items: center; gap: 12px; }
+    .help { color: #8a929d; font-size: 12px; font-weight: 400; }
+    .summary { margin: 14px 18px 0; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #b9d6ff; background: #f2f7ff; border-radius: 4px; }
+    .summary strong { color: #2367c6; }
+    .summary-right { display: flex; gap: 18px; align-items: center; }
+    .summary-link { color: #2874d2; cursor: pointer; }
+    .progress { margin: 14px 18px 0; }
+    .progress-copy { display: flex; justify-content: space-between; color: #657080; margin-bottom: 8px; }
+    .progress-track { height: 8px; background: #e8edf3; border-radius: 999px; overflow: hidden; }
+    .progress-bar { width: 0; height: 100%; background: var(--blue); transition: width .25s ease; }
+
+    .field-table-wrap { margin: 14px 18px 0; border: 1px solid var(--line); overflow-x: auto; }
+    .field-table { min-width: 980px; }
+    .field-table th, .field-table td { height: 64px; padding: 8px 12px; }
+    .field-table th { height: 48px; }
+    .field-table .control { min-width: 150px; }
+    .generated { background: #f8fbff; }
+    .input-wrap { position: relative; }
+    .input-wrap .control { padding-right: 54px; }
+    .ai-tag { position: absolute; right: 6px; top: 8px; border-radius: 3px; font-size: 11px; padding: 3px 5px; color: #fff; cursor: pointer; }
+    .ai-tag.high { background: var(--green); }
+    .ai-tag.medium { background: var(--blue); }
+    .ai-tag.low { background: var(--amber); }
+    .pending { display: inline-flex; padding: 4px 7px; border-radius: 3px; color: #9a6111; background: #fff2d9; font-size: 12px; }
+    .field-pager { display: flex; justify-content: space-between; padding: 18px; color: #68717e; }
+
+    .popover-mask { position: absolute; inset: 0; z-index: 30; background: rgba(20, 27, 36, .12); display: grid; place-items: center; }
+    .popover { width: min(620px, calc(100% - 40px)); background: #fff; border-radius: 0; box-shadow: 0 18px 55px rgba(0,0,0,.22); }
+    .popover-head { padding: 18px 22px; border-bottom: 1px solid var(--line); font-size: 17px; font-weight: 600; }
+    .popover-body { padding: 20px 22px; }
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 24px; }
+    .radio-list { display: grid; gap: 12px; margin-top: 12px; }
+    .option { display: flex; gap: 9px; align-items: flex-start; }
+    .option small { display: block; color: var(--muted); margin-top: 3px; }
+    .popover-foot { padding: 14px 22px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--line); }
+
+    .drawer-mask { position: fixed; inset: 0; z-index: 40; background: rgba(20,27,36,.18); }
+    .drawer { position: absolute; right: 0; top: 0; bottom: 0; width: min(460px, 88vw); background: #fff; box-shadow: -12px 0 35px rgba(0,0,0,.16); padding: 25px; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+    .drawer-head h3 { margin: 0; font-size: 18px; }
+    .evidence-block { border-top: 1px solid var(--line); padding: 18px 0; }
+    .evidence-block h4 { margin: 0 0 10px; }
+    .evidence-block p, .evidence-block li { color: #626c79; line-height: 1.7; }
+    .score { display: inline-flex; color: #9a6111; background: #fff2d9; border-radius: 3px; padding: 4px 8px; }
+    .toast { position: fixed; z-index: 60; left: 50%; top: 28px; transform: translateX(-50%); color: #fff; background: rgba(38,45,56,.92); border-radius: 5px; padding: 12px 20px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+
+    @media (max-width: 900px) {
+      .info-grid { padding: 0; grid-template-columns: 1fr; }
+      .form { padding: 24px 16px; grid-template-columns: 1fr; }
+      .form-row.full { grid-column: auto; }
+      .modal-body { padding: 20px 14px; }
+      .panel-title { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="section">
+      <h2 class="section-title">基本信息</h2>
+      <div class="info-grid">
+        <div class="info-item"><b>盘点任务ID：</b>ZCPD_RTDS_MYSQL_198_48_1_PRD</div>
+        <div class="info-item"><b>盘点任务名称：</b>zc_test01</div>
+        <div class="info-item"><b>流程创建时间：</b>2026-06-18 09:12:16</div>
+        <div class="info-item"><b>数据源ID：</b>RTDS_MYSQL_198_48_1</div>
+        <div class="info-item"><b>数据源名称：</b>RTDS_MYSQL_198_48_1</div>
+        <div class="info-item"><b>指南针系统：</b>实时数据同步 Morphling 平台</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">盘点信息</h2>
+      <div class="notice">● 资产盘点人指定您为如下待盘点资产的技术 Owner，请补齐数据表信息；一键智能填充结果仍需您确认。</div>
+      <div class="toolbar">
+        <button class="btn primary">添加数据表</button>
+        <button class="btn primary">删除并标识为非资产表</button>
+        <button class="btn">导入已盘点表</button>
+        <button class="btn ghost" disabled>导出待盘点表</button>
+      </div>
+      <table>
+        <thead><tr><th>□</th><th>表名</th><th>表中文名</th><th>当前使用热度</th><th>schema 名</th><th>技术 Owner</th><th>盘点流程进度</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td>□</td><td class="table-link">tidb02_lv_minus1_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
+          <tr><td>□</td><td class="table-link">tidb02_lv0_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
+          <tr><td>□</td><td class="table-link">tidb01_lv_minus1_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
+        </tbody>
+      </table>
+      <div class="pager"><span>共 3 条记录，当前显示 10 条</span><span class="page-no">1</span></div>
+    </section>
+  </main>
+
+  <div class="overlay" id="editorOverlay">
+    <section class="modal" id="editorModal">
+      <header class="modal-head"><span>编辑盘点任务</span><button class="close" id="closeEditor">×</button></header>
+      <div class="modal-body">
+        <section class="panel">
+          <div class="panel-title">通用属性</div>
+          <div class="form">
+            <div class="form-row"><div class="label">数据源 id：</div><div class="read">RTDS_MYSQL_198_48_1</div></div>
+            <div class="form-row"><div class="label">数据源名称：</div><div class="read">RTDS_MYSQL_198_48_1</div></div>
+            <div class="form-row"><div class="label">schema：</div><div class="read">zzh_tidb</div></div>
+            <div class="form-row"><div class="label">表名：</div><div class="read">tidb02_lv_minus1_xysb</div></div>
+            <div class="form-row"><label class="label"><span class="req">*</span>表中文名：</label><input class="control" id="tableCn" placeholder="请输入"></div>
+            <div class="form-row"><label class="label"><span class="req">*</span>目录挂载：</label><select class="control"><option>请选择</option></select></div>
+            <div class="form-row"><div class="label">技术 Owner：</div><div class="read">柳鑫015500</div></div>
+            <div class="form-row"><label class="label"><span class="req">*</span>业务 Owner：</label><select class="control"><option>请选择</option></select></div>
+            <div class="form-row"><label class="label"><span class="req">*</span>数据主管单位：</label><select class="control"><option>请选择</option></select></div>
+            <div class="form-row"><label class="label">分层标签：</label><select class="control"><option>请选择分层</option></select></div>
+            <div class="form-row full"><label class="label">备注：</label><input class="control" id="tableRemark" placeholder="请输入表的业务对象、范围和用途"></div>
+          </div>
+        </section>
+
+        <section class="panel field-panel">
+          <div class="panel-title">
+            <span>字段信息</span>
+            <div class="panel-actions">
+              <span class="help">生成范围包含全部分页字段</span>
+              <button class="btn primary" id="smartFill"><span class="sparkle">✦</span>一键智能填充</button>
+            </div>
+          </div>
+
+          <div class="progress hidden" id="progressArea">
+            <div class="progress-copy"><span id="progressText">正在分析字段语义...</span><span id="progressPercent">0%</span></div>
+            <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+          </div>
+
+          <div class="summary hidden" id="resultSummary">
+            <div><strong>智能填充完成</strong>　表信息 1 项，字段信息 5 项；已跳过人工内容 0 项</div>
+            <div class="summary-right"><span>低置信度 <b>2</b> 项</span><span>待人工补充 <b>1</b> 项</span><span class="summary-link" id="filterPending">只看待处理项</span></div>
+          </div>
+
+          <div class="field-table-wrap">
+            <table class="field-table">
+              <thead><tr><th>字段名称</th><th>字段类型</th><th><span class="req">*</span>字段中文名称</th><th>备注</th><th>状态</th></tr></thead>
+              <tbody id="fieldBody">
+                <tr data-state="normal"><td>province</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>cityid</td><td>int(11)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>cityname</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>amt</td><td>decimal(18,2)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="field-pager"><span>共 4 条记录，当前显示 10 条</span><span>‹　<span class="page-no">1</span>　›</span></div>
+        </section>
+      </div>
+      <footer class="modal-foot"><button class="btn ghost" id="cancelEditor">取消</button><button class="btn primary" id="submitEditor">确定</button></footer>
+
+      <div class="popover-mask hidden" id="fillConfig">
+        <section class="popover">
+          <div class="popover-head">一键智能填充</div>
+          <div class="popover-body">
+            <b>填充内容</b>
+            <div class="check-grid">
+              <label><input type="checkbox" checked> 表中文名</label>
+              <label><input type="checkbox" checked> 表备注</label>
+              <label><input type="checkbox" checked> 字段中文名称</label>
+              <label><input type="checkbox" checked> 字段备注</label>
+            </div>
+            <b>填充方式</b>
+            <div class="radio-list">
+              <label class="option"><input type="radio" name="mode" checked><span>仅填充空值<small>推荐，不覆盖任何人工已填写内容</small></span></label>
+              <label class="option"><input type="radio" name="mode"><span>覆盖 AI 生成内容<small>只更新未被人工修改的历史 AI 候选值</small></span></label>
+              <label class="option"><input type="radio" name="mode"><span>覆盖全部内容<small>提交前需要再次确认覆盖范围</small></span></label>
+            </div>
+          </div>
+          <div class="popover-foot"><button class="btn ghost" id="cancelFill">取消</button><button class="btn primary" id="startFill">开始生成</button></div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <div class="drawer-mask hidden" id="drawerMask">
+    <aside class="drawer">
+      <div class="drawer-head"><h3>AI 生成依据</h3><button class="close" id="closeDrawer">×</button></div>
+      <div class="evidence-block"><h4>字段</h4><p id="evidenceField">cityid</p></div>
+      <div class="evidence-block"><h4>推荐结果</h4><p id="evidenceValue">城市编码</p><span class="score" id="evidenceScore">中置信度 76%</span></div>
+      <div class="evidence-block"><h4>生成依据</h4><ul id="evidenceList"><li>字段名可拆分为 city + id</li><li>字段类型为整数，符合编码类字段特征</li><li>同表存在 cityname，可形成编码与名称组合</li></ul></div>
+      <div class="evidence-block"><h4>人工确认建议</h4><p>建议结合样例值或关联表确认其为城市编码，而非内部自增主键。</p></div>
+    </aside>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => [...document.querySelectorAll(selector)];
+    const overlay = $('#editorOverlay');
+    const config = $('#fillConfig');
+    const progress = $('#progressArea');
+    const summary = $('#resultSummary');
+    const smartFill = $('#smartFill');
+    let filtered = false;
+
+    const showToast = (message) => {
+      const toast = $('#toast');
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2400);
+    };
+
+    $$('.open-editor').forEach((el) => el.addEventListener('click', () => overlay.classList.remove('hidden')));
+    $('#closeEditor').addEventListener('click', () => overlay.classList.add('hidden'));
+    $('#cancelEditor').addEventListener('click', () => overlay.classList.add('hidden'));
+    smartFill.addEventListener('click', () => config.classList.remove('hidden'));
+    $('#cancelFill').addEventListener('click', () => config.classList.add('hidden'));
+
+    const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-field="${field}" data-value="${value}">AI·${label}</span>`;
+
+    function applyResult() {
+      $('#tableCn').value = '';
+      $('#tableCn').placeholder = '证据不足，请人工填写';
+      $('#tableRemark').value = '包含省份与城市相关基础字段，具体业务范围需结合来源系统确认。';
+      const rows = $$('#fieldBody tr');
+      const data = [
+        ['省份', '省份名称或省级行政区标识，具体取值范围需结合样例值确认。', 'medium', '中', 'pending'],
+        ['城市编码', '城市的编码标识，建议结合关联表确认编码体系。', 'medium', '中', 'pending'],
+        ['城市名称', '城市的中文名称，与 cityid 字段配套使用。', 'high', '高', 'done'],
+        ['', '', 'low', '低', 'missing']
+      ];
+      rows.forEach((row, index) => {
+        const [cn, remark, level, label, state] = data[index];
+        row.dataset.state = state;
+        const cnInput = row.querySelector('.cn');
+        const remarkInput = row.querySelector('.remark');
+        cnInput.value = cn;
+        remarkInput.value = remark;
+        if (cn) {
+          row.classList.add('generated');
+          cnInput.insertAdjacentHTML('afterend', tag(level, label, row.cells[0].textContent, cn));
+          remarkInput.insertAdjacentHTML('afterend', tag(level, label, row.cells[0].textContent, remark));
+          row.cells[4].innerHTML = level === 'high' ? '已生成' : '<span class="pending">需确认</span>';
+        } else {
+          cnInput.placeholder = '证据不足，请人工填写';
+          remarkInput.placeholder = '待人工补充';
+          row.cells[4].innerHTML = '<span class="pending">待补充</span>';
+        }
+      });
+      $$('.ai-tag').forEach((el) => el.addEventListener('click', () => openEvidence(el)));
+      progress.classList.add('hidden');
+      summary.classList.remove('hidden');
+      smartFill.disabled = false;
+      smartFill.innerHTML = '<span class="sparkle">✦</span>重新智能填充';
+    }
+
+    $('#startFill').addEventListener('click', () => {
+      config.classList.add('hidden');
+      summary.classList.add('hidden');
+      progress.classList.remove('hidden');
+      smartFill.disabled = true;
+      smartFill.textContent = '正在分析...';
+      let value = 0;
+      const timer = setInterval(() => {
+        value += 20;
+        $('#progressBar').style.width = `${value}%`;
+        $('#progressPercent').textContent = `${value}%`;
+        $('#progressText').textContent = value < 60 ? '正在检索历史元数据与本体映射...' : '正在生成中文名称与备注...';
+        if (value >= 100) { clearInterval(timer); setTimeout(applyResult, 250); }
+      }, 240);
+    });
+
+    function openEvidence(el) {
+      $('#evidenceField').textContent = el.dataset.field;
+      $('#evidenceValue').textContent = el.dataset.value;
+      $('#evidenceScore').textContent = el.classList.contains('high') ? '高置信度 93%' : '中置信度 76%';
+      $('#drawerMask').classList.remove('hidden');
+    }
+
+    $('#closeDrawer').addEventListener('click', () => $('#drawerMask').classList.add('hidden'));
+    $('#drawerMask').addEventListener('click', (event) => { if (event.target.id === 'drawerMask') $('#drawerMask').classList.add('hidden'); });
+
+    $('#filterPending').addEventListener('click', () => {
+      filtered = !filtered;
+      $$('#fieldBody tr').forEach((row) => row.classList.toggle('hidden', filtered && row.dataset.state === 'done'));
+      $('#filterPending').textContent = filtered ? '查看全部字段' : '只看待处理项';
+    });
+
+    $$('#fieldBody input').forEach((input) => input.addEventListener('input', () => {
+      const wrap = input.closest('.input-wrap');
+      const oldTag = wrap.querySelector('.ai-tag');
+      if (oldTag) {
+        oldTag.remove();
+        wrap.insertAdjacentHTML('beforeend', '<span class="ai-tag medium">人工</span>');
+      }
+    }));
+
+    $('#submitEditor').addEventListener('click', () => {
+      if (!$('#tableCn').value.trim()) {
+        showToast('表中文名尚未补充，请人工确认后提交');
+        $('#tableCn').focus();
+        return;
+      }
+      showToast('仍有 2 项低置信度内容，请确认后提交');
+    });
+
+    const prototypeState = new URLSearchParams(window.location.search).get('state');
+    if (prototypeState === 'config') {
+      config.classList.remove('hidden');
+    } else if (prototypeState === 'progress') {
+      progress.classList.remove('hidden');
+      smartFill.disabled = true;
+      smartFill.textContent = '正在分析...';
+      $('#progressBar').style.width = '60%';
+      $('#progressPercent').textContent = '60%';
+      $('#progressText').textContent = '正在检索历史元数据与本体映射...';
+    } else if (prototypeState === 'result') {
+      applyResult();
+      openEvidence(document.querySelector('.ai-tag.medium'));
+    }
+  </script>
+</body>
+</html>
