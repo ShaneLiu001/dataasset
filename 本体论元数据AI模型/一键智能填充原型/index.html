@@ -67,10 +67,11 @@
     .field-panel { margin-top: 24px; }
     .panel-actions { display: flex; align-items: center; gap: 12px; }
     .help { color: #8a929d; font-size: 12px; font-weight: 400; }
-    .summary { margin: 14px 18px 0; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #b9d6ff; background: #f2f7ff; border-radius: 4px; }
+    .summary { margin: 14px 18px 0; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border: 1px solid #b9d6ff; background: #f2f7ff; border-radius: 4px; }
     .summary strong { color: #2367c6; }
     .summary-right { display: flex; gap: 18px; align-items: center; }
     .summary-link { color: #2874d2; cursor: pointer; }
+    .confidence-note { width: 100%; padding-top: 9px; border-top: 1px solid #d7e6f8; color: #657080; font-size: 12px; }
     .progress { margin: 14px 18px 0; }
     .progress-copy { display: flex; justify-content: space-between; color: #657080; margin-bottom: 8px; }
     .progress-track { height: 8px; background: #e8edf3; border-radius: 999px; overflow: hidden; }
@@ -83,8 +84,8 @@
     .field-table .control { min-width: 150px; }
     .generated { background: #f8fbff; }
     .input-wrap { position: relative; }
-    .input-wrap .control { padding-right: 54px; }
-    .ai-tag { position: absolute; right: 6px; top: 8px; border-radius: 3px; font-size: 11px; padding: 3px 5px; color: #fff; cursor: pointer; }
+    .input-wrap .control { padding-right: 146px; }
+    .ai-tag { position: absolute; right: 6px; top: 8px; border-radius: 3px; font-size: 11px; padding: 3px 6px; color: #fff; cursor: pointer; white-space: nowrap; }
     .ai-tag.high { background: var(--green); }
     .ai-tag.medium { background: var(--blue); }
     .ai-tag.low { background: var(--amber); }
@@ -193,6 +194,7 @@
           <div class="summary hidden" id="resultSummary">
             <div><strong>智能填充完成</strong>　表信息 1 项，字段信息 5 项；已跳过人工内容 0 项</div>
             <div class="summary-right"><span>低置信度 <b>2</b> 项</span><span>待人工补充 <b>1</b> 项</span><span class="summary-link" id="filterPending">只看待处理项</span></div>
+            <div class="confidence-note">标识说明：“AI生成”表示内容由系统智能生成；“置信度：高/中/低”表示 AI 对该结果可靠程度的判断，置信度为中或低时需人工确认。</div>
           </div>
 
           <div class="field-table-wrap">
@@ -270,7 +272,7 @@
     smartFill.addEventListener('click', () => config.classList.remove('hidden'));
     $('#cancelFill').addEventListener('click', () => config.classList.add('hidden'));
 
-    const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-field="${field}" data-value="${value}">AI·${label}</span>`;
+    const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-field="${field}" data-value="${value}" title="点击查看生成依据">AI生成｜置信度：${label}</span>`;
 
     function applyResult() {
       $('#tableCn').value = '';
