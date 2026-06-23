@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>数据资产盘点 - 一键智能填充原型</title>
+  <title>数据资产盘点 - 后台智能预填确认原型</title>
   <style>
     :root {
       --blue: #356fca;
@@ -37,6 +37,7 @@
     .btn.ghost { border-color: #d9dee6; color: #5b6572; }
     .btn:disabled { opacity: .5; cursor: default; }
     .btn .sparkle { margin-right: 7px; }
+    #prefillStatus:disabled { opacity: 1; color: var(--green); border-color: #8bc7a6; background: #eef8f2; }
 
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; background: #fafbfc; color: #323943; font-weight: 600; }
@@ -137,7 +138,7 @@
 
     <section class="section">
       <h2 class="section-title">盘点信息</h2>
-      <div class="notice">● 资产盘点人指定您为如下待盘点资产的技术 Owner，请补齐数据表信息；一键智能填充结果仍需您确认。</div>
+      <div class="notice">● 资产盘点人指定您为如下待盘点资产的技术 Owner；后台已完成智能预填，请核对候选内容并提交。</div>
       <div class="toolbar">
         <button class="btn primary">添加数据表</button>
         <button class="btn primary">删除并标识为非资产表</button>
@@ -147,7 +148,7 @@
       <table>
         <thead><tr><th>□</th><th>表名</th><th>表中文名</th><th>当前使用热度</th><th>schema 名</th><th>技术 Owner</th><th>盘点流程进度</th><th>操作</th></tr></thead>
         <tbody>
-          <tr><td>□</td><td class="table-link">tidb02_lv_minus1_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
+          <tr><td>□</td><td class="table-link">tidb02_lv_minus1_xysb</td><td>省市基础信息表</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待确认（已预填）</td><td class="action open-editor">处理确认</td></tr>
           <tr><td>□</td><td class="table-link">tidb02_lv0_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
           <tr><td>□</td><td class="table-link">tidb01_lv_minus1_xysb</td><td>-</td><td>-</td><td>zzh_tidb</td><td>柳鑫(015500)</td><td class="status">待处理</td><td class="action open-editor">处理确认</td></tr>
         </tbody>
@@ -181,18 +182,13 @@
           <div class="panel-title">
             <span>字段信息</span>
             <div class="panel-actions">
-              <span class="help">生成范围包含全部分页字段</span>
-              <button class="btn primary" id="smartFill"><span class="sparkle">✦</span>一键智能填充</button>
+              <span class="help">预填范围包含全部分页字段</span>
+              <button class="btn" id="prefillStatus" disabled>✓ 后台智能预填已完成　09:10</button>
             </div>
           </div>
 
-          <div class="progress hidden" id="progressArea">
-            <div class="progress-copy"><span id="progressText">正在分析字段语义...</span><span id="progressPercent">0%</span></div>
-            <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-          </div>
-
           <div class="summary hidden" id="resultSummary">
-            <div><strong>智能填充完成</strong>　表信息 1 项，字段信息 5 项；已跳过人工内容 0 项</div>
+            <div><strong>后台智能预填已完成</strong>　完成时间：2026-06-22 09:10　表信息 2 项，字段信息 7 项</div>
             <div class="summary-right"><span>低置信度 <b>2</b> 项</span><span>待人工补充 <b>1</b> 项</span><span class="summary-link" id="filterPending">只看待处理项</span></div>
             <div class="confidence-note">标识说明：“AI生成”表示内容由系统智能生成；“置信度：高/中/低”表示 AI 对该结果可靠程度的判断，置信度为中或低时需人工确认。</div>
           </div>
@@ -213,25 +209,14 @@
       </div>
       <footer class="modal-foot"><button class="btn ghost" id="cancelEditor">取消</button><button class="btn primary" id="submitEditor">确定</button></footer>
 
-      <div class="popover-mask hidden" id="fillConfig">
+      <div class="popover-mask hidden" id="submitConfirm">
         <section class="popover">
-          <div class="popover-head">一键智能填充</div>
+          <div class="popover-head">确认提交盘点结果</div>
           <div class="popover-body">
-            <b>填充内容</b>
-            <div class="check-grid">
-              <label><input type="checkbox" checked> 表中文名</label>
-              <label><input type="checkbox" checked> 表备注</label>
-              <label><input type="checkbox" checked> 字段中文名称</label>
-              <label><input type="checkbox" checked> 字段备注</label>
-            </div>
-            <b>填充方式</b>
-            <div class="radio-list">
-              <label class="option"><input type="radio" name="mode" checked><span>仅填充空值<small>推荐，不覆盖任何人工已填写内容</small></span></label>
-              <label class="option"><input type="radio" name="mode"><span>覆盖 AI 生成内容<small>只更新未被人工修改的历史 AI 候选值</small></span></label>
-              <label class="option"><input type="radio" name="mode"><span>覆盖全部内容<small>提交前需要再次确认覆盖范围</small></span></label>
-            </div>
+            <p>后台预填候选 9 项，已人工核对中置信度 2 项，已人工补充 1 项。</p>
+            <p class="help">提交后将沿用现有流程进入后续审批，不直接发布为正式元数据。</p>
           </div>
-          <div class="popover-foot"><button class="btn ghost" id="cancelFill">取消</button><button class="btn primary" id="startFill">开始生成</button></div>
+          <div class="popover-foot"><button class="btn ghost" id="cancelSubmit">返回检查</button><button class="btn primary" id="confirmSubmit">确认提交</button></div>
         </section>
       </div>
     </section>
@@ -253,11 +238,10 @@
     const $ = (selector) => document.querySelector(selector);
     const $$ = (selector) => [...document.querySelectorAll(selector)];
     const overlay = $('#editorOverlay');
-    const config = $('#fillConfig');
-    const progress = $('#progressArea');
+    const submitConfirm = $('#submitConfirm');
     const summary = $('#resultSummary');
-    const smartFill = $('#smartFill');
     let filtered = false;
+    let resultApplied = false;
 
     const showToast = (message) => {
       const toast = $('#toast');
@@ -266,18 +250,19 @@
       setTimeout(() => toast.classList.add('hidden'), 2400);
     };
 
-    $$('.open-editor').forEach((el) => el.addEventListener('click', () => overlay.classList.remove('hidden')));
+    $$('.open-editor').forEach((el) => el.addEventListener('click', () => {
+      overlay.classList.remove('hidden');
+      applyResult();
+    }));
     $('#closeEditor').addEventListener('click', () => overlay.classList.add('hidden'));
     $('#cancelEditor').addEventListener('click', () => overlay.classList.add('hidden'));
-    smartFill.addEventListener('click', () => config.classList.remove('hidden'));
-    $('#cancelFill').addEventListener('click', () => config.classList.add('hidden'));
-
     const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-field="${field}" data-value="${value}" title="点击查看生成依据">AI生成｜置信度：${label}</span>`;
 
     function applyResult() {
-      $('#tableCn').value = '';
-      $('#tableCn').placeholder = '证据不足，请人工填写';
-      $('#tableRemark').value = '包含省份与城市相关基础字段，具体业务范围需结合来源系统确认。';
+      if (resultApplied) return;
+      resultApplied = true;
+      $('#tableCn').value = '省市基础信息表';
+      $('#tableRemark').value = '包含省份与城市相关基础字段，用于维护行政区划编码与名称。';
       const rows = $$('#fieldBody tr');
       const data = [
         ['省份', '省份名称或省级行政区标识，具体取值范围需结合样例值确认。', 'medium', '中', 'pending'],
@@ -304,27 +289,8 @@
         }
       });
       $$('.ai-tag').forEach((el) => el.addEventListener('click', () => openEvidence(el)));
-      progress.classList.add('hidden');
       summary.classList.remove('hidden');
-      smartFill.disabled = false;
-      smartFill.innerHTML = '<span class="sparkle">✦</span>重新智能填充';
     }
-
-    $('#startFill').addEventListener('click', () => {
-      config.classList.add('hidden');
-      summary.classList.add('hidden');
-      progress.classList.remove('hidden');
-      smartFill.disabled = true;
-      smartFill.textContent = '正在分析...';
-      let value = 0;
-      const timer = setInterval(() => {
-        value += 20;
-        $('#progressBar').style.width = `${value}%`;
-        $('#progressPercent').textContent = `${value}%`;
-        $('#progressText').textContent = value < 60 ? '正在检索历史元数据与本体映射...' : '正在生成中文名称与备注...';
-        if (value >= 100) { clearInterval(timer); setTimeout(applyResult, 250); }
-      }, 240);
-    });
 
     function openEvidence(el) {
       $('#evidenceField').textContent = el.dataset.field;
@@ -352,27 +318,34 @@
     }));
 
     $('#submitEditor').addEventListener('click', () => {
-      if (!$('#tableCn').value.trim()) {
-        showToast('表中文名尚未补充，请人工确认后提交');
-        $('#tableCn').focus();
+      const missing = $$('#fieldBody .cn').find((input) => !input.value.trim());
+      if (missing) {
+        showToast('仍有待人工补充的必填字段，请补充后提交');
+        missing.focus();
         return;
       }
-      showToast('仍有 2 项低置信度内容，请确认后提交');
+      submitConfirm.classList.remove('hidden');
+    });
+
+    $('#cancelSubmit').addEventListener('click', () => submitConfirm.classList.add('hidden'));
+    $('#confirmSubmit').addEventListener('click', () => {
+      submitConfirm.classList.add('hidden');
+      showToast('盘点结果已提交，进入后续审批流程');
     });
 
     const prototypeState = new URLSearchParams(window.location.search).get('state');
-    if (prototypeState === 'config') {
-      config.classList.remove('hidden');
-    } else if (prototypeState === 'progress') {
-      progress.classList.remove('hidden');
-      smartFill.disabled = true;
-      smartFill.textContent = '正在分析...';
-      $('#progressBar').style.width = '60%';
-      $('#progressPercent').textContent = '60%';
-      $('#progressText').textContent = '正在检索历史元数据与本体映射...';
+    applyResult();
+    if (prototypeState === 'pending') {
+      $('#filterPending').click();
+    } else if (prototypeState === 'evidence') {
+      openEvidence(document.querySelector('.ai-tag.medium'));
+    } else if (prototypeState === 'submit') {
+      const amtInput = $$('#fieldBody .cn')[3];
+      amtInput.value = '交易金额';
+      amtInput.dispatchEvent(new Event('input'));
+      submitConfirm.classList.remove('hidden');
     } else if (prototypeState === 'result') {
       applyResult();
-      openEvidence(document.querySelector('.ai-tag.medium'));
     }
   </script>
 </body>

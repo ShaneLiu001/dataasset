@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <title>步骤 2：核对待处理项</title>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #39404a; font-size: 14px; }
+      .title { font-size: 18px; font-weight: 600; fill: #252b34; }
+      .section { font-size: 16px; font-weight: 600; fill: #252b34; }
+      .label { text-anchor: end; dominant-baseline: middle; }
+      .value { dominant-baseline: middle; fill: #5b6470; }
+      .muted { fill: #9aa3af; }
+      .head { font-weight: 600; fill: #303846; dominant-baseline: middle; }
+      .cell { fill: #5b6470; dominant-baseline: middle; }
+      .blue { fill: #356fca; }
+      .amber { fill: #d99525; }
+      .green { fill: #2f9b63; }
+      .white { fill: #ffffff; }
+      .small { font-size: 12px; }
+    </style>
+  </defs>
+  <g id="step-2-review-pending">
+
+    
+      <rect width="1920" height="1080" fill="#f5f7fa"/>
+      <rect x="270" y="35" width="1380" height="1010" fill="#ffffff" stroke="#d8dde5"/>
+      <text x="305" y="76" class="title">编辑盘点任务</text>
+      <text x="1610" y="76" class="title" fill="#8a929d">×</text>
+      <line x1="270" y1="100" x2="1650" y2="100" stroke="#e3e7ed"/>
+
+      <rect x="310" y="125" width="1300" height="410" fill="#ffffff" stroke="#e3e7ed"/>
+      <text x="340" y="160" class="section">通用属性</text>
+      <line x1="310" y1="182" x2="1610" y2="182" stroke="#e3e7ed"/>
+
+      <text x="480" y="220" class="label">数据源 ID：</text><text x="500" y="220" class="value">RTDS_MYSQL_198_48_1</text>
+      <text x="1090" y="220" class="label">数据源名称：</text><text x="1110" y="220" class="value">RTDS_MYSQL_198_48_1</text>
+      <text x="480" y="264" class="label">schema：</text><text x="500" y="264" class="value">zzh_tidb</text>
+      <text x="1090" y="264" class="label">表名：</text><text x="1110" y="264" class="value">tidb02_lv_minus1_xysb</text>
+      <text x="480" y="308" class="label"><tspan fill="#ef4f4f">*</tspan> 表中文名：</text>
+      <rect x="500" y="289" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="514" y="308" class="value muted">请输入</text>
+      <text x="1090" y="308" class="label"><tspan fill="#ef4f4f">*</tspan> 目录挂载：</text>
+      <rect x="1110" y="289" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="1124" y="308" class="value muted">请选择</text>
+      <text x="480" y="352" class="label">技术 Owner：</text><text x="500" y="352" class="value">柳鑫015500</text>
+      <text x="1090" y="352" class="label"><tspan fill="#ef4f4f">*</tspan> 业务 Owner：</text>
+      <rect x="1110" y="333" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="1124" y="352" class="value muted">请选择</text>
+      <text x="480" y="396" class="label">分层标签：</text>
+      <rect x="500" y="377" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="514" y="396" class="value muted">请选择分层</text>
+      <text x="1090" y="396" class="label"><tspan fill="#ef4f4f">*</tspan> 数据主管单位：</text>
+      <rect x="1110" y="377" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="1124" y="396" class="value muted">请选择</text>
+      <text x="480" y="456" class="label">备注：</text>
+      <rect x="500" y="437" width="1030" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="514" y="456" class="value muted">请输入表的业务对象、范围和用途</text>
+
+      <rect x="310" y="555" width="1300" height="390" fill="#ffffff" stroke="#e3e7ed"/>
+      <text x="340" y="592" class="section">字段信息</text>
+      <text x="1190" y="592" class="value muted small">生成范围包含全部分页字段</text>
+      <rect x="1350" y="570" width="220" height="40" rx="4" fill="#eef8f2" stroke="#8bc7a6"/><text x="1460" y="591" text-anchor="middle" dominant-baseline="middle" class="green">✓ 后台智能预填已完成</text>
+
+      <rect x="340" y="630" width="1240" height="44" fill="#fafbfc" stroke="#e3e7ed"/>
+      <line x1="570" y1="630" x2="570" y2="870" stroke="#e3e7ed"/><line x1="790" y1="630" x2="790" y2="870" stroke="#e3e7ed"/>
+      <line x1="1090" y1="630" x2="1090" y2="870" stroke="#e3e7ed"/><line x1="1450" y1="630" x2="1450" y2="870" stroke="#e3e7ed"/>
+      <text x="360" y="652" class="head">字段名称</text><text x="590" y="652" class="head">字段类型</text><text x="810" y="652" class="head">字段中文名称</text><text x="1110" y="652" class="head">备注</text><text x="1470" y="652" class="head">状态</text>
+
+      <g id="blank-rows">
+        <line x1="340" y1="674" x2="1580" y2="674" stroke="#e3e7ed"/><line x1="340" y1="739" x2="1580" y2="739" stroke="#e3e7ed"/><line x1="340" y1="804" x2="1580" y2="804" stroke="#e3e7ed"/><line x1="340" y1="869" x2="1580" y2="869" stroke="#e3e7ed"/>
+        <text x="360" y="706" class="cell">province</text><text x="590" y="706" class="cell">varchar(100)</text>
+        <rect x="810" y="687" width="250" height="38" fill="#fff" stroke="#d8dde5"/><text x="824" y="706" class="value muted">请输入</text>
+        <rect x="1110" y="687" width="310" height="38" fill="#fff" stroke="#d8dde5"/><text x="1124" y="706" class="value muted">请输入</text><text x="1470" y="706" class="cell">-</text>
+        <text x="360" y="771" class="cell">cityid</text><text x="590" y="771" class="cell">int(11)</text>
+        <rect x="810" y="752" width="250" height="38" fill="#fff" stroke="#d8dde5"/><text x="824" y="771" class="value muted">请输入</text>
+        <rect x="1110" y="752" width="310" height="38" fill="#fff" stroke="#d8dde5"/><text x="1124" y="771" class="value muted">请输入</text><text x="1470" y="771" class="cell">-</text>
+        <text x="360" y="836" class="cell">cityname</text><text x="590" y="836" class="cell">varchar(100)</text>
+        <rect x="810" y="817" width="250" height="38" fill="#fff" stroke="#d8dde5"/><text x="824" y="836" class="value muted">请输入</text>
+        <rect x="1110" y="817" width="310" height="38" fill="#fff" stroke="#d8dde5"/><text x="1124" y="836" class="value muted">请输入</text><text x="1470" y="836" class="cell">-</text>
+      </g>
+      <line x1="270" y1="970" x2="1650" y2="970" stroke="#e3e7ed"/>
+      <rect x="1440" y="990" width="70" height="36" rx="4" fill="#fff" stroke="#d8dde5"/><text x="1475" y="1009" text-anchor="middle" dominant-baseline="middle">取消</text>
+      <rect x="1520" y="990" width="75" height="36" rx="4" fill="#356fca"/><text x="1557" y="1009" text-anchor="middle" dominant-baseline="middle" class="white">确定</text>
+    
+    
+      <rect x="500" y="289" width="420" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="514" y="308" class="value">省市基础信息表</text><text x="775" y="308" class="blue small">AI生成｜置信度：中</text>
+      <rect x="500" y="437" width="1030" height="38" fill="#ffffff" stroke="#d8dde5"/><text x="514" y="456" class="value">包含省份与城市相关基础字段，用于维护行政区划编码与名称。</text>
+      <rect x="340" y="612" width="1240" height="70" fill="#f2f7ff" stroke="#b9d6ff"/>
+      <text x="360" y="634" class="blue"><tspan font-weight="600">后台智能预填已完成</tspan><tspan fill="#5b6470">　完成时间：2026-06-22 09:10　表信息 2 项，字段信息 7 项</tspan></text>
+      <text x="360" y="661" class="value small">中低置信度 2 项　待人工补充 1 项　人工修改内容不会被后台任务覆盖</text><text x="1555" y="650" text-anchor="end" class="blue">只看待处理项</text>
+      <rect x="340" y="694" width="1240" height="220" fill="#ffffff" stroke="#e3e7ed"/>
+      <rect x="340" y="694" width="1240" height="44" fill="#fafbfc"/>
+      <line x1="570" y1="694" x2="570" y2="914" stroke="#e3e7ed"/><line x1="790" y1="694" x2="790" y2="914" stroke="#e3e7ed"/><line x1="1090" y1="694" x2="1090" y2="914" stroke="#e3e7ed"/><line x1="1450" y1="694" x2="1450" y2="914" stroke="#e3e7ed"/>
+      <text x="360" y="716" class="head">字段名称</text><text x="590" y="716" class="head">字段类型</text><text x="810" y="716" class="head">字段中文名称</text><text x="1110" y="716" class="head">备注</text><text x="1470" y="716" class="head">状态</text>
+      <line x1="340" y1="738" x2="1580" y2="738" stroke="#e3e7ed"/><line x1="340" y1="782" x2="1580" y2="782" stroke="#e3e7ed"/><line x1="340" y1="826" x2="1580" y2="826" stroke="#e3e7ed"/><line x1="340" y1="870" x2="1580" y2="870" stroke="#e3e7ed"/>
+      <text x="360" y="760" class="cell">province</text><text x="590" y="760" class="cell">varchar(100)</text><text x="810" y="760" class="cell">省份　<tspan class="blue small">AI生成｜置信度：中</tspan></text><text x="1110" y="760" class="cell">省级行政区名称，需结合样例确认。</text><text x="1470" y="760" class="amber">需确认</text>
+      <text x="360" y="804" class="cell">cityid</text><text x="590" y="804" class="cell">int(11)</text><text x="810" y="804" class="cell">城市编码　<tspan class="blue small">AI生成｜置信度：中</tspan></text><text x="1110" y="804" class="cell">城市编码标识，需确认编码体系。</text><text x="1470" y="804" class="amber">需确认</text>
+      <text x="360" y="848" class="cell">cityname</text><text x="590" y="848" class="cell">varchar(100)</text><text x="810" y="848" class="cell">城市名称　<tspan class="green small">AI生成｜置信度：高</tspan></text><text x="1110" y="848" class="cell">城市中文名称，与 cityid 配套使用。</text><text x="1470" y="848" class="green">已预填</text>
+      <text x="360" y="892" class="cell">amt</text><text x="590" y="892" class="cell">decimal(18,2)</text><text x="810" y="892" class="amber">证据不足，请人工填写</text><text x="1110" y="892" class="cell muted">待人工补充</text><text x="1470" y="892" class="amber">待补充</text>
+      <text x="360" y="934" class="muted small">标识说明：AI生成表示内容由系统后台生成；中、低置信度及待补充项需要人工核对。</text>
+    
+    <rect x="340" y="694" width="1240" height="176" fill="#ffffff" stroke="#e3e7ed"/>
+    <rect x="340" y="694" width="1240" height="44" fill="#fafbfc"/>
+    <line x1="570" y1="694" x2="570" y2="870" stroke="#e3e7ed"/><line x1="790" y1="694" x2="790" y2="870" stroke="#e3e7ed"/><line x1="1090" y1="694" x2="1090" y2="870" stroke="#e3e7ed"/><line x1="1450" y1="694" x2="1450" y2="870" stroke="#e3e7ed"/>
+    <text x="360" y="716" class="head">字段名称</text><text x="590" y="716" class="head">字段类型</text><text x="810" y="716" class="head">字段中文名称</text><text x="1110" y="716" class="head">备注</text><text x="1470" y="716" class="head">状态</text>
+    <line x1="340" y1="738" x2="1580" y2="738" stroke="#e3e7ed"/><line x1="340" y1="782" x2="1580" y2="782" stroke="#e3e7ed"/><line x1="340" y1="826" x2="1580" y2="826" stroke="#e3e7ed"/>
+    <text x="360" y="760" class="cell">province</text><text x="590" y="760" class="cell">varchar(100)</text><text x="810" y="760" class="cell">省份　<tspan class="blue small">AI生成｜置信度：中</tspan></text><text x="1110" y="760" class="cell">结合样例值确认具体范围。</text><text x="1470" y="760" class="amber">需确认</text>
+    <text x="360" y="804" class="cell">cityid</text><text x="590" y="804" class="cell">int(11)</text><text x="810" y="804" class="cell">城市编码　<tspan class="blue small">AI生成｜置信度：中</tspan></text><text x="1110" y="804" class="cell">确认编码体系及关联表。</text><text x="1470" y="804" class="amber">需确认</text>
+    <text x="360" y="848" class="cell">amt</text><text x="590" y="848" class="cell">decimal(18,2)</text><rect x="810" y="832" width="250" height="32" fill="#fff" stroke="#d99525"/><text x="824" y="848" class="muted small">请输入字段中文名称</text><text x="1110" y="848" class="muted">待人工补充</text><text x="1470" y="848" class="amber">待补充</text>
+    <text x="1555" y="650" text-anchor="end" class="blue">查看全部字段</text>
+    <rect x="1650" y="706" width="240" height="76" fill="#fff2d9" stroke="#d99525"/><text x="1770" y="733" text-anchor="middle" class="amber">步骤 2：核对待处理项</text><text x="1770" y="758" text-anchor="middle" class="amber small">默认聚焦需确认和待补充内容</text>
+  
+  </g>
+</svg>
