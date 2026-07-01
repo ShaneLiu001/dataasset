@@ -49,7 +49,7 @@
     .page-no { border: 1px solid var(--blue); color: var(--blue); padding: 5px 10px; border-radius: 4px; }
 
     .overlay { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px; background: rgba(23, 29, 38, .44); }
-    .modal { width: min(1160px, calc(100vw - 48px)); max-height: calc(100vh - 48px); background: #fff; border-radius: 0; box-shadow: 0 18px 50px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; }
+    .modal { width: min(1480px, calc(100vw - 48px)); max-height: calc(100vh - 48px); background: #fff; border-radius: 0; box-shadow: 0 18px 50px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; }
     .modal-head { min-height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 600; }
     .close { border: 0; background: transparent; color: #858d98; font-size: 25px; }
     .modal-body { overflow: auto; padding: 32px 28px; }
@@ -79,17 +79,24 @@
     .progress-bar { width: 0; height: 100%; background: var(--blue); transition: width .25s ease; }
 
     .field-table-wrap { margin: 14px 18px 0; border: 1px solid var(--line); overflow-x: auto; }
-    .field-table { min-width: 980px; }
-    .field-table th, .field-table td { height: 64px; padding: 8px 12px; }
+    .field-table { min-width: 1160px; }
+    .field-table th, .field-table td { height: 64px; padding: 8px 10px; }
     .field-table th { height: 48px; }
-    .field-table .control { min-width: 150px; }
+    .field-table .control { min-width: 128px; }
     .generated { background: #f8fbff; }
     .input-wrap { position: relative; }
-    .input-wrap .control { padding-right: 146px; }
+    .input-wrap .control { padding-right: 124px; }
     .ai-tag { position: absolute; right: 6px; top: 8px; border-radius: 3px; font-size: 11px; padding: 3px 6px; color: #fff; cursor: pointer; white-space: nowrap; }
     .ai-tag.high { background: var(--green); }
     .ai-tag.medium { background: var(--blue); }
     .ai-tag.low { background: var(--amber); }
+    .security-wrap { display: grid; gap: 6px; min-width: 160px; }
+    .security-select { min-width: 112px; height: 34px; border: 1px solid #d8dde5; border-radius: 4px; padding: 0 8px; color: #343b45; background: #fff; }
+    .security-tag { display: inline-flex; width: max-content; border-radius: 3px; font-size: 11px; padding: 3px 6px; color: #fff; cursor: pointer; white-space: nowrap; }
+    .security-tag.high { background: var(--green); }
+    .security-tag.medium { background: var(--blue); }
+    .security-tag.low { background: var(--amber); }
+    .security-tag.manual { background: #697386; }
     .pending { display: inline-flex; padding: 4px 7px; border-radius: 3px; color: #9a6111; background: #fff2d9; font-size: 12px; }
     .field-pager { display: flex; justify-content: space-between; padding: 18px; color: #68717e; }
 
@@ -188,19 +195,19 @@
           </div>
 
           <div class="summary hidden" id="resultSummary">
-            <div><strong>后台智能预填已完成</strong>　完成时间：2026-06-22 09:10　表信息 2 项，字段信息 7 项</div>
-            <div class="summary-right"><span>低置信度 <b>2</b> 项</span><span>待人工补充 <b>1</b> 项</span><span class="summary-link" id="filterPending">只看待处理项</span></div>
-            <div class="confidence-note">标识说明：“AI生成”表示内容由系统智能生成；“置信度：高/中/低”表示 AI 对该结果可靠程度的判断，置信度为中或低时需人工确认。</div>
+            <div><strong>后台智能预填已完成</strong>　完成时间：2026-06-22 09:10　表信息 2 项，字段信息 11 项，安全等级 4 项</div>
+            <div class="summary-right"><span>安全等级需确认 <b>2</b> 项</span><span>低置信度 <b>2</b> 项</span><span>待人工补充 <b>1</b> 项</span><span class="summary-link" id="filterPending">只看待处理项</span></div>
+            <div class="confidence-note">标识说明：“AI生成”表示内容由系统智能生成；“安全推荐”来自既有安全等级确认接口；置信度为中或低、或安全等级为 3/4 级时需人工确认。</div>
           </div>
 
           <div class="field-table-wrap">
             <table class="field-table">
-              <thead><tr><th>字段名称</th><th>字段类型</th><th><span class="req">*</span>字段中文名称</th><th>备注</th><th>状态</th></tr></thead>
+              <thead><tr><th>字段名称</th><th>字段类型</th><th><span class="req">*</span>字段中文名称</th><th>备注</th><th><span class="req">*</span>安全等级</th><th>状态</th></tr></thead>
               <tbody id="fieldBody">
-                <tr data-state="normal"><td>province</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
-                <tr data-state="normal"><td>cityid</td><td>int(11)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
-                <tr data-state="normal"><td>cityname</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
-                <tr data-state="normal"><td>amt</td><td>decimal(18,2)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>province</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td><div class="security-wrap"><select class="security-select"><option>请选择</option><option>1级</option><option>2级</option><option>3级</option><option>4级</option></select></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>cityid</td><td>int(11)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td><div class="security-wrap"><select class="security-select"><option>请选择</option><option>1级</option><option>2级</option><option>3级</option><option>4级</option></select></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>cityname</td><td>varchar(100)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td><div class="security-wrap"><select class="security-select"><option>请选择</option><option>1级</option><option>2级</option><option>3级</option><option>4级</option></select></div></td><td>-</td></tr>
+                <tr data-state="normal"><td>amt</td><td>decimal(18,2)</td><td><div class="input-wrap"><input class="control cn" placeholder="请输入"></div></td><td><div class="input-wrap"><input class="control remark" placeholder="请输入"></div></td><td><div class="security-wrap"><select class="security-select"><option>请选择</option><option>1级</option><option>2级</option><option>3级</option><option>4级</option></select></div></td><td>-</td></tr>
               </tbody>
             </table>
           </div>
@@ -213,7 +220,7 @@
         <section class="popover">
           <div class="popover-head">确认提交盘点结果</div>
           <div class="popover-body">
-            <p>后台预填候选 9 项，已人工核对中置信度 2 项，已人工补充 1 项。</p>
+            <p>后台预填候选 13 项，已人工核对安全等级 2 项，已人工补充 1 项。</p>
             <p class="help">提交后将沿用现有流程进入后续审批，不直接发布为正式元数据。</p>
           </div>
           <div class="popover-foot"><button class="btn ghost" id="cancelSubmit">返回检查</button><button class="btn primary" id="confirmSubmit">确认提交</button></div>
@@ -224,7 +231,7 @@
 
   <div class="drawer-mask hidden" id="drawerMask">
     <aside class="drawer">
-      <div class="drawer-head"><h3>AI 生成依据</h3><button class="close" id="closeDrawer">×</button></div>
+      <div class="drawer-head"><h3 id="drawerTitle">AI 生成依据</h3><button class="close" id="closeDrawer">×</button></div>
       <div class="evidence-block"><h4>字段</h4><p id="evidenceField">cityid</p></div>
       <div class="evidence-block"><h4>推荐结果</h4><p id="evidenceValue">城市编码</p><span class="score" id="evidenceScore">中置信度 76%</span></div>
       <div class="evidence-block"><h4>生成依据</h4><ul id="evidenceList"><li>字段名可拆分为 city + id</li><li>字段类型为整数，符合编码类字段特征</li><li>同表存在 cityname，可形成编码与名称组合</li></ul></div>
@@ -256,7 +263,8 @@
     }));
     $('#closeEditor').addEventListener('click', () => overlay.classList.add('hidden'));
     $('#cancelEditor').addEventListener('click', () => overlay.classList.add('hidden'));
-    const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-field="${field}" data-value="${value}" title="点击查看生成依据">AI生成｜置信度：${label}</span>`;
+    const tag = (level, label, field, value) => `<span class="ai-tag ${level}" data-kind="metadata" data-field="${field}" data-value="${value}" title="点击查看生成依据">AI生成｜置信度：${label}</span>`;
+    const securityTag = (level, label, field, value, rule) => `<span class="security-tag ${level}" data-kind="security" data-field="${field}" data-value="${value}" data-rule="${rule}" title="点击查看安全定级依据">安全推荐｜${label}</span>`;
 
     function applyResult() {
       if (resultApplied) return;
@@ -265,37 +273,49 @@
       $('#tableRemark').value = '包含省份与城市相关基础字段，用于维护行政区划编码与名称。';
       const rows = $$('#fieldBody tr');
       const data = [
-        ['省份', '省份名称或省级行政区标识，具体取值范围需结合样例值确认。', 'medium', '中', 'pending'],
-        ['城市编码', '城市的编码标识，建议结合关联表确认编码体系。', 'medium', '中', 'pending'],
-        ['城市名称', '城市的中文名称，与 cityid 字段配套使用。', 'high', '高', 'done'],
-        ['', '', 'low', '低', 'missing']
+        ['省份', '省份名称或省级行政区标识，具体取值范围需结合样例值确认。', 'medium', '中', '2级', 'medium', '中置信', '列名匹配：province 行政区划字段', 'pending'],
+        ['城市编码', '城市的编码标识，建议结合关联表确认编码体系。', 'medium', '中', '2级', 'medium', '中置信', '列名匹配：city + id 编码字段', 'pending'],
+        ['城市名称', '城市的中文名称，与 cityid 字段配套使用。', 'high', '高', '1级', 'high', '高置信', '列名匹配：cityname 公开地理名称', 'done'],
+        ['', '', 'low', '低', '3级', 'low', '需确认', '列名匹配：amt 金额类字段，需确认是否合同/交易金额', 'missing']
       ];
       rows.forEach((row, index) => {
-        const [cn, remark, level, label, state] = data[index];
+        const [cn, remark, level, label, securityLevel, securityConfidence, securityLabel, securityRule, state] = data[index];
         row.dataset.state = state;
         const cnInput = row.querySelector('.cn');
         const remarkInput = row.querySelector('.remark');
+        const securitySelect = row.querySelector('.security-select');
         cnInput.value = cn;
         remarkInput.value = remark;
+        securitySelect.value = securityLevel;
+        securitySelect.insertAdjacentHTML('afterend', securityTag(securityConfidence, securityLabel, row.cells[0].textContent, securityLevel, securityRule));
         if (cn) {
           row.classList.add('generated');
           cnInput.insertAdjacentHTML('afterend', tag(level, label, row.cells[0].textContent, cn));
           remarkInput.insertAdjacentHTML('afterend', tag(level, label, row.cells[0].textContent, remark));
-          row.cells[4].innerHTML = level === 'high' ? '已生成' : '<span class="pending">需确认</span>';
+          row.cells[5].innerHTML = level === 'high' && securityLevel === '1级' ? '已生成' : '<span class="pending">需确认</span>';
         } else {
           cnInput.placeholder = '证据不足，请人工填写';
           remarkInput.placeholder = '待人工补充';
-          row.cells[4].innerHTML = '<span class="pending">待补充</span>';
+          row.cells[5].innerHTML = '<span class="pending">待补充</span>';
         }
       });
-      $$('.ai-tag').forEach((el) => el.addEventListener('click', () => openEvidence(el)));
+      $$('.ai-tag, .security-tag').forEach((el) => el.addEventListener('click', () => openEvidence(el)));
       summary.classList.remove('hidden');
     }
 
     function openEvidence(el) {
+      const isSecurity = el.dataset.kind === 'security';
+      $('#drawerTitle').textContent = isSecurity ? '安全等级推荐依据' : 'AI 生成依据';
       $('#evidenceField').textContent = el.dataset.field;
       $('#evidenceValue').textContent = el.dataset.value;
-      $('#evidenceScore').textContent = el.classList.contains('high') ? '高置信度 93%' : '中置信度 76%';
+      $('#evidenceScore').textContent = el.classList.contains('high') ? '高置信度 93%' : el.classList.contains('low') ? '低置信度 58%' : '中置信度 76%';
+      if (isSecurity) {
+        $('#evidenceList').innerHTML = `<li>已调用现有安全等级确认接口</li><li>${el.dataset.rule}</li><li>接口能力来源：正则表达式与列名匹配</li><li>3/4 级或中低置信度结果需用户显式确认</li>`;
+        document.querySelector('.evidence-block:last-child p').textContent = '建议技术 Owner 结合字段真实业务含义确认安全等级；AI 不降低接口强规则命中的等级。';
+      } else {
+        $('#evidenceList').innerHTML = '<li>字段名与表上下文存在语义匹配</li><li>结合字段类型、同表字段组合和历史命名习惯生成候选</li><li>中低置信度结果需人工确认</li>';
+        document.querySelector('.evidence-block:last-child p').textContent = '建议结合样例值、关联表或业务文档确认该候选值。';
+      }
       $('#drawerMask').classList.remove('hidden');
     }
 
@@ -316,12 +336,24 @@
         wrap.insertAdjacentHTML('beforeend', '<span class="ai-tag medium">人工</span>');
       }
     }));
+    $$('#fieldBody select.security-select').forEach((select) => select.addEventListener('change', () => {
+      const wrap = select.closest('.security-wrap');
+      const oldTag = wrap.querySelector('.security-tag');
+      if (oldTag) oldTag.remove();
+      wrap.insertAdjacentHTML('beforeend', '<span class="security-tag manual">人工已调整</span>');
+    }));
 
     $('#submitEditor').addEventListener('click', () => {
       const missing = $$('#fieldBody .cn').find((input) => !input.value.trim());
       if (missing) {
         showToast('仍有待人工补充的必填字段，请补充后提交');
         missing.focus();
+        return;
+      }
+      const missingSecurity = $$('#fieldBody .security-select').find((select) => !select.value || select.value === '请选择');
+      if (missingSecurity) {
+        showToast('仍有字段安全等级未确认，请补充后提交');
+        missingSecurity.focus();
         return;
       }
       submitConfirm.classList.remove('hidden');
@@ -338,7 +370,7 @@
     if (prototypeState === 'pending') {
       $('#filterPending').click();
     } else if (prototypeState === 'evidence') {
-      openEvidence(document.querySelector('.ai-tag.medium'));
+      openEvidence(document.querySelector('.security-tag.medium'));
     } else if (prototypeState === 'submit') {
       const amtInput = $$('#fieldBody .cn')[3];
       amtInput.value = '交易金额';
