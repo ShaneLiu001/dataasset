@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-07-01T00:00:00.000Z" agent="Codex" version="26.0.4" type="device" compressed="false" pages="1">
+  <diagram id="metadata-auto-completion-overview" name="元数据自动补全系统概要设计">
+    <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry width="1920" height="1080" as="geometry"/>
+        </mxCell>
+        <mxCell id="title" value="元数据自动补全系统概要设计" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="50" y="28" width="480" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="一期聚焦表/字段中文名与备注自动生成，复用数据资产盘点流程；血缘、数据标准和大模型均通过接口或表接入。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontColor=#5B6572;" vertex="1" parent="1">
+          <mxGeometry x="50" y="72" width="1200" height="34" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_source" value="现有平台与外部能力" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#EAF2FF;strokeColor=#B8CBEA;fontColor=#1F4D8F;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="420" height="770" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_meta" value="元数据管理平台&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;库 / 表 / 字段 / 类型 / 注释 / 任务 / 报表&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="58" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_lineage" value="数据血缘接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;上下游表字段 / SQL Join / 加工任务 / 报表引用&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="150" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_standard" value="数据标准表或接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;术语 / 字段标准 / 编码 / 值域 / 枚举&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="242" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_metric" value="统一指标平台&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;指标名称 / 口径描述 / 来源字段 / 维度元数据&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="334" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_model" value="数据建模平台&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;逻辑模型 / 物理模型 / 主题域 / 分层&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="426" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_quality" value="质量 / 安全 / 权限能力&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;质量规则 / 敏感识别 / 安全等级 / 权限范围&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="518" width="360" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="src_llm" value="大模型服务接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;中文名生成 / 备注生成 / 业务含义解释 / 候选改写&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#F2BD67;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_source">
+          <mxGeometry x="30" y="610" width="360" height="78" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_engine" value="元数据自动补全服务" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#EEF7F1;strokeColor=#A9D1B5;fontColor=#27633A;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="130" width="620" height="770" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_context" value="1. 上下文采集与归一化&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;统一表字段、标准、血缘、模型、指标、报表、安全质量信息&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94C9A7;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="58" width="540" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_evidence" value="2. 证据检索与候选召回&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;字段拆词、同名字段、相似资产、标准匹配、血缘上下游、历史确认样本&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94C9A7;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="154" width="540" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_strategy" value="3. 组合生成策略&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;规则优先 + 标准映射 + 相似元数据 + 血缘语境 + 大模型生成&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94C9A7;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="256" width="540" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_llm" value="4. 大模型补全编排&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Prompt 模板 / 上下文裁剪 / 敏感样例脱敏 / JSON 结构化输出&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFDF5;strokeColor=#E4C66A;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="358" width="540" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_score" value="5. 置信度与依据合成&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;高 / 中 / 低置信；记录命中标准、血缘证据、模型解释和风险提示&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94C9A7;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="460" width="540" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_policy" value="6. 写入保护与任务候选区&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;不覆盖人工已确认内容；只写空值、待补全项和低质量备注候选&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94C9A7;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="562" width="540" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="eng_out" value="候选输出&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;表中文名 / 表备注 / 字段中文名 / 字段备注 / 业务含义 / 枚举说明 / 置信度 / 依据&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#5AAF79;fontColor=#1F5134;fontSize=15;fontStyle=1;" vertex="1" parent="lane_engine">
+          <mxGeometry x="40" y="664" width="540" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_process" value="复用现有数据资产盘点流程" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#FFF3E6;strokeColor=#E7B06D;fontColor=#8A4B10;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="130" width="700" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_create" value="盘点任务创建 / 资产分派" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="30" y="70" width="155" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_trigger" value="后台自动触发预填" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="205" y="70" width="155" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_confirm" value="技术 Owner 确认 / 修改" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="380" y="70" width="155" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_publish" value="审批发布 / 元数据回写" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="555" y="70" width="120" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_ui" value="处理确认页复用现有盘点弹窗&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;新增 AI 候选值、置信度、依据抽屉、只看待处理项、重试失败项&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="30" y="165" width="645" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="proc_rules" value="流程规则&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;首次只填空值；人工修改后不覆盖；低置信度必看；无法判断则待人工补充；3/4级安全字段重点确认&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFDF8;strokeColor=#E2AA61;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_process">
+          <mxGeometry x="30" y="280" width="645" height="92" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_store" value="沉淀与后续消费" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#F0ECFF;strokeColor=#B8A7EA;fontColor=#533A9B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="600" width="700" height="320" as="geometry"/>
+        </mxCell>
+        <mxCell id="store_candidate" value="AI 候选与人工最终值库&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;候选值、最终值、修改人、置信度、依据、版本&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B8A7EA;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_store">
+          <mxGeometry x="30" y="62" width="300" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="store_semantic" value="语义样本与本体资产&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;标准映射、对象属性、指标语义、问法样例、补全反馈&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B8A7EA;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_store">
+          <mxGeometry x="370" y="62" width="300" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="store_ontology" value="轻量本体平台&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;业务对象、对象属性、对象关系、报表语义、指标语义、字段映射&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F3FF;strokeColor=#8E76D9;fontColor=#263444;fontSize=15;fontStyle=1;" vertex="1" parent="lane_store">
+          <mxGeometry x="30" y="182" width="300" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="store_ai" value="后续 AI 问数支撑&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;报表匹配、指标识别、维度映射、口径解释、答案溯源&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B8A7EA;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_store">
+          <mxGeometry x="370" y="182" width="300" height="82" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arrow_source_engine_bus" value="接口 / 表 / 元数据上下文" style="endArrow=block;html=1;rounded=0;strokeColor=#5B6572;strokeWidth=2;fontSize=12;fontColor=#5B6572;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="515" as="sourcePoint"/>
+            <mxPoint x="510" y="515" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_engine_process_bus" value="候选结果写入任务候选区" style="endArrow=block;html=1;rounded=0;strokeColor=#5B6572;strokeWidth=2;fontSize=12;fontColor=#5B6572;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1130" y="515" as="sourcePoint"/>
+            <mxPoint x="1180" y="515" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_process_store_bus" value="确认发布后沉淀" style="endArrow=block;html=1;rounded=0;strokeColor=#5B6572;strokeWidth=2;fontSize=12;fontColor=#5B6572;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1530" y="560" as="sourcePoint"/>
+            <mxPoint x="1530" y="600" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_candidate_semantic" value="反哺" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7E65C7;strokeWidth=2;endArrow=block;endFill=1;fontSize=12;fontColor=#533A9B;" edge="1" parent="1" source="store_candidate" target="store_semantic">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_semantic_ontology" value="沉淀本体" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7E65C7;strokeWidth=2;endArrow=block;endFill=1;fontSize=12;fontColor=#533A9B;" edge="1" parent="1" source="store_semantic" target="store_ontology">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_ontology_ai" value="语义服务" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7E65C7;strokeWidth=2;endArrow=block;endFill=1;fontSize=12;fontColor=#533A9B;" edge="1" parent="1" source="store_ontology" target="store_ai">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_flow_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C27A27;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="lane_process" source="proc_create" target="proc_trigger">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_flow_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C27A27;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="lane_process" source="proc_trigger" target="proc_confirm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_flow_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C27A27;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="lane_process" source="proc_confirm" target="proc_publish">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note" value="边界说明：本系统不重建血缘、数据标准、指标、质量、安全和权限能力；只调用其接口或读取其标准表，将结果转化为元数据补全上下文与可解释依据。后续数据资产管理平台新增轻量本体平台，用于承接补全反馈并向 AI 问数提供语义服务。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D7DCE5;fontColor=#4B5563;fontSize=14;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="945" width="1840" height="70" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

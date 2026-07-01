@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-07-01T00:00:00.000Z" agent="Codex" version="26.0.4" type="device" compressed="false" pages="1">
+  <diagram id="metadata-auto-completion-technical-architecture" name="元数据自动补全技术架构">
+    <mxGraphModel dx="1920" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry width="1920" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="title" value="元数据自动补全技术架构" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="50" y="28" width="480" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="复用数据资产管理平台既有前后端分离架构：React 前端、Java 后端、GoldenDB、Redis、Kafka、ES、S3，并新增元数据自动补全与轻量本体模块。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontColor=#5B6572;" vertex="1" parent="1">
+          <mxGeometry x="50" y="72" width="1350" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_existing" value="已有能力" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#1F5134;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="42" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_new" value="待建设" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="42" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_future" value="后续演进" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontColor=#533A9B;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="42" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_external" value="外部依赖" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#8A4B10;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="42" width="110" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_base" value="基础设施" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#8A4B10;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="42" width="110" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_access" value="访问层 / 前端层" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#EAF2FF;strokeColor=#AFC7EA;fontColor=#1F4D8F;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="1820" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="数据治理人员 / 技术 Owner / 业务 Owner" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CB9E6;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
+          <mxGeometry x="40" y="55" width="330" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="react" value="React 前端&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;资产盘点页 / 处理确认弹窗 / 依据抽屉 / 轻量本体管理页 / AI问数语义配置&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
+          <mxGeometry x="520" y="45" width="760" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway" value="统一网关 / 认证鉴权&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;SSO、菜单权限、接口鉴权、审计流水&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
+          <mxGeometry x="1450" y="45" width="320" height="68" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_backend" value="Java 后端服务层" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#EEF7F1;strokeColor=#A9D1B5;fontColor=#27633A;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="285" width="1820" height="285" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_asset" value="资产盘点服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;复用现有盘点流程、任务分派、处理确认、审批发布&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_backend">
+          <mxGeometry x="35" y="60" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_metadata" value="元数据管理服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;库表字段、报表字段、备注、中文名、版本、发布状态&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_backend">
+          <mxGeometry x="325" y="60" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_completion" value="新增：自动补全服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;上下文聚合、候选生成、置信度、依据、写入保护&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_backend">
+          <mxGeometry x="615" y="60" width="300" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_ontology" value="后续：轻量本体服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;业务对象、对象属性、关系、字段映射、指标/报表语义&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontColor=#533A9B;fontSize=15;fontStyle=1;" vertex="1" parent="lane_backend">
+          <mxGeometry x="945" y="60" width="300" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_semantic" value="后续：问数语义服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;报表匹配、指标识别、维度映射、口径解释、答案溯源&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontColor=#533A9B;fontSize=15;fontStyle=1;" vertex="1" parent="lane_backend">
+          <mxGeometry x="1275" y="60" width="300" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_integration" value="外部能力适配服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;血缘接口、数据标准表/接口、大模型接口、指标/建模/安全质量接口&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_backend">
+          <mxGeometry x="35" y="175" width="370" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_task" value="异步任务与调度服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;预填任务、失败重试、批量补全、进度状态、超时降级&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;" vertex="1" parent="lane_backend">
+          <mxGeometry x="445" y="175" width="320" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_audit" value="确认反馈服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;确认/修改/驳回、差异对比、反馈样本、复用标记、审计记录&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_backend">
+          <mxGeometry x="805" y="175" width="320" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_search" value="检索与反馈复用服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;相似字段、历史确认、反馈样本召回、标准匹配、依据检索&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_backend">
+          <mxGeometry x="1165" y="175" width="320" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="svc_common" value="公共基础服务&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;配置中心、权限、日志、监控、告警、限流、脱敏&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_backend">
+          <mxGeometry x="1525" y="175" width="260" height="74" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_data" value="数据与中间件层" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#FFF3E6;strokeColor=#E7B06D;fontColor=#8A4B10;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="605" width="1820" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="goldendb" value="GoldenDB&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;元数据、盘点任务、补全候选、人工确认、反馈样本、轻量本体、版本记录&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_data">
+          <mxGeometry x="40" y="62" width="330" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="redis" value="Redis&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;任务状态、热点标准、接口缓存、幂等锁、限流计数&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_data">
+          <mxGeometry x="410" y="62" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafka" value="Kafka&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;补全任务事件、批量处理、异步回写、确认反馈事件、样本索引事件&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_data">
+          <mxGeometry x="710" y="62" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="es" value="Elasticsearch&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;元数据检索、相似字段检索、历史确认样本检索、依据检索、语义资产搜索&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_data">
+          <mxGeometry x="1010" y="62" width="300" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="S3 对象存储&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;主要存放导入 Excel、导出 Excel、批量补全结果文件&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_data">
+          <mxGeometry x="1350" y="62" width="410" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_external" value="外部系统与接口复用" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#F0ECFF;strokeColor=#B8A7EA;fontColor=#533A9B;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="820" width="1820" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_lineage" value="数据血缘接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;上下游、Join、任务链路、报表引用&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="35" y="58" width="250" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_standard" value="数据标准表 / 接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;术语、字段标准、编码、值域、枚举&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="320" y="58" width="270" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_llm" value="大模型接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;中文名生成、备注生成、业务含义解释&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#F2BD67;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="625" y="58" width="270" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_metric" value="指标 / 建模平台接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;指标元数据、模型字段、主题域、分层&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="930" y="58" width="290" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_security" value="质量 / 安全 / 权限接口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;质量规则、敏感扫描、安全等级、权限范围&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="1255" y="58" width="310" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext_report" value="报表平台 / AI问数入口&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;二期消费轻量本体与问数语义服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontColor=#533A9B;fontSize=15;" vertex="1" parent="lane_external">
+          <mxGeometry x="1600" y="58" width="185" height="66" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arrow_access_backend" value="HTTPS / REST API" style="endArrow=block;html=1;rounded=0;strokeColor=#5B6572;strokeWidth=2;fontSize=12;fontColor=#5B6572;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="250" as="sourcePoint"/>
+            <mxPoint x="960" y="285" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_backend_data" value="JDBC / Redis Client / Kafka Producer Consumer / ES Client / S3 SDK" style="endArrow=block;html=1;rounded=0;strokeColor=#5B6572;strokeWidth=2;fontSize=12;fontColor=#5B6572;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="570" as="sourcePoint"/>
+            <mxPoint x="960" y="605" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_backend_external" value="接口适配 / 标准表读取 / 大模型调用" style="endArrow=block;html=1;rounded=0;strokeColor=#7E65C7;strokeWidth=2;fontSize=12;fontColor=#533A9B;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="785" as="sourcePoint"/>
+            <mxPoint x="960" y="820" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_user_react" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#3B6EA8;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="lane_access" source="user" target="react">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow_react_gateway" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#3B6EA8;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="lane_access" source="react" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="feedback_flow" value="确认反馈复用逻辑：用户确认/修改/驳回候选值 -> 反馈服务记录 AI 候选值、人工最终值、差异、原因、上下文特征 -> GoldenDB 保存反馈样本 -> Kafka 发布样本索引事件 -> ES 建立相似样本索引 -> 下次补全时优先召回同系统、同主题域、同表名模式、同字段名/相似字段、同标准映射的历史确认样本。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7FFF8;strokeColor=#9AD0A8;fontColor=#315D3F;fontSize=13;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="50" y="972" width="1820" height="46" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="设计原则：新增模块继续复用现有技术栈与部署体系；元数据补全服务优先服务现有资产盘点流程，轻量本体服务承接人工确认后的语义资产，确认反馈服务持续沉淀可复用样本，后续通过问数语义服务支撑报表平台 AI 问数。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D7DCE5;fontColor=#4B5563;fontSize=14;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1026" width="1820" height="42" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
