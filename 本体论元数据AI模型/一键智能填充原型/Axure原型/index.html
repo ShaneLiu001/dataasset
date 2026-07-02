@@ -99,6 +99,11 @@
     .security-tag.manual { background: #697386; }
     .pending { display: inline-flex; padding: 4px 7px; border-radius: 3px; color: #9a6111; background: #fff2d9; font-size: 12px; }
     .field-pager { display: flex; justify-content: space-between; padding: 18px; color: #68717e; }
+    body.pending-mode #commonPanel { display: none; }
+    body.pending-mode .modal-head span::after { content: " / 核对待处理项"; color: #68717e; font-weight: 400; }
+    body.pending-mode .modal-body { padding-top: 24px; }
+    body.pending-mode .field-panel { margin-top: 0; }
+    body.pending-mode .summary { border-color: #d99525; background: #fff8e8; }
 
     .popover-mask { position: absolute; inset: 0; z-index: 30; background: rgba(20, 27, 36, .12); display: grid; place-items: center; }
     .popover { width: min(620px, calc(100% - 40px)); background: #fff; border-radius: 0; box-shadow: 0 18px 55px rgba(0,0,0,.22); }
@@ -168,7 +173,7 @@
     <section class="modal" id="editorModal">
       <header class="modal-head"><span>编辑盘点任务</span><button class="close" id="closeEditor">×</button></header>
       <div class="modal-body">
-        <section class="panel">
+        <section class="panel" id="commonPanel">
           <div class="panel-title">通用属性</div>
           <div class="form">
             <div class="form-row"><div class="label">数据源 id：</div><div class="read">RTDS_MYSQL_198_48_1</div></div>
@@ -368,6 +373,7 @@
     const prototypeState = new URLSearchParams(window.location.search).get('state');
     applyResult();
     if (prototypeState === 'pending') {
+      document.body.classList.add('pending-mode');
       $('#filterPending').click();
     } else if (prototypeState === 'evidence') {
       openEvidence(document.querySelector('.security-tag.medium'));
