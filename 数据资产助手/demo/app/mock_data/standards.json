@@ -1,0 +1,23 @@
+{
+  "standards": [
+    {
+      "field": "customer_id",
+      "standard_name": "客户编号",
+      "rule": "客户主体唯一标识，统一使用 customer_id。",
+      "confidence": 0.96
+    },
+    {
+      "field": "income_amt",
+      "standard_name": "客户收入金额",
+      "rule": "收入类金额字段统一使用 decimal(18,2)，中文名包含收入金额。",
+      "confidence": 0.93
+    },
+    {
+      "field": "mobile_no",
+      "standard_name": "手机号码",
+      "rule": "手机号字段属于个人敏感信息，应标记脱敏策略。",
+      "confidence": 0.98
+    }
+  ]
+}
+

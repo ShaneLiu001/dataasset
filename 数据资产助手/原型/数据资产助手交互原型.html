@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>数据资产助手交互原型</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --line: #d8dee8;
+      --text: #1f2937;
+      --muted: #667085;
+      --blue: #2563eb;
+      --blue-weak: #eef5ff;
+      --green: #16803c;
+      --green-weak: #eefaf2;
+      --amber: #b7791f;
+      --amber-weak: #fff7e6;
+      --red: #c2410c;
+      --red-weak: #fff0ea;
+      --purple: #6d28d9;
+      --purple-weak: #f4efff;
+      --shadow: 0 12px 28px rgba(31, 41, 55, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    h1, h2, h3, p { margin: 0; }
+
+    .topbar {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #1d4ed8;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .brand h1 { font-size: 18px; }
+    .brand p { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f9fafb;
+      color: #475467;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .badge.blue { color: #1d4ed8; background: var(--blue-weak); border-color: #bfdbfe; }
+    .badge.green { color: #137333; background: var(--green-weak); border-color: #b7e4c7; }
+    .badge.amber { color: #915f00; background: var(--amber-weak); border-color: #f5d28a; }
+    .badge.purple { color: #5b21b6; background: var(--purple-weak); border-color: #d8c9ff; }
+    .badge.red { color: #a5360a; background: var(--red-weak); border-color: #fec7b3; }
+
+    .app {
+      min-height: calc(100vh - 58px);
+      display: grid;
+      grid-template-columns: 250px minmax(520px, 1fr) 360px;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .left {
+      padding: 14px;
+      align-self: start;
+      position: sticky;
+      top: 14px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      color: #344054;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .agent-list, .scene-list, .quick-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .agent-btn, .scene-btn, .quick-btn, .ghost-btn, .primary-btn, .danger-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #344054;
+    }
+
+    .agent-btn, .scene-btn {
+      text-align: left;
+      padding: 10px;
+      line-height: 1.35;
+    }
+
+    .agent-btn strong, .scene-btn strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .agent-btn span, .scene-btn span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .agent-btn.active, .scene-btn.active {
+      background: var(--blue-weak);
+      border-color: #93c5fd;
+      box-shadow: inset 3px 0 0 var(--blue);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 14px 0;
+    }
+
+    .main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .main-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .main-head h2 { font-size: 16px; }
+    .main-head p { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+    .head-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .ghost-btn, .primary-btn, .danger-btn {
+      min-height: 32px;
+      padding: 0 12px;
+      font-weight: 600;
+    }
+
+    .primary-btn {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.18);
+    }
+
+    .primary-btn:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .primary-btn:active {
+      background: #1e40af;
+      border-color: #1e40af;
+    }
+
+    .primary-btn:disabled {
+      color: #fff;
+      background: #93c5fd;
+      border-color: #93c5fd;
+      cursor: not-allowed;
+      opacity: 1;
+    }
+
+    .danger-btn {
+      color: #fff;
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .chat {
+      padding: 16px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      max-width: 880px;
+    }
+
+    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    .avatar.ai { background: #1d4ed8; }
+    .avatar.user { background: #475467; }
+
+    .bubble {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      line-height: 1.55;
+    }
+
+    .msg.user .bubble {
+      background: #1d4ed8;
+      color: #fff;
+      border-color: #1d4ed8;
+    }
+
+    .cards {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 10px 12px;
+      background: #f9fafb;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-head strong { font-size: 13px; }
+    .card-body { padding: 12px; }
+
+    .action-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .table th, .table td {
+      border-bottom: 1px solid #edf0f5;
+      padding: 8px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table th {
+      color: #667085;
+      font-weight: 700;
+      background: #fbfcfe;
+    }
+
+    .row-action {
+      min-height: 28px;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border-radius: 6px;
+      padding: 0 8px;
+      white-space: nowrap;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .evidence {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 9px;
+      background: #fcfdff;
+    }
+
+    .evidence strong { display: block; font-size: 12px; margin-bottom: 4px; }
+    .evidence span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .composer {
+      padding: 12px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      background: #fff;
+    }
+
+    .composer input {
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 0 12px;
+      min-width: 0;
+    }
+
+    .right {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      overflow: hidden;
+    }
+
+    .right-section {
+      border-bottom: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .right-section:last-child { border-bottom: 0; overflow: auto; }
+
+    .steps {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: #667085;
+      font-size: 11px;
+      background: #fff;
+      margin-top: 1px;
+    }
+
+    .step.done .dot { background: var(--green); color: #fff; border-color: var(--green); }
+    .step.active .dot { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .step.warn .dot { background: var(--amber); color: #fff; border-color: var(--amber); }
+
+    .step strong { display: block; font-size: 12px; margin-bottom: 2px; }
+    .step span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .kv {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .kv div:nth-child(odd) { color: var(--muted); }
+
+    .quick-btn {
+      padding: 8px 10px;
+      text-align: left;
+      line-height: 1.35;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.42);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 10;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(920px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.22);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      display: grid;
+      gap: 5px;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    label input, label select {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 9px;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .option-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f9fafb;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .option-line input {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #111827;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: var(--shadow);
+      z-index: 20;
+    }
+
+    .toast.show { display: block; }
+
+    @media (max-width: 1180px) {
+      .app { grid-template-columns: 220px minmax(0, 1fr); }
+      .right { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto; }
+      .right-section { border-bottom: 0; border-right: 1px solid var(--line); }
+      .right-section:last-child { border-right: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar { height: auto; padding: 12px; align-items: flex-start; gap: 10px; }
+      .top-actions { justify-content: flex-start; }
+      .app { grid-template-columns: 1fr; padding: 10px; }
+      .left { position: static; }
+      .main-head { align-items: flex-start; flex-direction: column; }
+      .composer { grid-template-columns: 1fr; }
+      .right { grid-template-columns: 1fr; }
+      .right-section { border-right: 0; border-bottom: 1px solid var(--line); }
+      .form-grid, .evidence-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">智</div>
+      <div>
+        <h1>数小智 · 数据资产助手</h1>
+        <p>数据地图、元数据治理、血缘分析、数据源登记与稽核编排</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="badge blue">测试环境</span>
+      <span class="badge green">Gateway Mock</span>
+      <span class="badge purple">LangGraph 编排</span>
+      <span class="badge">OpenTelemetry + Langfuse</span>
+    </div>
+  </header>
+
+  <main class="app">
+    <aside class="panel left">
+      <div class="section-title">数小智专家助手</div>
+      <div class="agent-list" id="agentList"></div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">典型场景</div>
+      <div class="scene-list" id="sceneList"></div>
+    </aside>
+
+    <section class="panel main">
+      <div class="main-head">
+        <div>
+          <h2 id="sceneTitle">数据地图查表</h2>
+          <p id="sceneDesc">通过自然语言查找候选资产，并展示数据源、schema、血缘和标准证据。</p>
+        </div>
+        <div class="head-actions">
+          <button class="ghost-btn" id="archBtn">查看架构链路</button>
+          <button class="ghost-btn" id="resetBtn">重置场景</button>
+        </div>
+      </div>
+
+      <div class="chat" id="chat"></div>
+
+      <div class="composer">
+        <input id="composerInput" value="帮我治理 dwd_customer_income_df 这张表" />
+        <button class="primary-btn" id="sendBtn">发送</button>
+      </div>
+    </section>
+
+    <aside class="panel right">
+      <div class="right-section">
+        <div class="section-title">任务状态</div>
+        <div class="steps" id="steps"></div>
+      </div>
+
+      <div class="right-section">
+        <div class="section-title">运行上下文</div>
+        <div class="kv" id="contextKv"></div>
+      </div>
+
+      <div class="right-section">
+        <div class="section-title">快捷问题</div>
+        <div class="quick-list" id="quickList"></div>
+      </div>
+    </aside>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-panel">
+      <div class="card-head">
+        <strong id="modalTitle">确认信息</strong>
+        <button class="ghost-btn" id="modalClose">关闭</button>
+      </div>
+      <div class="card-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const agents = [
+      ["数据资产助手", "资产搜索、治理、血缘、标准、稽核"],
+      ["离线开发助手", "SQL 生成、作业开发、调度配置"],
+      ["离线同步助手", "同步任务、源端目标端配置"],
+      ["运维监控助手", "失败诊断、告警、资源分析"],
+      ["报表开发助手", "指标取数、报表口径、发布检查"]
+    ];
+
+    const scenes = {
+      map: {
+        title: "数据地图查表",
+        desc: "通过自然语言查找候选资产，并展示数据源、schema、血缘和标准证据。",
+        input: "客户收入用哪张表？",
+        steps: [
+          ["done", "意图识别", "识别为数据资产查询"],
+          ["active", "数据地图检索", "ES 检索候选表和字段"],
+          ["", "证据补充", "等待血缘、标准、热度数据"],
+          ["", "结果解释", "生成推荐理由和下一步动作"]
+        ]
+      },
+      governance: {
+        title: "单表元数据治理",
+        desc: "先确认唯一表，再填写空间、项目、开发账号，生成治理草案并提交 Activiti。",
+        input: "帮我治理 dwd_customer_income_df 这张表",
+        steps: [
+          ["done", "表名识别", "抽取表名 dwd_customer_income_df"],
+          ["active", "候选表确认", "等待用户选择唯一资产"],
+          ["", "治理上下文", "空间、项目、开发账号"],
+          ["", "生成草案", "中文名、备注、安全等级"],
+          ["", "提交流程", "提交 Activiti 流程实例"]
+        ]
+      },
+      lineage: {
+        title: "血缘分析与 SQL 注释识别",
+        desc: "查询上下游血缘，识别加工任务 SQL 注释，并辅助填充目标表备注。",
+        input: "dwd_customer_income_df 的上游来源和加工任务说明是什么？",
+        steps: [
+          ["done", "对象定位", "表名已标准化"],
+          ["active", "血缘查询", "调用现有血缘接口"],
+          ["", "任务详情", "读取 SQL 加工任务"],
+          ["", "注释识别", "提取注释并生成目标表说明"]
+        ]
+      },
+      prepare: {
+        title: "数据准备专家场景",
+        desc: "登记数据源、跟踪审批、执行元数据采集，采集完成后调用安全扫描 Agent。",
+        input: "帮我登记一个生产 MySQL 数据源，同时采集元数据并做安全扫描",
+        steps: [
+          ["done", "意图识别", "识别为数据源登记"],
+          ["active", "唤醒登记页", "复用现有数据源登记页面"],
+          ["", "审批跟踪", "直属领导审批、登记人复核"],
+          ["", "元数据采集", "采集后同步 ES 数据地图"],
+          ["", "安全扫描", "调用安全扫描 Agent"],
+          ["", "空间绑定", "绑定中台空间项目"]
+        ]
+      }
+    };
+
+    const context = [
+      ["用户", "zhangsan"],
+      ["组织", "数据中台"],
+      ["环境", "test"],
+      ["入口", "数小智侧边栏"],
+      ["traceId", "tr_20260703_0007"],
+      ["模型", "内网 Function Calling"],
+      ["状态库", "Redis + GoldenDB"],
+      ["观测", "Langfuse 项目 test"]
+    ];
+
+    let currentScene = "governance";
+    let selectedTable = null;
+    let prepareStage = 0;
+
+    const chat = document.getElementById("chat");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+    const toast = document.getElementById("toast");
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function el(tag, className, html) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (html !== undefined) node.innerHTML = html;
+      return node;
+    }
+
+    function renderAgents() {
+      const list = document.getElementById("agentList");
+      list.innerHTML = "";
+      agents.forEach(([name, desc], index) => {
+        const btn = el("button", "agent-btn" + (index === 0 ? " active" : ""), `<strong>${name}</strong><span>${desc}</span>`);
+        btn.addEventListener("click", () => showToast(index === 0 ? "已进入数据资产助手" : `${name} 为平级专家助手示例`));
+        list.appendChild(btn);
+      });
+    }
+
+    function renderScenes() {
+      const list = document.getElementById("sceneList");
+      list.innerHTML = "";
+      Object.entries(scenes).forEach(([key, scene]) => {
+        const btn = el("button", "scene-btn" + (key === currentScene ? " active" : ""), `<strong>${scene.title}</strong><span>${scene.desc}</span>`);
+        btn.addEventListener("click", () => switchScene(key));
+        list.appendChild(btn);
+      });
+    }
+
+    function renderSteps() {
+      const steps = document.getElementById("steps");
+      steps.innerHTML = "";
+      scenes[currentScene].steps.forEach(([state, title, desc], index) => {
+        const step = el("div", "step " + state);
+        step.innerHTML = `<div class="dot">${state === "done" ? "✓" : index + 1}</div><div><strong>${title}</strong><span>${desc}</span></div>`;
+        steps.appendChild(step);
+      });
+    }
+
+    function renderContext() {
+      const kv = document.getElementById("contextKv");
+      kv.innerHTML = "";
+      context.forEach(([k, v]) => {
+        kv.appendChild(el("div", "", k));
+        kv.appendChild(el("div", "", v));
+      });
+    }
+
+    function renderQuickList() {
+      const quick = [
+        "客户收入用哪张表？",
+        "治理 dwd_customer_income_df",
+        "查看这张表的上游血缘",
+        "登记一个生产 MySQL 数据源",
+        "生成每日空值率稽核规则"
+      ];
+      const list = document.getElementById("quickList");
+      list.innerHTML = "";
+      quick.forEach(text => {
+        const btn = el("button", "quick-btn", text);
+        btn.addEventListener("click", () => {
+          document.getElementById("composerInput").value = text;
+          sendMessage(text);
+        });
+        list.appendChild(btn);
+      });
+    }
+
+    function msg(role, html) {
+      const wrap = el("div", "msg " + (role === "user" ? "user" : "assistant"));
+      wrap.innerHTML = `<div class="avatar ${role === "user" ? "user" : "ai"}">${role === "user" ? "我" : "AI"}</div><div class="bubble">${html}</div>`;
+      chat.appendChild(wrap);
+      chat.scrollTop = chat.scrollHeight;
+      return wrap;
+    }
+
+    function candidateCard() {
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>同名表候选确认</strong><span class="badge amber">需要用户确认</span></div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>表名</th><th>数据源 ID</th><th>Schema</th><th>说明</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>dwd_customer_income_df</td><td>ds_prd_1024</td><td>dwd_finance</td><td>客户收入日汇总认证表</td><td><button class="row-action" data-table="ds_prd_1024">选择</button></td></tr>
+                <tr><td>dwd_customer_income_df</td><td>ds_uat_1024</td><td>dwd_finance_uat</td><td>UAT 测试库同名表</td><td><button class="row-action" data-table="ds_uat_1024">选择</button></td></tr>
+                <tr><td>dwd_customer_income_df</td><td>ds_prd_0881</td><td>crm_dw</td><td>CRM 历史迁移表</td><td><button class="row-action" data-table="ds_prd_0881">选择</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>`;
+      setTimeout(() => {
+        card.querySelectorAll(".row-action").forEach(btn => {
+          btn.addEventListener("click", () => selectTable(btn.dataset.table));
+        });
+      });
+      return card;
+    }
+
+    function evidenceCard() {
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>治理依据</strong><span class="badge green">自动汇总</span></div>
+          <div class="card-body">
+            <div class="evidence-grid">
+              <div class="evidence"><strong>数据标准</strong><span>命中“客户收入金额”标准，字段 income_amt 建议中文名为“客户收入金额”。</span></div>
+              <div class="evidence"><strong>安全扫描</strong><span>自动识别安全等级 L2，手机号字段需脱敏展示。</span></div>
+              <div class="evidence"><strong>上游血缘</strong><span>上游来自 ods_crm_order、ods_contract_income，两条链路可信。</span></div>
+            </div>
+          </div>
+        </div>`;
+      return card;
+    }
+
+    function governanceDraftCard() {
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>元数据治理草案</strong><span class="badge blue">等待提交</span></div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>对象</th><th>建议值</th><th>依据</th></tr></thead>
+              <tbody>
+                <tr><td>表中文名</td><td>客户收入日汇总表</td><td>表名、下游报表、标准口径</td></tr>
+                <tr><td>表备注</td><td>按客户维度沉淀每日收入、合同收入和回款收入。</td><td>SQL 注释、上游血缘、指标口径</td></tr>
+                <tr><td>安全等级</td><td>L2</td><td>安全扫描自动识别</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="primary-btn" id="submitGovernance">提交 Activiti 流程</button>
+              <button class="ghost-btn" id="editDraft">调整草案</button>
+            </div>
+          </div>
+        </div>`;
+      setTimeout(() => {
+        card.querySelector("#submitGovernance").addEventListener("click", submitGovernance);
+        card.querySelector("#editDraft").addEventListener("click", () => openPreferenceModal());
+      });
+      return card;
+    }
+
+    function selectTable(ds) {
+      selectedTable = ds;
+      msg("assistant", `已确认唯一资产：<strong>dwd_customer_income_df</strong>，数据源 ID：<strong>${ds}</strong>。接下来需要确认中台空间、项目和开发账号。`);
+      openPreferenceModal();
+      scenes.governance.steps = [
+        ["done", "表名识别", "抽取表名 dwd_customer_income_df"],
+        ["done", "候选表确认", `已选择 ${ds}`],
+        ["active", "治理上下文", "等待空间、项目、开发账号"],
+        ["", "生成草案", "中文名、备注、安全等级"],
+        ["", "提交流程", "提交 Activiti 流程实例"]
+      ];
+      renderSteps();
+    }
+
+    function openPreferenceModal() {
+      modalTitle.textContent = "治理上下文确认";
+      modalBody.innerHTML = `
+        <p style="color:var(--muted); line-height:1.6;">常用空间、项目、开发账号可被助手记住，下次发起治理时自动带出。</p>
+        <div class="form-grid">
+          <label>中台空间<input id="spaceInput" value="finance_space" /></label>
+          <label>项目<input id="projectInput" value="customer_income_project" /></label>
+          <label>开发账号<input id="accountInput" value="dev_zhangsan" /></label>
+        </div>
+        <div style="margin-top:14px; display:flex; gap:8px; justify-content:flex-end;">
+          <button class="ghost-btn" id="saveOnly">记住偏好</button>
+          <button class="primary-btn" id="generateDraft">生成治理草案</button>
+        </div>`;
+      modal.classList.add("open");
+      document.getElementById("saveOnly").addEventListener("click", () => showToast("已保存常用空间、项目和开发账号"));
+      document.getElementById("generateDraft").addEventListener("click", () => {
+        modal.classList.remove("open");
+        msg("assistant", "已读取数据标准、上游血缘和安全扫描结果，生成元数据治理草案。");
+        chat.appendChild(evidenceCard());
+        chat.appendChild(governanceDraftCard());
+        scenes.governance.steps = [
+          ["done", "表名识别", "抽取表名 dwd_customer_income_df"],
+          ["done", "候选表确认", selectedTable || "ds_prd_1024"],
+          ["done", "治理上下文", "finance_space / customer_income_project / dev_zhangsan"],
+          ["active", "生成草案", "等待用户确认提交"],
+          ["", "提交流程", "提交 Activiti 流程实例"]
+        ];
+        renderSteps();
+      });
+    }
+
+    function submitGovernance() {
+      msg("assistant", "已提交 Activiti 流程，流程实例 ID：<strong>ACT_GOV_20260703_0018</strong>。当前节点：数据负责人审核。");
+      scenes.governance.steps = [
+        ["done", "表名识别", "抽取表名 dwd_customer_income_df"],
+        ["done", "候选表确认", selectedTable || "ds_prd_1024"],
+        ["done", "治理上下文", "已保存用户常用偏好"],
+        ["done", "生成草案", "中文名、备注、安全等级已生成"],
+        ["active", "提交流程", "ACT_GOV_20260703_0018"]
+      ];
+      renderSteps();
+      showToast("流程提交成功");
+    }
+
+    function renderMapScene() {
+      msg("assistant", "我会通过数据地图检索候选资产，并结合血缘、标准、热度和权限给出推荐。");
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>推荐资产</strong><span class="badge green">置信度 0.91</span></div>
+          <div class="card-body">
+            <table class="table">
+              <thead><tr><th>资产</th><th>推荐理由</th><th>下一步</th></tr></thead>
+              <tbody>
+                <tr><td>dwd_customer_income_df</td><td>认证宽表，命中客户收入指标口径，下游 12 张报表引用。</td><td><button class="row-action" id="toGov">发起治理</button></td></tr>
+                <tr><td>ads_customer_income_m</td><td>月度汇总表，适合报表开发，不适合作为明细来源。</td><td><button class="row-action">查看血缘</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>`;
+      chat.appendChild(card);
+      setTimeout(() => document.getElementById("toGov").addEventListener("click", () => switchScene("governance")));
+    }
+
+    function renderGovernanceScene() {
+      msg("assistant", "我先调用数据地图助手确认同名表。请从候选列表里确认唯一要治理的表。");
+      chat.appendChild(candidateCard());
+    }
+
+    function renderLineageScene() {
+      msg("assistant", "已调用现有血缘接口，并读取加工任务 SQL。下面是上游链路和注释识别结果。");
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>血缘与 SQL 注释识别</strong><span class="badge purple">数据血缘 SubAgent</span></div>
+          <div class="card-body">
+            <div class="evidence-grid">
+              <div class="evidence"><strong>上游表</strong><span>ods_crm_order、ods_contract_income、dim_customer。</span></div>
+              <div class="evidence"><strong>加工任务</strong><span>job_customer_income_daily，调度周期每日 02:30。</span></div>
+              <div class="evidence"><strong>注释识别</strong><span>SQL 注释说明该表用于客户收入日汇总，可填充到目标表备注。</span></div>
+            </div>
+            <div style="margin-top:10px;"><button class="primary-btn" id="fillComment">填充到目标表备注</button></div>
+          </div>
+        </div>`;
+      chat.appendChild(card);
+      setTimeout(() => {
+        document.getElementById("fillComment").addEventListener("click", () => {
+          msg("assistant", "已生成备注建议：按客户维度沉淀每日合同收入、订单收入和回款收入，用于经营分析和报表取数。");
+          showToast("备注建议已生成");
+        });
+      });
+    }
+
+    function renderPrepareScene() {
+      prepareStage = 0;
+      msg("assistant", "我将复用数据准备专家流程，唤醒现有数据源登记页面，并持续跟踪审批。登记办结后会自动采集元数据，采集完成后调用安全扫描 Agent。");
+      const card = el("div", "cards");
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-head"><strong>数据源登记任务</strong><span class="badge amber">等待表单提交</span></div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr><th>数据源类型</th><td>MySQL</td><th>环境</th><td>PRD</td></tr>
+                <tr><th>采集策略</th><td>立即采集表结构</td><th>安全扫描</th><td>采集完成后调用安全扫描 Agent</td></tr>
+              </tbody>
+            </table>
+            <div class="action-row">
+              <button class="primary-btn" id="openRegister">打开登记表单</button>
+              <button class="ghost-btn" id="trackFlow">查看审批进度</button>
+            </div>
+          </div>
+        </div>`;
+      chat.appendChild(card);
+      setTimeout(() => {
+        document.getElementById("openRegister").addEventListener("click", openDatasourceModal);
+        document.getElementById("trackFlow").addEventListener("click", () => advancePrepare());
+      });
+    }
+
+    function openDatasourceModal() {
+      modalTitle.textContent = "数据源登记表单";
+      modalBody.innerHTML = `
+        <div class="form-grid">
+          <label>数据源名称<input value="crm_prod_mysql" /></label>
+          <label>数据库类型<select><option>MySQL</option><option>Oracle</option><option>GoldenDB</option></select></label>
+          <label>环境<select><option>PRD</option><option>UAT</option></select></label>
+          <label>Host<input value="10.12.8.21" /></label>
+          <label>端口<input value="3306" /></label>
+          <label>负责人<input value="zhangsan" /></label>
+          <div class="option-line"><input type="checkbox" checked />立即采集元数据</div>
+          <div class="option-line"><input type="checkbox" checked />采集完成后安全扫描</div>
+          <div class="option-line"><input type="checkbox" checked />同步 ES 数据地图</div>
+        </div>
+        <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:8px;">
+          <button class="ghost-btn" id="connTest">连通性检测</button>
+          <button class="primary-btn" id="submitDs">提交登记流程</button>
+        </div>`;
+      modal.classList.add("open");
+      document.getElementById("connTest").addEventListener("click", () => showToast("连通性检测通过"));
+      document.getElementById("submitDs").addEventListener("click", () => {
+        modal.classList.remove("open");
+        prepareStage = 0;
+        advancePrepare();
+      });
+    }
+
+    function advancePrepare() {
+      prepareStage += 1;
+      if (prepareStage === 1) {
+        msg("assistant", "数据源登记流程已提交，流程编号：DS_REG_20260703_0021。当前等待直属领导审批，办结后将自动触发元数据采集。");
+        scenes.prepare.steps = [
+          ["done", "意图识别", "识别为数据源登记"],
+          ["done", "唤醒登记页", "表单已提交"],
+          ["active", "审批跟踪", "DS_REG_20260703_0021"],
+          ["", "元数据采集", "等待审批办结"],
+          ["", "安全扫描", "等待元数据采集完成"],
+          ["", "空间绑定", "待进入后续流程"]
+        ];
+      } else if (prepareStage === 2) {
+        msg("assistant", "数据源登记审批已办结。我已通过数据源 SubAgent 创建元数据采集任务 META_20260703_0188，正在采集库、表、字段和注释信息。");
+        scenes.prepare.steps = [
+          ["done", "意图识别", "识别为数据源登记"],
+          ["done", "唤醒登记页", "表单已提交"],
+          ["done", "审批跟踪", "登记流程已办结"],
+          ["active", "元数据采集", "META_20260703_0188 进行中"],
+          ["", "安全扫描", "等待元数据采集完成"],
+          ["", "空间绑定", "待进入后续流程"]
+        ];
+      } else if (prepareStage === 3) {
+        msg("assistant", "元数据采集已完成，已同步 ES 数据地图。现在调用安全扫描 Agent 创建扫描任务 SEC_SCAN_20260703_0096，扫描字段敏感类型和安全等级。");
+        scenes.prepare.steps = [
+          ["done", "意图识别", "识别为数据源登记"],
+          ["done", "唤醒登记页", "表单已提交"],
+          ["done", "审批跟踪", "登记流程已办结"],
+          ["done", "元数据采集", "已同步 ES 数据地图"],
+          ["active", "安全扫描", "安全扫描 Agent 执行中"],
+          ["", "空间绑定", "等待扫描结果"]
+        ];
+      } else {
+        msg("assistant", "安全扫描已完成：识别敏感字段 12 个，建议安全等级 L2，并已生成安全等级确认工单 SEC_LEVEL_20260703_0042。后续可继续绑定中台空间项目。");
+        scenes.prepare.steps = [
+          ["done", "意图识别", "识别为数据源登记"],
+          ["done", "唤醒登记页", "表单已提交"],
+          ["done", "审批跟踪", "登记流程已办结"],
+          ["done", "元数据采集", "已同步 ES 数据地图"],
+          ["done", "安全扫描", "L2 / 敏感字段 12 个"],
+          ["active", "空间绑定", "等待选择空间和项目"]
+        ];
+      }
+      renderSteps();
+    }
+
+    function openArchitectureModal() {
+      modalTitle.textContent = "应用架构链路";
+      modalBody.innerHTML = `
+        <div class="evidence-grid">
+          <div class="evidence"><strong>数小智主 Agent</strong><span>意图识别、助手路由、跨专家协同、结果汇总。</span></div>
+          <div class="evidence"><strong>数据资产助手</strong><span>LangGraph 编排，调度数据地图、血缘、标准、安全扫描、治理等子 Agent。</span></div>
+          <div class="evidence"><strong>Tool Adapter</strong><span>封装现有 Java API、ES、Activiti，统一参数、异常和审计。</span></div>
+          <div class="evidence"><strong>状态存储</strong><span>Redis 保存短期运行态，GoldenDB 保存任务、确认、记忆和审计摘要。</span></div>
+          <div class="evidence"><strong>可观测</strong><span>OpenTelemetry 上报 Trace，Langfuse 记录 Prompt、LLM 调用和 Agent Trace。</span></div>
+          <div class="evidence"><strong>环境隔离</strong><span>测试与生产分别接入模型、可观测、Redis、助手库表和 Gateway。</span></div>
+        </div>`;
+      modal.classList.add("open");
+    }
+
+    function switchScene(key) {
+      currentScene = key;
+      selectedTable = null;
+      document.getElementById("sceneTitle").textContent = scenes[key].title;
+      document.getElementById("sceneDesc").textContent = scenes[key].desc;
+      document.getElementById("composerInput").value = scenes[key].input;
+      renderScenes();
+      renderSteps();
+      renderInitialChat();
+    }
+
+    function renderInitialChat() {
+      chat.innerHTML = "";
+      msg("user", scenes[currentScene].input);
+      if (currentScene === "map") renderMapScene();
+      if (currentScene === "governance") renderGovernanceScene();
+      if (currentScene === "lineage") renderLineageScene();
+      if (currentScene === "prepare") renderPrepareScene();
+    }
+
+    function sendMessage(text) {
+      msg("user", text);
+      const lower = text.toLowerCase();
+      if (text.includes("登记") || text.includes("数据源")) {
+        switchScene("prepare");
+      } else if (text.includes("血缘") || text.includes("上游")) {
+        switchScene("lineage");
+      } else if (text.includes("治理")) {
+        switchScene("governance");
+      } else {
+        switchScene("map");
+      }
+    }
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const value = document.getElementById("composerInput").value.trim();
+      if (value) sendMessage(value);
+    });
+    document.getElementById("composerInput").addEventListener("keydown", event => {
+      if (event.key === "Enter") document.getElementById("sendBtn").click();
+    });
+    document.getElementById("resetBtn").addEventListener("click", () => switchScene(currentScene));
+    document.getElementById("archBtn").addEventListener("click", openArchitectureModal);
+    document.getElementById("modalClose").addEventListener("click", () => modal.classList.remove("open"));
+    modal.addEventListener("click", event => {
+      if (event.target === modal) modal.classList.remove("open");
+    });
+
+    renderAgents();
+    renderScenes();
+    renderSteps();
+    renderContext();
+    renderQuickList();
+    renderInitialChat();
+  </script>
+</body>
+</html>

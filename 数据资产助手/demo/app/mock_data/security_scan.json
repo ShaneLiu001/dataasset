@@ -1,0 +1,14 @@
+{
+  "scan_results": {
+    "asset_001": {
+      "security_level": "L2",
+      "sensitive_fields": [
+        {"field": "mobile_no", "type": "手机号", "masking": "前三后四"},
+        {"field": "income_amt", "type": "收入金额", "masking": "按角色授权展示"}
+      ],
+      "risk_summary": "识别个人联系方式和收入金额字段，建议表级安全等级 L2。",
+      "ticket_id": "SEC_LEVEL_20260703_0042"
+    }
+  }
+}
+

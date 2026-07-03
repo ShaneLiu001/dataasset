@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="Electron" modified="2026-07-02T00:00:00.000Z" agent="Codex" version="26.0.4" type="device" compressed="false" pages="1">
-  <diagram id="data-asset-assistant-data-model" name="03-数据资产助手数据模型">
+  <diagram id="data-asset-assistant-data-model" name="02-数据资产助手数据架构图">
     <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
@@ -9,7 +9,7 @@
         <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry width="1920" height="1080" as="geometry"/>
         </mxCell>
-        <mxCell id="title" value="03-数据资产助手数据模型" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+        <mxCell id="title" value="02-数据资产助手数据架构图" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
           <mxGeometry x="50" y="28" width="520" height="44" as="geometry"/>
         </mxCell>
         <mxCell id="subtitle" value="助手库只保存通用任务、步骤、确认、候选草案、Tool 调用摘要、用户偏好和外部对象引用；元数据、血缘、标准、流程等主数据仍保留在现有平台。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontColor=#5B6572;" vertex="1" parent="1">

@@ -4,6 +4,8 @@
 
 数据源 SubAgent 负责数据源登记、连接检测、元数据采集任务发起和状态跟踪。它主要承接“新增数据源、检测数据源、采集元数据、查看数据源状态”等场景。
 
+在数据准备专家场景中，数据源 SubAgent 是主流程 Agent。它负责把“数据源登记办结、元数据采集、数据地图同步、安全扫描”串成一个可跟踪任务，但敏感字段识别和安全等级判断由安全扫描 SubAgent 完成。
+
 ## 2. 职责边界
 
 负责：
@@ -11,6 +13,7 @@
 - 识别数据源登记诉求。
 - 预填数据源登记信息。
 - 跟踪审批、连通性检测、元数据采集、数据地图同步状态。
+- 元数据采集完成后，按用户选择或平台策略调用安全扫描 SubAgent。
 - 生成下一步操作建议。
 
 不负责：
@@ -18,6 +21,7 @@
 - 保存明文连接密码。
 - 绕过审批直接登记生产数据源。
 - 直接修改底层数据库。
+- 自行识别敏感字段或自行判定安全等级。
 
 ## 3. 典型用户问题
 
@@ -65,6 +69,8 @@
 | create_collect_task | 创建元数据采集任务 | 元数据采集服务 |
 | query_collect_status | 查询采集状态 | 采集任务服务 |
 | sync_data_map_index | 同步数据地图索引 | Elasticsearch |
+| create_security_scan_task | 发起安全扫描 | 安全扫描 SubAgent |
+| query_security_scan_result | 查询扫描结果 | 安全扫描 SubAgent |
 
 ## 7. 执行流程
 
@@ -78,7 +84,11 @@ flowchart TB
   Register --> Connectivity[连通性检测]
   Connectivity --> Collect[发起元数据采集]
   Collect --> SyncES[同步数据地图 ES 索引]
-  SyncES --> Output[返回数据源状态卡片]
+  SyncES --> NeedScan{是否需要安全扫描}
+  NeedScan -- 是 --> SecurityAgent[调用安全扫描 SubAgent]
+  SecurityAgent --> ScanResult[回收敏感字段和安全等级]
+  ScanResult --> Output[返回数据源状态卡片]
+  NeedScan -- 否 --> Output
 ```
 
 ## 8. 输出结构
@@ -112,4 +122,3 @@ flowchart TB
 - 生成数据源登记草案。
 - Mock 连通性检测成功。
 - Mock 元数据采集完成并同步到 ES。
-

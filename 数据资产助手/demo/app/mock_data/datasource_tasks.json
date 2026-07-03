@@ -1,0 +1,12 @@
+{
+  "datasource_demo": {
+    "datasource_name": "crm_prod_mysql",
+    "datasource_type": "MySQL",
+    "env": "PRD",
+    "register_process_id": "DS_REG_20260703_0021",
+    "metadata_collect_task_id": "META_20260703_0188",
+    "security_scan_task_id": "SEC_SCAN_20260703_0096",
+    "security_ticket_id": "SEC_LEVEL_20260703_0042"
+  }
+}
+

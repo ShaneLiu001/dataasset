@@ -1,0 +1,12 @@
+{
+  "users": {
+    "zhangsan": {
+      "space_id": "space_finance",
+      "space_name": "财务数据空间",
+      "project_id": "project_dwd",
+      "project_name": "DWD 公共明细层",
+      "dev_account": "dev_zhangsan"
+    }
+  }
+}
+

@@ -1,11 +1,11 @@
 <mxfile host="app.diagrams.net" modified="2026-07-02T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
-  <diagram id="deployment-architecture" name="02-数据资产助手部署架构图">
+  <diagram id="deployment-architecture" name="03-数据资产助手部署架构图">
     <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
 
-        <mxCell id="title" value="02-数据资产助手部署架构图" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="title" value="03-数据资产助手部署架构图" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="520" y="24" width="760" height="40" as="geometry"/>
         </mxCell>
         <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，大模型与可观测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">

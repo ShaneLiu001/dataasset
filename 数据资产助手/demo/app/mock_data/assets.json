@@ -1,0 +1,51 @@
+{
+  "assets": [
+    {
+      "asset_id": "asset_001",
+      "table_name": "dwd_customer_income_df",
+      "table_cn_name": "客户收入日汇总表",
+      "datasource_id": "ds_prd_1024",
+      "schema": "dwd_finance",
+      "owner": "zhangsan",
+      "system": "CRM",
+      "layer": "DWD",
+      "certified": true,
+      "description": "按客户维度沉淀每日收入、合同收入和回款收入。",
+      "fields": [
+        {"name": "customer_id", "type": "varchar", "cn_name": "客户编号", "comment": "客户唯一标识"},
+        {"name": "income_amt", "type": "decimal(18,2)", "cn_name": "", "comment": ""},
+        {"name": "mobile_no", "type": "varchar", "cn_name": "手机号", "comment": ""}
+      ],
+      "usage": {"downstream_reports": 12, "query_count_30d": 86}
+    },
+    {
+      "asset_id": "asset_002",
+      "table_name": "dwd_customer_income_df",
+      "table_cn_name": "客户收入日汇总测试表",
+      "datasource_id": "ds_uat_1024",
+      "schema": "dwd_finance_uat",
+      "owner": "lisi",
+      "system": "CRM-UAT",
+      "layer": "DWD",
+      "certified": false,
+      "description": "UAT 测试库同名表。",
+      "fields": [],
+      "usage": {"downstream_reports": 0, "query_count_30d": 3}
+    },
+    {
+      "asset_id": "asset_003",
+      "table_name": "dwd_customer_income_df",
+      "table_cn_name": "CRM 历史迁移收入表",
+      "datasource_id": "ds_prd_0881",
+      "schema": "crm_dw",
+      "owner": "wangwu",
+      "system": "CRM-HISTORY",
+      "layer": "DWD",
+      "certified": false,
+      "description": "历史迁移表，仅用于存量核对。",
+      "fields": [],
+      "usage": {"downstream_reports": 1, "query_count_30d": 9}
+    }
+  ]
+}
+

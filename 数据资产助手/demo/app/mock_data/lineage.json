@@ -1,0 +1,23 @@
+{
+  "lineage": {
+    "asset_001": {
+      "upstream_tables": [
+        {"table_name": "ods_crm_order", "schema": "ods_crm", "relation": "direct"},
+        {"table_name": "ods_contract_income", "schema": "ods_finance", "relation": "direct"},
+        {"table_name": "dim_customer", "schema": "dim_common", "relation": "lookup"}
+      ],
+      "downstream_reports": [
+        "客户收入经营日报",
+        "重点客户收入分析",
+        "区域收入驾驶舱"
+      ],
+      "sql_task": {
+        "task_id": "job_customer_income_daily",
+        "schedule": "每日 02:30",
+        "owner": "dev_zhangsan",
+        "sql": "-- 目标表：客户收入日汇总表，用于经营分析和报表取数\ninsert overwrite table dwd_customer_income_df\nselect customer_id, sum(pay_amt) as income_amt, max(mobile_no) as mobile_no\nfrom ods_crm_order\ngroup by customer_id;"
+      }
+    }
+  }
+}
+
