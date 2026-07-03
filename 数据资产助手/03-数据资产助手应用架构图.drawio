@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-07-02T00:00:00.000Z" agent="Codex" version="26.0.4" type="device" compressed="false" pages="1">
+  <diagram id="data-asset-assistant-application-architecture" name="03-数据资产助手应用架构图">
+    <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry width="1920" height="1080" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="03-数据资产助手应用架构图" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=30;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="50" y="28" width="520" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="数据资产助手作为数小智主 Agent 下的数据资产领域专家，复用现有 Gateway、Java API、ES、Activiti、Oracle / GoldenDB，并新增 FastAPI + LangGraph + Tool Adapter 编排能力。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=16;fontColor=#5B6572;" vertex="1" parent="1">
+          <mxGeometry x="50" y="72" width="1380" height="34" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend_existing" value="已有能力" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#1F5134;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="42" width="105" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_new" value="本期新增" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="42" width="105" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_demo" value="Demo Mock" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontColor=#8A5A12;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="42" width="105" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_future" value="后续演进" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontColor=#533A9B;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1525" y="42" width="105" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_infra" value="状态/观测" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#8A4B10;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="42" width="105" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_main" value="主业务调用链路：从用户请求到平台能力调用" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontColor=#303846;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="1820" height="420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="entry" value="用户入口层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;数据资产平台前端&lt;br&gt;数小智入口 / 数据资产助手面板&lt;br&gt;对话框 / 确认卡片 / 任务进度&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="35" y="85" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gateway" value="平台接入层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;现有数据资产管理 Gateway&lt;br&gt;登录 / Token / 鉴权 / 审计&lt;br&gt;用户上下文与 trace_id 透传&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="300" y="85" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fastapi" value="AI 助手服务层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;FastAPI&lt;br&gt;/assistant/chat&lt;br&gt;/assistant/confirm&lt;br&gt;/assistant/tasks&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="565" y="85" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="graph" value="Agent 编排层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;LangGraph 状态图编排&lt;br&gt;Router / Planner / Executor&lt;br&gt;人工确认 / 状态恢复&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="830" y="85" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="subagents" value="领域子 Agent 层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;数据地图 / 数据源 / 数据稽核&lt;br&gt;数据权限 / 安全扫描 / 数据血缘&lt;br&gt;元数据治理 / 数据标准 / 建模 / 指标&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="1095" y="85" width="250" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tools" value="Tool Adapter 层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Tool Registry / 参数 Schema&lt;br&gt;search_data_map / query_lineage&lt;br&gt;scan_security / submit_activiti&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="1390" y="85" width="240" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="platform" value="现有平台能力层&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Java API / Elasticsearch&lt;br&gt;Activiti 流程引擎&lt;br&gt;元数据采集服务 / 平台审计&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="1680" y="85" width="110" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="langchain" value="LangChain Core&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Prompt Template / Runnable&lt;br&gt;Tool Calling 适配 / 模型调用封装&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=14;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="830" y="260" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="llm" value="公司内网私有化大模型&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Function Calling / Tool Calling&lt;br&gt;JSON 结构化输出&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF7E8;strokeColor=#D28B22;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="1095" y="260" width="250" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gateway_mock" value="Gateway Mock&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Demo 阶段模拟 user_id / token / trace_id&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontColor=#8A5A12;fontSize=14;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="300" y="260" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="mock_tools" value="Mock Tool / Mock 数据&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;表候选 / 血缘 / 标准 / 安全等级 / 流程实例&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontColor=#8A5A12;fontSize=14;fontStyle=1;" vertex="1" parent="lane_main">
+          <mxGeometry x="1390" y="260" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge_entry_gateway" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="entry" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_gateway_fastapi" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="gateway" target="fastapi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_fastapi_graph" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="fastapi" target="graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_graph_agents" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="graph" target="subagents">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_agents_tools" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="subagents" target="tools">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_tools_platform" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="tools" target="platform">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_graph_langchain" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6D99D4;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="graph" target="langchain">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_langchain_llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D28B22;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="langchain" target="llm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_mock_gateway" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D99525;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="gateway_mock" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_mock_tools" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D99525;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="lane_main" source="mock_tools" target="tools">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_state" value="状态、数据与观测：下方旁路承载，不穿越主链路" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#FFFDF7;strokeColor=#E7B06D;fontColor=#8A4B10;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="585" width="1820" height="360" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="redis" value="Redis 缓存中间件&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;会话运行态&lt;br&gt;待确认状态&lt;br&gt;临时槽位&lt;/font&gt;" style="shape=cylinder3d;boundedLbl=1;backgroundOutline=1;size=15;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="565" y="82" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="goldendb" value="GoldenDB 数据库&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;任务状态 / 用户确认&lt;br&gt;助手记忆 / 审计摘要&lt;/font&gt;" style="shape=cylinder3d;boundedLbl=1;backgroundOutline=1;size=15;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="830" y="82" width="185" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="oracle" value="Oracle 数据库&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;当前数据资产平台库&lt;/font&gt;" style="shape=cylinder3d;boundedLbl=1;backgroundOutline=1;size=15;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="1615" y="82" width="175" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="pref" value="助手库表&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;agent_user_preference&lt;br&gt;常用空间 / 项目 / 开发账号&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="830" y="225" width="185" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="otel" value="OpenTelemetry&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Trace / Metrics / Logs&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="300" y="82" width="180" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="langfuse" value="Langfuse&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Prompt / LLM 调用 / Agent Trace&lt;br&gt;密码、token、连接串必须脱敏&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="1095" y="82" width="230" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="平台审计&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;用户确认 / 流程提交 / Tool 调用摘要&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_state">
+          <mxGeometry x="1390" y="225" width="240" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="state_note" value="连线规则&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;主链路只在相邻模块之间连线；旁路线从模块底部进入下方空白通道，再连接到状态、数据或观测节点，避免穿越模块。&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E3E7ED;fontColor=#5B6572;fontSize=13;align=left;spacingLeft=14;" vertex="1" parent="lane_state">
+          <mxGeometry x="35" y="205" width="460" height="112" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge_fastapi_redis" value="会话状态" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#8A4B10;fontSize=12;" edge="1" parent="1" source="fastapi" target="redis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_fastapi_otel" value="Trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#8A4B10;fontSize=12;" edge="1" parent="1" source="fastapi" target="otel">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="565"/>
+              <mxPoint x="440" y="565"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_graph_goldendb" value="任务状态" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#8A4B10;fontSize=12;" edge="1" parent="1" source="graph" target="goldendb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="815" y="280"/>
+              <mxPoint x="815" y="565"/>
+              <mxPoint x="972" y="565"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_llm_langfuse" value="Prompt / Agent Trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#8A4B10;fontSize=12;" edge="1" parent="1" source="langchain" target="langfuse">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="565"/>
+              <mxPoint x="1260" y="565"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_tools_audit" value="调用审计" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#8A4B10;fontSize=12;" edge="1" parent="1" source="tools" target="audit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1365" y="280"/>
+              <mxPoint x="1365" y="565"/>
+              <mxPoint x="1560" y="565"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_platform_oracle" value="平台业务数据" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4FA36D;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontColor=#1F5134;fontSize=12;" edge="1" parent="1" source="platform" target="oracle">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_goldendb_pref" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="lane_state" source="goldendb" target="pref">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="principle" value="落地原则&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;1. 助手不直接写平台库，优先通过 Java API / ES / Activiti 调用现有能力。&lt;br&gt;2. 写操作必须用户确认，确认记录落库后再提交 Activiti。&lt;br&gt;3. Demo 先用 Gateway Mock 和 Mock Tool，跑通后替换真实接口。&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontColor=#303846;fontSize=14;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="970" width="1820" height="80" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

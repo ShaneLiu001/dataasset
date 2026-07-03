@@ -1,0 +1,192 @@
+<mxfile host="app.diagrams.net" modified="2026-07-02T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="deployment-architecture" name="02-数据资产助手部署架构图">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="02-数据资产助手部署架构图" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="520" y="24" width="760" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，大模型与可观测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="460" y="66" width="880" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="legend-new" value="本期新增" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="28" width="100" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-exist" value="已有能力" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="28" width="100" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-mock" value="Mock / 联调" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="28" width="110" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-state" value="状态 / 观测" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="64" width="100" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-core" value="生产核心网" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDECEC;strokeColor=#C7362F;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="64" width="100" height="28" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="test-lane" value="测试环境 / Demo 与联调区" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#F7FAFF;strokeColor=#A8C3E8;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="1660" height="430" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-lane" value="生产环境 / 正式运行区" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#F8FCF9;strokeColor=#9BC8AA;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="70" y="600" width="1660" height="470" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="test-user" value="测试用户 / 产品经理 / 开发联调" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="205" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-gateway" value="测试入口&lt;br&gt;Gateway Mock / 测试 Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="205" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-assistant" value="数据资产助手测试服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 编排&lt;br&gt;LangChain Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="185" width="210" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-tool" value="测试 Tool Adapter&lt;br&gt;Mock Tool / 测试 Tool" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="830" y="205" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-api" value="测试接口 / Mock 数据&lt;br&gt;默认不直连生产正式接口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="205" width="210" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-guard" value="受控联调边界&lt;br&gt;白名单 / 只读 / 低风险接口&lt;br&gt;禁止误写生产数据" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="195" width="220" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="test-llm" value="测试大模型环境&lt;br&gt;Function / Tool Calling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="550" y="345" width="210" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-redis" value="测试 Redis&lt;br&gt;Checkpoint / 短期状态" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="830" y="350" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-db" value="测试助手库表&lt;br&gt;GoldenDB / Schema" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="350" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="test-obs" value="测试可观测平台&lt;br&gt;OpenTelemetry + Langfuse" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="350" width="220" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prod-user" value="正式用户&lt;br&gt;数据资产管理平台入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="690" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-gateway" value="生产 Gateway&lt;br&gt;登录 Token / 用户身份透传" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="690" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-assistant" value="数据资产助手生产服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 编排&lt;br&gt;LangChain Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="670" width="210" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-tool" value="生产 Tool Adapter&lt;br&gt;Java API 工具封装" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="830" y="690" width="180" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="core-zone" value="生产核心网正式接口区" style="swimlane;html=1;rounded=0;startSize=28;fillColor=#FDECEC;strokeColor=#C7362F;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="640" width="610" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-api" value="现有 Java API&lt;br&gt;数据地图 / 数据源 / 血缘 / 标准 / 安全扫描" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="690" width="210" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-es" value="ES 数据地图搜索引擎&lt;br&gt;元数据采集后写入 ES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="675" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-flow" value="Activiti 流程引擎&lt;br&gt;治理流程 / 待办" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="675" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-platform-db" value="Oracle / GoldenDB&lt;br&gt;数据资产平台后端库" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="780" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prod-llm" value="生产大模型环境&lt;br&gt;Function / Tool Calling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="550" y="870" width="210" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-redis" value="生产 Redis&lt;br&gt;Checkpoint / 短期状态" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="830" y="880" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-db" value="生产助手库表&lt;br&gt;GoldenDB / Schema" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="880" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="prod-obs" value="生产可观测平台&lt;br&gt;OpenTelemetry + Langfuse&lt;br&gt;敏感字段脱敏" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="880" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="promotion-note" value="制品与配置晋级&lt;br&gt;测试通过后发布到生产&lt;br&gt;不做测试数据到生产的数据复制" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2ECFF;strokeColor=#7E65C7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="500" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rule-note" value="部署原则：测试与生产配置、密钥、模型、可观测、Redis、助手库表全部隔离；生产写操作必须保留用户确认、流程实例与审计链路。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1095" width="940" height="46" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-test-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="test-user" target="test-gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="test-gateway" target="test-assistant">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="test-assistant" target="test-tool">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D99525;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-tool" target="test-api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-5" value="受控联调" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D99525;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontSize=11;fontColor=#7A4A00;" edge="1" parent="1" source="test-api" target="test-guard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-assistant" target="test-llm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-redis" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-tool" target="test-redis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-db" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-api" target="test-db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-obs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-guard" target="test-obs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e-prod-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-user" target="prod-gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-gateway" target="prod-assistant">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-assistant" target="prod-tool">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-tool" target="prod-api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-api-es" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4FA36D;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-es">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-api-flow" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4FA36D;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-flow">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-api-db" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4FA36D;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-platform-db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-assistant" target="prod-llm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-redis" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-tool" target="prod-redis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-db" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-obs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-flow" target="prod-obs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-promotion" value="发布晋级" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#7E65C7;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontSize=11;fontColor=#5A45A0;" edge="1" parent="1" source="promotion-note" target="prod-assistant">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="535"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

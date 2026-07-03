@@ -1,4 +1,4 @@
-# Java API、Tool、Skill、MCP 分层演进
+# 10 Java API、Tool、Skill、MCP 分层演进
 
 ## 1. 核心结论
 
@@ -129,4 +129,3 @@ Skill 不适合直接承担实时接口调用。实时查询、写回、提交�
 3. 当某类场景的判断逻辑、调用顺序、输出模板稳定后，沉淀为 Skill。
 4. 当 Tool 被多个 Agent 复用且协议稳定后，再 MCP 化。
 5. Skill、Tool、MCP 都需要接入统一可观测体系，至少贯通 `trace_id`、`thread_id`、`task_id`。
-
