@@ -8,7 +8,7 @@
         <mxCell id="title" value="03-数据资产助手部署架构图" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="520" y="24" width="760" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，大模型与可观测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，调度平台、大模型与可观测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="460" y="66" width="880" height="30" as="geometry"/>
         </mxCell>
 
@@ -41,7 +41,7 @@
         <mxCell id="test-gateway" value="测试入口&lt;br&gt;Gateway Mock / 测试 Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="320" y="205" width="170" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="test-assistant" value="数据资产助手测试服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 编排&lt;br&gt;LangChain Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="test-assistant" value="数据资产助手测试服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 多主控&lt;br&gt;Prompt / Control Router" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="550" y="185" width="210" height="110" as="geometry"/>
         </mxCell>
         <mxCell id="test-tool" value="测试 Tool Adapter&lt;br&gt;Mock Tool / 测试 Tool" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
@@ -66,6 +66,9 @@
         <mxCell id="test-obs" value="测试可观测平台&lt;br&gt;OpenTelemetry + Langfuse" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="1200" y="350" width="220" height="70" as="geometry"/>
         </mxCell>
+        <mxCell id="test-scheduler" value="测试调度任务&lt;br&gt;XXL-JOB / Mock 定时器&lt;br&gt;轮询 / 补偿 / 提醒" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="345" width="190" height="80" as="geometry"/>
+        </mxCell>
 
         <mxCell id="prod-user" value="正式用户&lt;br&gt;数据资产管理平台入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="120" y="690" width="150" height="70" as="geometry"/>
@@ -73,7 +76,7 @@
         <mxCell id="prod-gateway" value="生产 Gateway&lt;br&gt;登录 Token / 用户身份透传" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="320" y="690" width="170" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="prod-assistant" value="数据资产助手生产服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 编排&lt;br&gt;LangChain Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="prod-assistant" value="数据资产助手生产服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 多主控&lt;br&gt;Prompt / Control Router" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="550" y="670" width="210" height="110" as="geometry"/>
         </mxCell>
         <mxCell id="prod-tool" value="生产 Tool Adapter&lt;br&gt;Java API 工具封装" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;" vertex="1" parent="1">
@@ -95,6 +98,9 @@
         <mxCell id="prod-platform-db" value="Oracle / GoldenDB&lt;br&gt;数据资产平台后端库" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1350" y="780" width="140" height="70" as="geometry"/>
         </mxCell>
+        <mxCell id="prod-scheduler" value="生产调度平台&lt;br&gt;XXL-JOB / 现有调度&lt;br&gt;轮询 / 补偿 / 超时提醒" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="780" width="140" height="80" as="geometry"/>
+        </mxCell>
 
         <mxCell id="prod-llm" value="生产大模型环境&lt;br&gt;Function / Tool Calling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="550" y="870" width="210" height="64" as="geometry"/>
@@ -113,7 +119,7 @@
           <mxGeometry x="120" y="500" width="260" height="70" as="geometry"/>
         </mxCell>
 
-        <mxCell id="rule-note" value="部署原则：测试与生产配置、密钥、模型、可观测、Redis、助手库表全部隔离；生产写操作必须保留用户确认、流程实例与审计链路。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;align=left;spacingLeft=12;" vertex="1" parent="1">
+        <mxCell id="rule-note" value="部署原则：测试与生产配置、密钥、模型、主控路由规则、调度任务、可观测、Redis、助手库表全部隔离；生产写操作必须保留用户确认、流程实例与审计链路。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;align=left;spacingLeft=12;" vertex="1" parent="1">
           <mxGeometry x="430" y="1095" width="940" height="46" as="geometry"/>
         </mxCell>
 
@@ -144,6 +150,12 @@
         <mxCell id="e-test-obs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="test-guard" target="test-obs">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
+        <mxCell id="e-test-scheduler" value="调度验证" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D99525;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontSize=11;fontColor=#7A4A00;" edge="1" parent="1" source="test-tool" target="test-scheduler">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-test-scheduler-db" value="任务推进" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontSize=11;fontColor=#8A4B10;" edge="1" parent="1" source="test-scheduler" target="test-db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
 
         <mxCell id="e-prod-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#356FCA;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-user" target="prod-gateway">
           <mxGeometry relative="1" as="geometry"/>
@@ -166,6 +178,9 @@
         <mxCell id="e-prod-api-db" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4FA36D;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-platform-db">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
+        <mxCell id="e-prod-api-scheduler" value="注册 / 触发" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4FA36D;strokeWidth=2;endArrow=block;endFill=1;fontSize=11;fontColor=#1F5134;" edge="1" parent="1" source="prod-tool" target="prod-scheduler">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
         <mxCell id="e-prod-llm" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-assistant" target="prod-llm">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
@@ -173,6 +188,9 @@
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="e-prod-db" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-api" target="prod-db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-prod-scheduler-db" value="任务状态" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;fontSize=11;fontColor=#8A4B10;" edge="1" parent="1" source="prod-scheduler" target="prod-db">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="e-prod-obs" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97822;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="prod-flow" target="prod-obs">
