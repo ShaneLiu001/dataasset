@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "pattern": "customer_id",
+      "cn_name": "客户编号",
+      "comment": "客户在主数据系统中的唯一标识。",
+      "confidence": "high"
+    },
+    {
+      "pattern": "income",
+      "cn_name": "收入金额",
+      "comment": "收入类金额字段，需结合统计周期和指标口径使用。",
+      "confidence": "medium"
+    },
+    {
+      "pattern": "mobile",
+      "cn_name": "手机号码",
+      "comment": "客户联系手机号，属于个人敏感信息。",
+      "confidence": "high"
+    }
+  ]
+}

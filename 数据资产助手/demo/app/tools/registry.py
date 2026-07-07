@@ -14,6 +14,7 @@ from app.tools.datasource_tool import (
 )
 from app.tools.lineage_tool import extract_sql_comment, get_sql_task_detail, query_upstream_lineage
 from app.tools.memory_tool import get_user_common_context
+from app.tools.metadata_prefill_tool import apply_metadata_prefill_confirmation, generate_metadata_prefill
 from app.tools.security_scan_tool import scan_security_level
 from app.tools.standard_tool import get_data_standards
 
@@ -27,6 +28,8 @@ TOOLS: dict[str, Callable[..., Any]] = {
     "get_sql_task_detail_tool": get_sql_task_detail,
     "extract_sql_comment_tool": extract_sql_comment,
     "scan_security_level_tool": scan_security_level,
+    "generate_metadata_prefill_tool": generate_metadata_prefill,
+    "apply_metadata_prefill_confirmation_tool": apply_metadata_prefill_confirmation,
     "submit_activiti_process_tool": submit_activiti_process,
     "create_datasource_register_tool": create_datasource_register_task,
     "create_metadata_collect_task_tool": create_metadata_collect_task,
@@ -46,4 +49,3 @@ class ToolRegistry:
         output_summary = result if isinstance(result, dict) else {"items": len(result) if isinstance(result, list) else 1}
         self.audit.append(timer.finish(output_summary))
         return result
-

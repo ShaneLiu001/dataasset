@@ -4,11 +4,11 @@ from uuid import uuid4
 
 from app.agents.data_map import build_asset_recommendation, build_candidate_card
 from app.agents.datasource import build_datasource_form_card, build_datasource_status_card
-from app.agents.governance import build_governance_card, build_governance_draft
+from app.agents.governance import build_governance_card, build_governance_draft, build_metadata_prefill_card
 from app.agents.lineage import build_lineage_card, collect_lineage
 from app.agents.security_scan import collect_security_scan
 from app.agents.standard import collect_standards
-from app.core.response import AssistantResponse, Card, ChatRequest, ConfirmRequest, NeedConfirm
+from app.core.response import AssistantResponse, Card, ChatRequest, ConfirmRequest, MetadataPrefillStartRequest, NeedConfirm
 from app.core.store import store
 from app.graph.nodes import classify_intent, extract_table_name
 from app.graph.state import GraphState
@@ -81,6 +81,8 @@ class DemoGraph:
 
         if state.need_confirm.type == "confirm_asset":
             self._continue_governance_after_asset_confirm(state, request.payload, tools)
+        elif state.need_confirm.type == "confirm_metadata_prefill":
+            self._continue_governance_after_prefill_confirm(state, request.payload, tools)
         elif state.need_confirm.type == "submit_activiti":
             self._submit_governance_process(state, request.payload, tools)
         elif state.need_confirm.type == "submit_datasource_register":
@@ -93,6 +95,20 @@ class DemoGraph:
             state.status = "failed"
             state.answer = "未知确认类型。"
 
+        store.save_task(state.task_id, state.model_dump())
+        return self._to_response(state, tools)
+
+    def start_metadata_prefill(self, request: MetadataPrefillStartRequest) -> AssistantResponse:
+        tools = ToolRegistry()
+        state = GraphState(
+            thread_id=request.thread_id,
+            task_id=new_task_id(),
+            question=f"智能元数据补全 {request.table_name}",
+            user_context=request.user_context,
+            intent="GOVERN_METADATA",
+        )
+        state.slots["table_name"] = request.table_name
+        self._build_metadata_prefill_review(state, request.asset_id, {}, tools)
         store.save_task(state.task_id, state.model_dump())
         return self._to_response(state, tools)
 
@@ -128,6 +144,9 @@ class DemoGraph:
 
     def _continue_governance_after_asset_confirm(self, state: GraphState, payload: dict, tools: ToolRegistry) -> None:
         asset_id = payload.get("asset_id", "asset_001")
+        self._build_metadata_prefill_review(state, asset_id, payload, tools)
+
+    def _build_metadata_prefill_review(self, state: GraphState, asset_id: str, payload: dict, tools: ToolRegistry) -> None:
         asset = tools.call("get_asset_detail_tool", asset_id=asset_id)
         if not asset:
             state.status = "failed"
@@ -138,24 +157,71 @@ class DemoGraph:
         standards = collect_standards(asset, tools)
         lineage = collect_lineage(asset_id, tools)
         security = collect_security_scan(asset_id, tools)
-        draft = build_governance_draft(asset, standards, lineage, security, context)
-        card = build_governance_card(draft)
+        prefill = tools.call(
+            "generate_metadata_prefill_tool",
+            asset=asset,
+            standards=standards,
+            security=security,
+            lineage=lineage,
+        )
+        card = build_metadata_prefill_card(prefill)
         confirm_id = new_confirm_id()
 
         state.selected_asset = asset
         state.user_preferences = context
-        state.evidence = draft["evidence"]
+        state.evidence = {
+            "standards": standards,
+            "lineage": lineage,
+            "security_scan": security,
+            "metadata_prefill": prefill,
+        }
+        state.slots["metadata_prefill"] = prefill
+        state.cards = [card]
+        state.need_confirm = NeedConfirm(
+            required=True,
+            confirm_id=confirm_id,
+            type="confirm_metadata_prefill",
+            payload={"asset_id": asset_id, "prefill_task": prefill["capability"]},
+        )
+        state.next_actions = ["confirm_metadata_prefill", "edit_metadata_prefill", "view_prefill_evidence"]
+        state.status = "waiting_confirm"
+        state.answer = "元数据治理 Agent 已协同数据地图、数据标准、安全扫描和数据血缘 Agent，生成智能元数据补全候选值，请确认后生成治理草案。"
+        store.save_confirm(confirm_id, state.model_dump())
+
+    def _continue_governance_after_prefill_confirm(self, state: GraphState, payload: dict, tools: ToolRegistry) -> None:
+        prefill = state.slots.get("metadata_prefill", {})
+        confirmed_prefill = tools.call(
+            "apply_metadata_prefill_confirmation_tool",
+            prefill=prefill,
+            edits=payload.get("edits", {}),
+        )
+        state.slots["metadata_prefill"] = confirmed_prefill
+        state.evidence["metadata_prefill"] = confirmed_prefill
+        standards = state.evidence.get("standards", [])
+        lineage = state.evidence.get("lineage", {})
+        security = state.evidence.get("security_scan", {})
+        draft = build_governance_draft(
+            state.selected_asset,
+            standards,
+            lineage,
+            security,
+            state.user_preferences,
+            confirmed_prefill,
+        )
+        card = build_governance_card(draft)
+        confirm_id = new_confirm_id()
+
         state.draft = draft
         state.cards = [card]
         state.need_confirm = NeedConfirm(
             required=True,
             confirm_id=confirm_id,
             type="submit_activiti",
-            payload={"asset_id": asset_id, "draft": draft},
+            payload={"asset_id": state.selected_asset.get("asset_id"), "draft": draft},
         )
         state.next_actions = ["submit_activiti", "edit_draft"]
         state.status = "waiting_confirm"
-        state.answer = "已汇总数据标准、上游血缘、SQL 注释和安全扫描结果，生成元数据治理草案。"
+        state.answer = "已确认智能元数据补全结果，并生成元数据治理草案。请确认是否提交治理流程。"
         store.save_confirm(confirm_id, state.model_dump())
 
     def _submit_governance_process(self, state: GraphState, payload: dict, tools: ToolRegistry) -> None:

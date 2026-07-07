@@ -408,6 +408,7 @@ INDEX_HTML = """
         "如何登记数据源？",
         "帮我登记一个生产 MySQL 数据源，同时采集元数据并做安全扫描",
         "帮我治理 dwd_customer_income_df 这张表",
+        "帮我治理 dwd_customer_income_df 这张表，并补全缺失的中文名和备注",
         "客户收入用哪张表？",
         "dwd_customer_income_df 的上游来源和加工任务说明是什么？"
       ];
@@ -590,6 +591,7 @@ INDEX_HTML = """
         el.innerHTML = `<div class="card-head"><strong>${escapeHtml(card.title)}</strong><span class="badge blue">${escapeHtml(card.type)}</span></div><div class="card-body"></div>`;
         const body = el.querySelector(".card-body");
         if (card.type === "asset_candidates") renderAssetCandidates(body, card);
+        else if (card.type === "metadata_prefill_review") renderMetadataPrefill(body, card);
         else if (card.type === "metadata_governance_draft") renderGovernanceDraft(body, card);
         else if (card.type === "process_status") renderProcessStatus(body, card);
         else if (card.type === "datasource_status") renderDatasourceStatus(body, card);
@@ -628,6 +630,8 @@ INDEX_HTML = """
             <td>${escapeHtml(item.field)}</td>
             <td>${escapeHtml(item.suggested_cn_name || "")}</td>
             <td>${escapeHtml(item.suggested_comment || "")}</td>
+            <td>${item.security_level ? `<span class="badge amber">${escapeHtml(item.security_level)}级</span>` : ""}</td>
+            <td>${item.confidence ? confidenceBadge(item.confidence) : ""}</td>
           </tr>
         `).join("");
         body.innerHTML = `
@@ -636,11 +640,80 @@ INDEX_HTML = """
             <div>中文名</div><div>${escapeHtml(data.table_cn_name)}</div>
             <div>安全等级</div><div><span class="badge amber">${escapeHtml(data.security_level)}</span></div>
             <div>空间/项目</div><div>${escapeHtml(data.space_id)} / ${escapeHtml(data.project_id)}</div>
+            <div>人工修改</div><div>${escapeHtml((data.prefill_summary || {}).manual_modified || 0)} 项</div>
           </div>
-          <table class="table" style="margin-top:10px;"><thead><tr><th>字段</th><th>建议中文名</th><th>建议备注</th></tr></thead><tbody>${fieldRows}</tbody></table>
+          <table class="table" style="margin-top:10px;"><thead><tr><th>字段</th><th>建议中文名</th><th>建议备注</th><th>安全等级</th><th>置信度</th></tr></thead><tbody>${fieldRows}</tbody></table>
           <div style="margin-top:10px;"><button class="btn primary" id="submitActivitiBtn">提交 Mock Activiti</button></div>
         `;
         body.querySelector("#submitActivitiBtn").addEventListener("click", () => confirmAction({asset_id: data.asset_id}));
+      }
+
+      function renderMetadataPrefill(body, card) {
+        const data = card.data;
+        const summary = data.summary || {};
+        const asset = data.asset || {};
+        const collaboration = (data.collaboration || []).map(item => `
+          <tr>
+            <td>${escapeHtml(item.agent)}</td>
+            <td>${escapeHtml(item.contribution)}</td>
+            <td>${escapeHtml((item.tools || []).join(", "))}</td>
+          </tr>
+        `).join("");
+        const fieldRows = (data.fields || []).map(item => `
+          <tr>
+            <td><strong>${escapeHtml(item.field_name)}</strong><br><span class="empty">${escapeHtml(item.field_type)}</span></td>
+            <td>${escapeHtml(item.suggested_cn_name || "")}</td>
+            <td>${escapeHtml(item.suggested_comment || "")}</td>
+            <td><span class="badge amber">${escapeHtml(item.recommended_security_level)}级</span></td>
+            <td>${confidenceBadge(item.confidence)}</td>
+            <td>
+              <details>
+                <summary>查看依据</summary>
+                <ul style="margin:6px 0 0 16px;padding:0;">${(item.evidence || []).map(e => `<li>${escapeHtml(e)}</li>`).join("")}</ul>
+                ${(item.risk_tips || []).length ? `<div style="margin-top:6px;color:#915f00;">${item.risk_tips.map(escapeHtml).join("<br>")}</div>` : ""}
+              </details>
+            </td>
+          </tr>
+        `).join("");
+        body.innerHTML = `
+          <div class="kv">
+            <div>承载 Agent</div><div>元数据治理 Agent</div>
+            <div>能力</div><div>智能元数据补全</div>
+            <div>表名</div><div>${escapeHtml(asset.table_name)}</div>
+            <div>表中文名</div><div>${escapeHtml(asset.suggested_chinese_name)}</div>
+            <div>表备注</div><div>${escapeHtml(asset.suggested_comment)}</div>
+          </div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="badge blue">字段信息 ${escapeHtml(summary.field_items || 0)} 项</span>
+            <span class="badge amber">需确认 ${escapeHtml(summary.need_confirm || 0)} 项</span>
+            <span class="badge amber">低置信度 ${escapeHtml(summary.low_confidence || 0)} 项</span>
+            <span class="badge">待补充 ${escapeHtml(summary.need_supplement || 0)} 项</span>
+          </div>
+          <table class="table" style="margin-top:10px;"><thead><tr><th>协作 Agent</th><th>贡献</th><th>Tool</th></tr></thead><tbody>${collaboration}</tbody></table>
+          <table class="table" style="margin-top:10px;"><thead><tr><th>字段</th><th>候选中文名</th><th>候选备注</th><th>安全等级</th><th>置信度</th><th>依据</th></tr></thead><tbody>${fieldRows}</tbody></table>
+          <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end;">
+            <button class="btn" id="mockEditPrefillBtn">模拟修改 income_amt 口径</button>
+            <button class="btn primary" id="confirmPrefillBtn">确认补全结果并生成治理草案</button>
+          </div>
+        `;
+        body.querySelector("#confirmPrefillBtn").addEventListener("click", () => confirmAction({}));
+        body.querySelector("#mockEditPrefillBtn").addEventListener("click", () => confirmAction({
+          edits: {
+            fields: {
+              income_amt: {
+                final_cn_name: "客户统计收入金额",
+                final_comment: "客户在统计周期内产生的收入金额，口径按经营分析收入统计规则确认。",
+                final_security_level: "3"
+              }
+            }
+          }
+        }));
+      }
+
+      function confidenceBadge(confidence) {
+        const label = confidence === "high" ? "高" : confidence === "medium" ? "中" : "低";
+        const klass = confidence === "high" ? "green" : confidence === "medium" ? "amber" : "";
+        return `<span class="badge ${klass}">置信度：${label}</span>`;
       }
 
       function renderProcessStatus(body, card) {
@@ -808,18 +881,28 @@ INDEX_HTML = """
           if (response.need_confirm.type === "confirm_asset") renderSteps([
             ["done", "表名识别", "已抽取 dwd_customer_income_df"],
             ["active", "候选表确认", "等待选择唯一表"],
-            ["", "治理草案", "待汇总证据"],
+            ["", "智能补全", "待协同专业 Agent"],
+            ["", "治理草案", "待生成"],
             ["", "提交流程", "待确认"]
+          ]);
+          else if (response.need_confirm.type === "confirm_metadata_prefill") renderSteps([
+            ["done", "表名识别", "已抽取 dwd_customer_income_df"],
+            ["done", "候选表确认", "已选择资产"],
+            ["active", "智能补全", "等待确认候选值"],
+            ["", "治理草案", "待生成"],
+            ["", "提交流程", "待提交"]
           ]);
           else if (response.need_confirm.type === "submit_activiti") renderSteps([
             ["done", "表名识别", "已抽取 dwd_customer_income_df"],
             ["done", "候选表确认", "已选择资产"],
+            ["done", "智能补全", "已确认候选值"],
             ["active", "治理草案", "等待提交确认"],
             ["", "提交流程", "待提交"]
           ]);
           else renderSteps([
             ["done", "表名识别", "已抽取 dwd_customer_income_df"],
             ["done", "候选表确认", "已选择资产"],
+            ["done", "智能补全", "已确认"],
             ["done", "治理草案", "已生成"],
             ["done", "提交流程", "已提交 Mock Activiti"]
           ]);

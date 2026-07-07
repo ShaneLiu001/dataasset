@@ -1,0 +1,25 @@
+{
+  "rules": [
+    {
+      "field": "mobile_no",
+      "recommended_security_level": "3",
+      "rule_name": "手机号字段识别规则",
+      "confidence": "high",
+      "reason": "字段名命中 mobile_no，属于个人联系方式。"
+    },
+    {
+      "field": "income_amt",
+      "recommended_security_level": "3",
+      "rule_name": "收入金额字段识别规则",
+      "confidence": "medium",
+      "reason": "字段名包含 income 且类型为金额，属于敏感业务数据。"
+    },
+    {
+      "field": "customer_id",
+      "recommended_security_level": "2",
+      "rule_name": "内部主数据标识规则",
+      "confidence": "high",
+      "reason": "客户编号属于企业内部业务标识。"
+    }
+  ]
+}

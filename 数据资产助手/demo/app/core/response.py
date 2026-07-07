@@ -29,6 +29,13 @@ class ConfirmRequest(BaseModel):
     payload: dict[str, Any] = Field(default_factory=dict)
 
 
+class MetadataPrefillStartRequest(BaseModel):
+    thread_id: str
+    asset_id: str = "asset_001"
+    table_name: str = "dwd_customer_income_df"
+    user_context: UserContext = Field(default_factory=UserContext)
+
+
 class Action(BaseModel):
     code: str
     label: str
@@ -75,4 +82,3 @@ class ErrorResponse(BaseModel):
     error_code: str
     error_message: str
     trace_id: str | None = None
-
