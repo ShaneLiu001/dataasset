@@ -1,0 +1,466 @@
+{"kind":"deck","id":"pr/rx9n2e","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"DATA ASSET ASSISTANT","textShapes":5}
+{"kind":"shape","id":"sh/nap4r65w","slide":1,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"bbox":[730,0,550,720]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":1,"bbox":[780,90,360,360]}
+{"kind":"shape","id":"sh/udg7adsj","slide":1,"bbox":[820,132,360,360]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"text":"DATA ASSET ASSISTANT","textPreview":"DATA ASSET ASSISTANT","textChars":20,"textLines":1,"bbox":[72,78,520,28]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":1,"text":"数据资产助手方案汇报","textPreview":"数据资产助手方案汇报","textChars":10,"textLines":1,"bbox":[72,180,620,72]}
+{"kind":"textbox","id":"sh/54zidony","slide":1,"text":"交付管理视角：把 AI 能力交付成可用、可控、可验收的资产治理闭环","textPreview":"交付管理视角：把 AI 能力交付成可用、可控、可验收的资产治理闭环","textChars":33,"textLines":1,"bbox":[76,280,640,78]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":1,"text":"首期场景：元数据治理 Agent 的智能元数据补全能力","textPreview":"首期场景：元数据治理 Agent 的智能元数据补全能力","textChars":27,"textLines":1,"bbox":[76,430,650,34]}
+{"kind":"textbox","id":"sh/judg7ads","slide":1,"text":"汇报重点\n为什么做\n怎么建\n上下文/知识库\nAI 底座\n首期 Demo\n生产演进","textPreview":"汇报重点 | 为什么做 | 怎么建 | 上下文/知识库 | AI 底座 | 首期 Demo | 生产演进","textChars":40,"textLines":7,"bbox":[836,176,300,220]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":""}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"01 / 汇报结论","textShapes":12}
+{"kind":"shape","id":"sh/yxobm58z","slide":2,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":2,"text":"01 / 汇报结论","textPreview":"01 / 汇报结论","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":2,"text":"本次汇报先回答交付侧最关心的四个问题","textPreview":"本次汇报先回答交付侧最关心的四个问题","textChars":18,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":2,"text":"不是把 AI 概念讲满，而是把交付目标、能力边界和落地路径讲清。","textPreview":"不是把 AI 概念讲满，而是把交付目标、能力边界和落地路径讲清。","textChars":32,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":2,"bbox":[70,220,260,230]}
+{"kind":"shape","id":"sh/9cvixcze","slide":2,"bbox":[70,220,8,230]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":2,"text":"交付什么","textPreview":"交付什么","textChars":4,"textLines":1,"bbox":[94,240,216,30]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":2,"text":"一个嵌入数小智的数据资产领域专家助手，能查、能补、能解释、能确认、能追踪。","textPreview":"一个嵌入数小智的数据资产领域专家助手，能查、能补、能解释、能确认、能追踪。","textChars":37,"textLines":1,"bbox":[94,282,216,156]}
+{"kind":"shape","id":"sh/yd0z6103","slide":2,"bbox":[370,220,260,230]}
+{"kind":"shape","id":"sh/wb2hwfyx","slide":2,"bbox":[370,220,8,230]}
+{"kind":"textbox","id":"sh/lwval87e","slide":2,"text":"AI 做什么","textPreview":"AI 做什么","textChars":6,"textLines":1,"bbox":[394,240,216,30]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":2,"text":"AI 负责理解、路由、生成候选、解释依据和编排工具，不直接绕过权限改生产数据。","textPreview":"AI 负责理解、路由、生成候选、解释依据和编排工具，不直接绕过权限改生产数据。","textChars":39,"textLines":1,"bbox":[394,282,216,156]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":2,"bbox":[670,220,260,230]}
+{"kind":"shape","id":"sh/w3m94fu1","slide":2,"bbox":[670,220,8,230]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":2,"text":"怎么落地","textPreview":"怎么落地","textChars":4,"textLines":1,"bbox":[694,240,216,30]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":2,"text":"复用现有 Gateway、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textPreview":"复用现有 Gateway、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textChars":54,"textLines":1,"bbox":[694,282,216,156]}
+{"kind":"shape","id":"sh/3itgfmlk","slide":2,"bbox":[970,220,240,230]}
+{"kind":"shape","id":"sh/szqtcj6t","slide":2,"bbox":[970,220,8,230]}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":2,"text":"怎么验收","textPreview":"怎么验收","textChars":4,"textLines":1,"bbox":[994,240,196,30]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":2,"text":"看首期元数据补全是否能从入口发起、生成候选、人工确认、提交留痕。","textPreview":"看首期元数据补全是否能从入口发起、生成候选、人工确认、提交留痕。","textChars":32,"textLines":1,"bbox":[994,282,196,156]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":2,"text":"交付管理口径：先交付一条能跑通、能复用、上下文可控、全程可审计的治理链路，再逐步扩展资产助手能力面。","textPreview":"交付管理口径：先交付一条能跑通、能复用、上下文可控、全程可审计的治理链路，再逐步扩展资产助手能力面。","textChars":50,"textLines":1,"bbox":[110,535,1040,52]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":""}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"02 / 为什么现在做","textShapes":10}
+{"kind":"shape","id":"sh/vmtwra5g","slide":3,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":3,"text":"02 / 为什么现在做","textPreview":"02 / 为什么现在做","textChars":11,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":3,"text":"数据资产管理的痛点不是没有系统，而是流程散、上下文散、责任散","textPreview":"数据资产管理的痛点不是没有系统，而是流程散、上下文散、责任散","textChars":30,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":3,"text":"资产助手要解决的是跨系统任务组织问题，不是再做一个入口页面。","textPreview":"资产助手要解决的是跨系统任务组织问题，不是再做一个入口页面。","textChars":30,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/vy90je9c","slide":3,"bbox":[80,220,340,210]}
+{"kind":"shape","id":"sh/oj2t83it","slide":3,"bbox":[80,220,8,210]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":3,"text":"用户侧","textPreview":"用户侧","textChars":3,"textLines":1,"bbox":[104,240,296,30]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":3,"text":"找表、查字段、补备注、看血缘、看安全等级经常要跨多个页面和系统。","textPreview":"找表、查字段、补备注、看血缘、看安全等级经常要跨多个页面和系统。","textChars":32,"textLines":1,"bbox":[104,282,296,136]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":3,"bbox":[470,220,340,210]}
+{"kind":"shape","id":"sh/vy90je9c","slide":3,"bbox":[470,220,8,210]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":3,"text":"交付侧","textPreview":"交付侧","textChars":3,"textLines":1,"bbox":[494,240,296,30]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":3,"text":"流程能跑，但证据、确认、状态、异常处理没有被一个任务链路串起来。","textPreview":"流程能跑，但证据、确认、状态、异常处理没有被一个任务链路串起来。","textChars":32,"textLines":1,"bbox":[494,282,296,136]}
+{"kind":"shape","id":"sh/oj2t83it","slide":3,"bbox":[860,220,340,210]}
+{"kind":"shape","id":"sh/vmtwra5g","slide":3,"bbox":[860,220,8,210]}
+{"kind":"textbox","id":"sh/61032lsz","slide":3,"text":"管理侧","textPreview":"管理侧","textChars":3,"textLines":1,"bbox":[884,240,296,30]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":3,"text":"很难回答 AI 生成了什么、依据是什么、谁确认了、是否进入流程。","textPreview":"很难回答 AI 生成了什么、依据是什么、谁确认了、是否进入流程。","textChars":32,"textLines":1,"bbox":[884,282,296,136]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":3,"bbox":[128,500,1024,74]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":3,"text":"建设目标：让分散的平台能力被 AI 组织成一次可交互、可确认、可追踪的数据资产治理任务。","textPreview":"建设目标：让分散的平台能力被 AI 组织成一次可交互、可确认、可追踪的数据资产治理任务。","textChars":44,"textLines":1,"bbox":[162,523,960,30]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":""}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"03 / 交付定位","textShapes":13}
+{"kind":"shape","id":"sh/1gvy90je","slide":4,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":4,"text":"03 / 交付定位","textPreview":"03 / 交付定位","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":4,"text":"数据资产助手是数小智下的资产治理专家，不替代现有平台","textPreview":"数据资产助手是数小智下的资产治理专家，不替代现有平台","textChars":26,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"text":"交付边界越清楚，后续越容易试点、推广和验收。","textPreview":"交付边界越清楚，后续越容易试点、推广和验收。","textChars":22,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/xs72x4na","slide":4,"bbox":[90,230,300,38]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":4,"text":"数小智：统一入口和主 Agent","textPreview":"数小智：统一入口和主 Agent","textChars":16,"textLines":1,"bbox":[108,239,264,20]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":4,"bbox":[490,230,310,38]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":4,"text":"数据资产助手：领域专家 Agent","textPreview":"数据资产助手：领域专家 Agent","textChars":17,"textLines":1,"bbox":[508,239,274,20]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":4,"bbox":[900,230,300,38]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":4,"text":"现有平台能力：确定性执行层","textPreview":"现有平台能力：确定性执行层","textChars":13,"textLines":1,"bbox":[918,239,264,20]}
+{"kind":"shape","id":"sh/8bat47y1","slide":4,"bbox":[390,248,100,0]}
+{"kind":"shape","id":"sh/jqh0fepk","slide":4,"bbox":[800,248,100,0]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":4,"bbox":[90,330,300,170]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":4,"bbox":[90,330,8,170]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":4,"text":"负责接入","textPreview":"负责接入","textChars":4,"textLines":1,"bbox":[114,350,256,30]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":4,"text":"自然语言入口、上下文传递、跨专家协同、结果汇总。","textPreview":"自然语言入口、上下文传递、跨专家协同、结果汇总。","textChars":24,"textLines":1,"bbox":[114,392,256,96]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":4,"bbox":[490,330,310,170]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":4,"bbox":[490,330,8,170]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":4,"text":"负责组织","textPreview":"负责组织","textChars":4,"textLines":1,"bbox":[514,350,266,30]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":4,"text":"Prompt Router、Control Mode Router、子 Agent、Tool、人工确认。","textPreview":"Prompt Router、Control Mode Router、子 Agent、Tool、人工确认。","textChars":52,"textLines":1,"bbox":[514,392,266,96]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":4,"bbox":[900,330,300,170]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":4,"bbox":[900,330,8,170]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":4,"text":"负责执行","textPreview":"负责执行","textChars":4,"textLines":1,"bbox":[924,350,256,30]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":4,"text":"Gateway、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textPreview":"Gateway、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textChars":46,"textLines":1,"bbox":[924,392,256,96]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":4,"text":"一句话：AI 负责把任务组织好，平台负责把动作执行稳。","textPreview":"一句话：AI 负责把任务组织好，平台负责把动作执行稳。","textChars":27,"textLines":1,"bbox":[180,570,920,32]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":""}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"04 / 产品形态","textShapes":12}
+{"kind":"shape","id":"sh/vahoza1g","slide":5,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":5,"text":"04 / 产品形态","textPreview":"04 / 产品形态","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":5,"text":"交付出来的不是聊天框，而是一套资产治理工作台体验","textPreview":"交付出来的不是聊天框，而是一套资产治理工作台体验","textChars":24,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":5,"text":"对用户要接地气：少切页面、少猜字段、少手填备注、少追流程。","textPreview":"对用户要接地气：少切页面、少猜字段、少手填备注、少追流程。","textChars":29,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":5,"bbox":[80,210,250,180]}
+{"kind":"shape","id":"sh/onyd0z61","slide":5,"bbox":[80,210,8,180]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":5,"text":"对话入口","textPreview":"对话入口","textChars":4,"textLines":1,"bbox":[104,230,206,30]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":5,"text":"自然语言发起找表、治理、盘点、诊断、生成报告。","textPreview":"自然语言发起找表、治理、盘点、诊断、生成报告。","textChars":23,"textLines":1,"bbox":[104,272,206,106]}
+{"kind":"shape","id":"sh/vy90je9c","slide":5,"bbox":[370,210,250,180]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":5,"bbox":[370,210,8,180]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":5,"text":"结果卡片","textPreview":"结果卡片","textChars":4,"textLines":1,"bbox":[394,230,206,30]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":5,"text":"展示候选表、字段摘要、血缘影响、安全风险和标准匹配。","textPreview":"展示候选表、字段摘要、血缘影响、安全风险和标准匹配。","textChars":26,"textLines":1,"bbox":[394,272,206,106]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":5,"bbox":[660,210,250,180]}
+{"kind":"shape","id":"sh/n29gr2p8","slide":5,"bbox":[660,210,8,180]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":5,"text":"确认卡片","textPreview":"确认卡片","textChars":4,"textLines":1,"bbox":[684,230,206,30]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":5,"text":"写回、提交、审批前必须二次确认，保留用户确认记录。","textPreview":"写回、提交、审批前必须二次确认，保留用户确认记录。","textChars":25,"textLines":1,"bbox":[684,272,206,106]}
+{"kind":"shape","id":"sh/gn29gr2p","slide":5,"bbox":[950,210,250,180]}
+{"kind":"shape","id":"sh/neloj2t8","slide":5,"bbox":[950,210,8,180]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":5,"text":"任务进度","textPreview":"任务进度","textChars":4,"textLines":1,"bbox":[974,230,206,30]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":5,"text":"展示采集、扫描、治理流程、补偿和超时提醒状态。","textPreview":"展示采集、扫描、治理流程、补偿和超时提醒状态。","textChars":23,"textLines":1,"bbox":[974,272,206,106]}
+{"kind":"shape","id":"sh/vixczed8","slide":5,"bbox":[120,470,1040,84]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":5,"text":"交付验收关注：用户能否在一个助手入口里完成“查上下文 -> 看建议 -> 改候选 -> 确认 -> 提交流程 -> 看进度”。","textPreview":"交付验收关注：用户能否在一个助手入口里完成“查上下文 -> 看建议 -> 改候选 -> 确认 -> 提交流程 -> 看进度”。","textChars":63,"textLines":1,"bbox":[150,496,980,34]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":""}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"05 / AI 能力重点","textShapes":16}
+{"kind":"shape","id":"sh/9cvixcze","slide":6,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":6,"text":"05 / AI 能力重点","textPreview":"05 / AI 能力重点","textChars":12,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":6,"text":"资产助手使用的 AI 能力重点在“理解、编排、生成和解释”","textPreview":"资产助手使用的 AI 能力重点在“理解、编排、生成和解释”","textChars":29,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":6,"text":"大模型不是单独办业务，它和 Agent、Tool、确认、审计一起形成可控闭环。","textPreview":"大模型不是单独办业务，它和 Agent、Tool、确认、审计一起形成可控闭环。","textChars":39,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":6,"bbox":[80,220,330,130]}
+{"kind":"shape","id":"sh/yxobm58z","slide":6,"bbox":[80,220,8,130]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":6,"text":"理解用户问题","textPreview":"理解用户问题","textChars":6,"textLines":1,"bbox":[104,240,286,30]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":6,"text":"识别说明、查询、办理、诊断、生成、调度、确认等 Prompt 类型。","textPreview":"识别说明、查询、办理、诊断、生成、调度、确认等 Prompt 类型。","textChars":34,"textLines":1,"bbox":[104,282,286,56]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":6,"bbox":[470,220,330,130]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":6,"bbox":[470,220,8,130]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":6,"text":"选择执行模式","textPreview":"选择执行模式","textChars":6,"textLines":1,"bbox":[494,240,286,30]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":6,"text":"Control Mode Router 决定走 Skill、Tool、状态机、Loop、流式生成或人工确认。","textPreview":"Control Mode Router 决定走 Skill、Tool、状态机、Loop、流式生成或人工确认。","textChars":54,"textLines":1,"bbox":[494,282,286,56]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":6,"bbox":[860,220,330,130]}
+{"kind":"shape","id":"sh/dg7adsji","slide":6,"bbox":[860,220,8,130]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":6,"text":"调用平台能力","textPreview":"调用平台能力","textChars":6,"textLines":1,"bbox":[884,240,286,30]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":6,"text":"通过 Tool Adapter 调用数据地图、标准、安全扫描、血缘、流程等能力。","textPreview":"通过 Tool Adapter 调用数据地图、标准、安全扫描、血缘、流程等能力。","textChars":40,"textLines":1,"bbox":[884,282,286,56]}
+{"kind":"shape","id":"sh/6tovahoz","slide":6,"bbox":[80,390,330,130]}
+{"kind":"shape","id":"sh/dsji5sne","slide":6,"bbox":[80,390,8,130]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":6,"text":"生成候选内容","textPreview":"生成候选内容","textChars":6,"textLines":1,"bbox":[104,410,286,30]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":6,"text":"生成中文名、字段备注、安全等级建议、治理报告和说明口径。","textPreview":"生成中文名、字段备注、安全等级建议、治理报告和说明口径。","textChars":28,"textLines":1,"bbox":[104,452,286,56]}
+{"kind":"shape","id":"sh/94fu18jq","slide":6,"bbox":[470,390,330,130]}
+{"kind":"shape","id":"sh/2hwfyxob","slide":6,"bbox":[470,390,8,130]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":6,"text":"解释依据","textPreview":"解释依据","textChars":4,"textLines":1,"bbox":[494,410,286,30]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":6,"text":"输出置信度、命中规则、字段上下文、标准映射和安全依据。","textPreview":"输出置信度、命中规则、字段上下文、标准映射和安全依据。","textChars":27,"textLines":1,"bbox":[494,452,286,56]}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":6,"bbox":[860,390,330,130]}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":6,"bbox":[860,390,8,130]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":6,"text":"沉淀反馈","textPreview":"沉淀反馈","textChars":4,"textLines":1,"bbox":[884,410,286,30]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":6,"text":"把用户确认、修改、失败原因和调用链路纳入后续优化。","textPreview":"把用户确认、修改、失败原因和调用链路纳入后续优化。","textChars":25,"textLines":1,"bbox":[884,452,286,56]}
+{"kind":"textbox","id":"sh/9knih4by","slide":6,"text":"交付侧要强调：AI 能力不是“自动替人拍板”，而是把候选、依据、确认和追踪做成标准流程。","textPreview":"交付侧要强调：AI 能力不是“自动替人拍板”，而是把候选、依据、确认和追踪做成标准流程。","textChars":44,"textLines":1,"bbox":[118,585,1040,28]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":""}
+{"kind":"slide","id":"sl/0z61032l","slide":7,"title":"06 / AI 基础能力底座","textShapes":20}
+{"kind":"shape","id":"sh/qd4vmtwr","slide":7,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":7,"text":"06 / AI 基础能力底座","textPreview":"06 / AI 基础能力底座","textChars":14,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":7,"text":"要让资产助手可交付，必须先把 AI 基础能力做成平台底座","textPreview":"要让资产助手可交付，必须先把 AI 基础能力做成平台底座","textChars":28,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":7,"text":"这些能力决定后续能不能从一个 Demo 扩展到多个场景、多个专家 Agent。","textPreview":"这些能力决定后续能不能从一个 Demo 扩展到多个场景、多个专家 Agent。","textChars":39,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":7,"bbox":[70,205,250,130]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":7,"text":"内网大模型","textPreview":"内网大模型","textChars":5,"textLines":1,"bbox":[88,223,214,28]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":7,"text":"中文理解\n结构化输出\nTool Calling","textPreview":"中文理解 | 结构化输出 | Tool Calling","textChars":23,"textLines":3,"bbox":[95,263,200,56]}
+{"kind":"shape","id":"sh/je9cvixc","slide":7,"bbox":[370,205,250,130]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":7,"text":"Prompt Router","textPreview":"Prompt Router","textChars":13,"textLines":1,"bbox":[388,223,214,28]}
+{"kind":"textbox","id":"sh/svu9knih","slide":7,"text":"问题分类\n风险判断\n参数抽取","textPreview":"问题分类 | 风险判断 | 参数抽取","textChars":14,"textLines":3,"bbox":[395,263,200,56]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":7,"bbox":[670,205,250,130]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":7,"text":"执行模式路由","textPreview":"执行模式路由","textChars":6,"textLines":1,"bbox":[688,223,214,28]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":7,"text":"Skill / Tool\nState / Loop\nConfirm / Scheduler","textPreview":"Skill / Tool | State / Loop | Confirm / Scheduler","textChars":45,"textLines":3,"bbox":[695,263,200,56]}
+{"kind":"shape","id":"sh/s36hcrmh","slide":7,"bbox":[970,205,250,130]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":7,"text":"LangGraph 编排","textPreview":"LangGraph 编排","textChars":12,"textLines":1,"bbox":[988,223,214,28]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":7,"text":"状态流转\n子 Agent 协同\n失败恢复","textPreview":"状态流转 | 子 Agent 协同 | 失败恢复","textChars":20,"textLines":3,"bbox":[995,263,200,56]}
+{"kind":"shape","id":"sh/zidonyd0","slide":7,"bbox":[70,385,250,130]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":7,"text":"Tool / Agent 网关","textPreview":"Tool / Agent 网关","textChars":15,"textLines":1,"bbox":[88,403,214,28]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":7,"text":"工具注册\n鉴权策略\n审计观测","textPreview":"工具注册 | 鉴权策略 | 审计观测","textChars":14,"textLines":3,"bbox":[95,443,200,56]}
+{"kind":"shape","id":"sh/pg3ex0nu","slide":7,"bbox":[370,385,250,130]}
+{"kind":"textbox","id":"sh/wval87ed","slide":7,"text":"上下文与知识库","textPreview":"上下文与知识库","textChars":7,"textLines":1,"bbox":[388,403,214,28]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":7,"text":"知识库召回\n任务证据\n裁剪脱敏","textPreview":"知识库召回 | 任务证据 | 裁剪脱敏","textChars":15,"textLines":3,"bbox":[395,443,200,56]}
+{"kind":"shape","id":"sh/epkzupwb","slide":7,"bbox":[670,385,250,130]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":7,"text":"调度系统","textPreview":"调度系统","textChars":4,"textLines":1,"bbox":[688,403,214,28]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":7,"text":"异步轮询\n失败补偿\n超时提醒","textPreview":"异步轮询 | 失败补偿 | 超时提醒","textChars":14,"textLines":3,"bbox":[695,443,200,56]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":7,"bbox":[970,385,250,130]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":7,"text":"可观测平台","textPreview":"可观测平台","textChars":5,"textLines":1,"bbox":[988,403,214,28]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":7,"text":"OTel Trace\nLangfuse Prompt\n反馈评估","textPreview":"OTel Trace | Langfuse Prompt | 反馈评估","textChars":31,"textLines":3,"bbox":[995,443,200,56]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":7,"bbox":[120,560,1040,48]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":7,"text":"底座口径：先把上下文、知识库、路由、工具和观测做稳，再支撑多场景复用。","textPreview":"底座口径：先把上下文、知识库、路由、工具和观测做稳，再支撑多场景复用。","textChars":35,"textLines":1,"bbox":[150,574,980,22]}
+{"kind":"notes","id":"nt/0z61032l","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu18jqh0","slide":8,"title":"07 / 架构落地","textShapes":16}
+{"kind":"shape","id":"sh/1032lszq","slide":8,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":8,"text":"07 / 架构落地","textPreview":"07 / 架构落地","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/judg7ads","slide":8,"text":"交付架构采用“AI 编排在上，现有平台能力在下”的分层方式","textPreview":"交付架构采用“AI 编排在上，现有平台能力在下”的分层方式","textChars":29,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":8,"text":"这样既能体现 AI 能力，又不破坏已有权限、流程和审计体系。","textPreview":"这样既能体现 AI 能力，又不破坏已有权限、流程和审计体系。","textChars":30,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/1orytsvu","slide":8,"bbox":[140,218,1000,44]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":8,"text":"用户入口","textPreview":"用户入口","textChars":4,"textLines":1,"bbox":[165,229,160,22]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":8,"text":"数小智入口 / 数据资产助手面板 / 确认卡片 / 任务进度","textPreview":"数小智入口 / 数据资产助手面板 / 确认卡片 / 任务进度","textChars":30,"textLines":1,"bbox":[350,229,760,22]}
+{"kind":"shape","id":"sh/cvixczed","slide":8,"bbox":[140,276,1000,44]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":8,"text":"AI 助手服务","textPreview":"AI 助手服务","textChars":7,"textLines":1,"bbox":[165,287,160,22]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":8,"text":"FastAPI / 会话管理 / 上下文管理 / 知识库调用 / 确认管理","textPreview":"FastAPI / 会话管理 / 上下文管理 / 知识库调用 / 确认管理","textChars":37,"textLines":1,"bbox":[350,287,760,22]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":8,"bbox":[140,334,1000,44]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":8,"text":"Agent 编排","textPreview":"Agent 编排","textChars":8,"textLines":1,"bbox":[165,345,160,22]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":8,"text":"LangGraph / Prompt Router / Control Mode Router / 子 Agent","textPreview":"LangGraph / Prompt Router / Control Mode Router / 子 Agent","textChars":57,"textLines":1,"bbox":[350,345,760,22]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":8,"bbox":[140,392,1000,44]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":8,"text":"工具接入","textPreview":"工具接入","textChars":4,"textLines":1,"bbox":[165,403,160,22]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":8,"text":"Tool Adapter / Tool Registry / Agent 网关 / MCP 演进","textPreview":"Tool Adapter / Tool Registry / Agent 网关 / MCP 演进","textChars":48,"textLines":1,"bbox":[350,403,760,22]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":8,"bbox":[140,450,1000,44]}
+{"kind":"textbox","id":"sh/1kre1w7m","slide":8,"text":"平台能力","textPreview":"平台能力","textChars":4,"textLines":1,"bbox":[165,461,160,22]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":8,"text":"Gateway / Java API / ES / Activiti / 调度平台","textPreview":"Gateway / Java API / ES / Activiti / 调度平台","textChars":41,"textLines":1,"bbox":[350,461,760,22]}
+{"kind":"shape","id":"sh/orytsvu9","slide":8,"bbox":[140,508,1000,44]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":8,"text":"数据与观测","textPreview":"数据与观测","textChars":5,"textLines":1,"bbox":[165,519,160,22]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":8,"text":"Redis / GoldenDB / OpenTelemetry / Langfuse / 审计","textPreview":"Redis / GoldenDB / OpenTelemetry / Langfuse / 审计","textChars":48,"textLines":1,"bbox":[350,519,760,22]}
+{"kind":"textbox","id":"sh/z61032ls","slide":8,"text":"交付原则：新增 AI 编排层、上下文与知识库调用层、工具适配层，优先复用现有平台能力。","textPreview":"交付原则：新增 AI 编排层、上下文与知识库调用层、工具适配层，优先复用现有平台能力。","textChars":43,"textLines":1,"bbox":[132,610,1016,26]}
+{"kind":"notes","id":"nt/fu18jqh0","slide":8,"text":""}
+{"kind":"slide","id":"sl/qh0fepkz","slide":9,"title":"08 / 架构实现","textShapes":16}
+{"kind":"shape","id":"sh/vahoza1g","slide":9,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":9,"text":"08 / 架构实现","textPreview":"08 / 架构实现","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":9,"text":"资产助手实现上分为入口、编排、工具、平台、状态和观测六层","textPreview":"资产助手实现上分为入口、编排、工具、平台、状态和观测六层","textChars":28,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":9,"text":"这页用于回答“到底怎么接到现有系统、AI 能力放在哪里”。","textPreview":"这页用于回答“到底怎么接到现有系统、AI 能力放在哪里”。","textChars":29,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":9,"bbox":[58,235,165,215]}
+{"kind":"shape","id":"sh/onyd0z61","slide":9,"bbox":[58,235,165,44]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":9,"text":"用户入口","textPreview":"用户入口","textChars":4,"textLines":1,"bbox":[70,247,141,20]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":9,"text":"数小智\n资产助手面板\n确认卡片","textPreview":"数小智 | 资产助手面板 | 确认卡片","textChars":15,"textLines":3,"bbox":[74,314,133,92]}
+{"kind":"shape","id":"sh/vy90je9c","slide":9,"bbox":[223,340,33,0]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":9,"bbox":[258,235,165,215]}
+{"kind":"shape","id":"sh/y90je9cv","slide":9,"bbox":[258,235,165,44]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":9,"text":"接入与服务","textPreview":"接入与服务","textChars":5,"textLines":1,"bbox":[270,247,141,20]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":9,"text":"现有 Gateway\nFastAPI\n会话管理","textPreview":"现有 Gateway | FastAPI | 会话管理","textChars":23,"textLines":3,"bbox":[274,314,133,92]}
+{"kind":"shape","id":"sh/n29gr2p8","slide":9,"bbox":[423,340,33,0]}
+{"kind":"shape","id":"sh/yhgn29gr","slide":9,"bbox":[458,235,165,215]}
+{"kind":"shape","id":"sh/58z25kb6","slide":9,"bbox":[458,235,165,44]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":9,"text":"AI 编排","textPreview":"AI 编排","textChars":5,"textLines":1,"bbox":[470,247,141,20]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":9,"text":"LangGraph\nPrompt Router\nControl Router","textPreview":"LangGraph | Prompt Router | Control Router","textChars":38,"textLines":3,"bbox":[474,314,133,92]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":9,"bbox":[623,340,33,0]}
+{"kind":"shape","id":"sh/2x4nap4r","slide":9,"bbox":[658,235,165,215]}
+{"kind":"shape","id":"sh/vixczed8","slide":9,"bbox":[658,235,165,44]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":9,"text":"工具治理","textPreview":"工具治理","textChars":4,"textLines":1,"bbox":[670,247,141,20]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":9,"text":"Agent 网关\nTool Registry\nTool Adapter","textPreview":"Agent 网关 | Tool Registry | Tool Adapter","textChars":35,"textLines":3,"bbox":[674,314,133,92]}
+{"kind":"shape","id":"sh/6psfil0r","slide":9,"bbox":[823,340,33,0]}
+{"kind":"shape","id":"sh/val87ed8","slide":9,"bbox":[858,235,165,215]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":9,"bbox":[858,235,165,44]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":9,"text":"平台能力","textPreview":"平台能力","textChars":4,"textLines":1,"bbox":[870,247,141,20]}
+{"kind":"textbox","id":"sh/2lszqtcj","slide":9,"text":"Java API\nES / Activiti\n调度平台","textPreview":"Java API | ES / Activiti | 调度平台","textChars":27,"textLines":3,"bbox":[874,314,133,92]}
+{"kind":"shape","id":"sh/v6psfil0","slide":9,"bbox":[1023,340,33,0]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":9,"bbox":[1058,235,165,215]}
+{"kind":"shape","id":"sh/sji5snel","slide":9,"bbox":[1058,235,165,44]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":9,"text":"状态观测","textPreview":"状态观测","textChars":4,"textLines":1,"bbox":[1070,247,141,20]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":9,"text":"Redis / GoldenDB\nOTel\nLangfuse","textPreview":"Redis / GoldenDB | OTel | Langfuse","textChars":30,"textLines":3,"bbox":[1074,314,133,92]}
+{"kind":"shape","id":"sh/lszqtcj6","slide":9,"bbox":[94,505,1092,58]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":9,"text":"关键边界：大模型不直连业务库，Agent 统一通过工具治理层调用受控能力；写操作必须进入确认和流程。","textPreview":"关键边界：大模型不直连业务库，Agent 统一通过工具治理层调用受控能力；写操作必须进入确认和流程。","textChars":50,"textLines":1,"bbox":[130,523,1020,24]}
+{"kind":"notes","id":"nt/qh0fepkz","slide":9,"text":""}
+{"kind":"slide","id":"sl/29gr2p8n","slide":10,"title":"09 / AI 编排实现","textShapes":18}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":10,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":10,"text":"09 / AI 编排实现","textPreview":"09 / AI 编排实现","textChars":12,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":10,"text":"Prompt Router 和 Control Mode Router 决定每个请求怎么执行","textPreview":"Prompt Router 和 Control Mode Router 决定每个请求怎么执行","textChars":46,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":10,"text":"这页用于回答“为什么不是所有请求都走大模型自由发挥”。","textPreview":"这页用于回答“为什么不是所有请求都走大模型自由发挥”。","textChars":27,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/2hwfyxob","slide":10,"bbox":[80,260,190,92]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":10,"text":"用户输入","textPreview":"用户输入","textChars":4,"textLines":1,"bbox":[105,290,140,24]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":10,"bbox":[270,306,60,0]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":10,"bbox":[330,230,230,150]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":10,"text":"Prompt\nRouter","textPreview":"Prompt | Router","textChars":13,"textLines":2,"bbox":[368,246,154,48]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":10,"text":"判断问题类型\n抽取关键参数\n识别风险等级","textPreview":"判断问题类型 | 抽取关键参数 | 识别风险等级","textChars":20,"textLines":3,"bbox":[372,312,146,54]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":10,"bbox":[560,306,60,0]}
+{"kind":"shape","id":"sh/m94fu18j","slide":10,"bbox":[620,230,250,150]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":10,"text":"Control Mode\nRouter","textPreview":"Control Mode | Router","textChars":19,"textLines":2,"bbox":[652,246,186,48]}
+{"kind":"textbox","id":"sh/83itgfml","slide":10,"text":"选择 Skill / Tool\n状态机 / Loop\n流式 / 调度 / 确认","textPreview":"选择 Skill / Tool | 状态机 / Loop | 流式 / 调度 / 确认","textChars":39,"textLines":3,"bbox":[655,312,180,54]}
+{"kind":"shape","id":"sh/xobm58z2","slide":10,"bbox":[870,306,60,0]}
+{"kind":"shape","id":"sh/qxs72x4n","slide":10,"bbox":[930,230,240,150]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":10,"text":"执行控制器","textPreview":"执行控制器","textChars":5,"textLines":1,"bbox":[968,250,165,26]}
+{"kind":"textbox","id":"sh/4zidonyd","slide":10,"text":"调用 Tool\n组织子 Agent\n输出卡片或任务状态","textPreview":"调用 Tool | 组织子 Agent | 输出卡片或任务状态","textChars":27,"textLines":3,"bbox":[965,294,170,62]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":10,"bbox":[100,450,220,42]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":10,"text":"Skill：规则说明","textPreview":"Skill：规则说明","textChars":10,"textLines":1,"bbox":[116,461,188,20]}
+{"kind":"shape","id":"sh/8v6psfil","slide":10,"bbox":[380,450,220,42]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":10,"text":"Tool：明确查询","textPreview":"Tool：明确查询","textChars":9,"textLines":1,"bbox":[396,461,188,20]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":10,"bbox":[660,450,220,42]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":10,"text":"State：流程办理","textPreview":"State：流程办理","textChars":10,"textLines":1,"bbox":[676,461,188,20]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":10,"bbox":[940,450,220,42]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":10,"text":"Loop：诊断分析","textPreview":"Loop：诊断分析","textChars":9,"textLines":1,"bbox":[956,461,188,20]}
+{"kind":"shape","id":"sh/qd4vmtwr","slide":10,"bbox":[100,514,220,42]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":10,"text":"Stream：报告生成","textPreview":"Stream：报告生成","textChars":11,"textLines":1,"bbox":[116,525,188,20]}
+{"kind":"shape","id":"sh/87ed8bat","slide":10,"bbox":[380,514,220,42]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":10,"text":"Scheduler：异步补偿","textPreview":"Scheduler：异步补偿","textChars":14,"textLines":1,"bbox":[396,525,188,20]}
+{"kind":"shape","id":"sh/ra5gbq1o","slide":10,"bbox":[660,514,220,42]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":10,"text":"Confirm：写操作确认","textPreview":"Confirm：写操作确认","textChars":13,"textLines":1,"bbox":[676,525,188,20]}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":10,"bbox":[940,514,220,42]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":10,"text":"Handoff：专家转交","textPreview":"Handoff：专家转交","textChars":12,"textLines":1,"bbox":[956,525,188,20]}
+{"kind":"notes","id":"nt/29gr2p8n","slide":10,"text":""}
+{"kind":"slide","id":"sl/re1w7mp0","slide":11,"title":"10 / 技术选型","textShapes":28}
+{"kind":"shape","id":"sh/dg7adsji","slide":11,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":11,"text":"10 / 技术选型","textPreview":"10 / 技术选型","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":11,"text":"技术选型优先服务交付闭环，而不是为了堆新技术","textPreview":"技术选型优先服务交付闭环，而不是为了堆新技术","textChars":22,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":11,"text":"每个组件都对应一个明确的交付责任和风险边界。","textPreview":"每个组件都对应一个明确的交付责任和风险边界。","textChars":22,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":11,"bbox":[70,220,1140,42]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":11,"text":"组件","textPreview":"组件","textChars":2,"textLines":1,"bbox":[95,232,180,18]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":11,"text":"交付责任","textPreview":"交付责任","textChars":4,"textLines":1,"bbox":[330,232,250,18]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":11,"text":"选择原因","textPreview":"选择原因","textChars":4,"textLines":1,"bbox":[650,232,500,18]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":11,"bbox":[70,262,1140,44]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":11,"text":"内网大模型","textPreview":"内网大模型","textChars":5,"textLines":1,"bbox":[95,274,190,18]}
+{"kind":"textbox","id":"sh/sji5snel","slide":11,"text":"理解、生成、结构化输出","textPreview":"理解、生成、结构化输出","textChars":11,"textLines":1,"bbox":[330,274,260,18]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":11,"text":"保障内部数据安全，支持 Tool Calling","textPreview":"保障内部数据安全，支持 Tool Calling","textChars":24,"textLines":1,"bbox":[650,274,520,18]}
+{"kind":"shape","id":"sh/adsji5sn","slide":11,"bbox":[70,310,1140,44]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":11,"text":"LangGraph","textPreview":"LangGraph","textChars":9,"textLines":1,"bbox":[95,322,190,18]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":11,"text":"Agent 编排和状态流转","textPreview":"Agent 编排和状态流转","textChars":13,"textLines":1,"bbox":[330,322,260,18]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":11,"text":"承接多主控模式、确认节点和子 Agent 协同","textPreview":"承接多主控模式、确认节点和子 Agent 协同","textChars":23,"textLines":1,"bbox":[650,322,520,18]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":11,"bbox":[70,358,1140,44]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":11,"text":"FastAPI","textPreview":"FastAPI","textChars":7,"textLines":1,"bbox":[95,370,190,18]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":11,"text":"AI 服务入口和 Tool Adapter","textPreview":"AI 服务入口和 Tool Adapter","textChars":21,"textLines":1,"bbox":[330,370,260,18]}
+{"kind":"textbox","id":"sh/4zidonyd","slide":11,"text":"轻量承接对话、确认、任务查询和接口适配","textPreview":"轻量承接对话、确认、任务查询和接口适配","textChars":19,"textLines":1,"bbox":[650,370,520,18]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":11,"bbox":[70,406,1140,44]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":11,"text":"Agent 网关","textPreview":"Agent 网关","textChars":8,"textLines":1,"bbox":[95,418,190,18]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":11,"text":"工具调用治理入口","textPreview":"工具调用治理入口","textChars":8,"textLines":1,"bbox":[330,418,260,18]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":11,"text":"统一注册、权限、策略、限流、审计和观测","textPreview":"统一注册、权限、策略、限流、审计和观测","textChars":19,"textLines":1,"bbox":[650,418,520,18]}
+{"kind":"shape","id":"sh/xc3ylc7u","slide":11,"bbox":[70,454,1140,44]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":11,"text":"知识库 + 上下文管理","textPreview":"知识库 + 上下文管理","textChars":11,"textLines":1,"bbox":[95,466,190,18]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":11,"text":"知识召回 / 上下文包 / 状态","textPreview":"知识召回 / 上下文包 / 状态","textChars":16,"textLines":1,"bbox":[330,466,260,18]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":11,"text":"召回制度规则和历史经验，裁剪脱敏后再进入 Agent","textPreview":"召回制度规则和历史经验，裁剪脱敏后再进入 Agent","textChars":26,"textLines":1,"bbox":[650,466,520,18]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":11,"bbox":[70,502,1140,44]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":11,"text":"Activiti + 调度平台","textPreview":"Activiti + 调度平台","textChars":15,"textLines":1,"bbox":[95,514,190,18]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":11,"text":"流程与异步推进","textPreview":"流程与异步推进","textChars":7,"textLines":1,"bbox":[330,514,260,18]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":11,"text":"写操作走流程，长流程轮询、补偿、提醒走调度","textPreview":"写操作走流程，长流程轮询、补偿、提醒走调度","textChars":21,"textLines":1,"bbox":[650,514,520,18]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":11,"bbox":[70,550,1140,44]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":11,"text":"OpenTelemetry + Langfuse","textPreview":"OpenTelemetry + Langfuse","textChars":24,"textLines":1,"bbox":[95,562,190,18]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":11,"text":"链路和模型可观测","textPreview":"链路和模型可观测","textChars":8,"textLines":1,"bbox":[330,562,260,18]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":11,"text":"看清 Prompt、Tool、Trace、反馈和失败原因","textPreview":"看清 Prompt、Tool、Trace、反馈和失败原因","textChars":28,"textLines":1,"bbox":[650,562,520,18]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":11,"text":"选型口径：AI 负责理解和编排；知识库和上下文先被召回、裁剪、脱敏，确定性动作仍由平台承接。","textPreview":"选型口径：AI 负责理解和编排；知识库和上下文先被召回、裁剪、脱敏，确定性动作仍由平台承接。","textChars":46,"textLines":1,"bbox":[110,618,1060,22]}
+{"kind":"notes","id":"nt/re1w7mp0","slide":11,"text":""}
+{"kind":"slide","id":"sl/4fu18jqh","slide":12,"title":"11 / 首期实现链路","textShapes":15}
+{"kind":"shape","id":"sh/3m94fu18","slide":12,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":12,"text":"11 / 首期实现链路","textPreview":"11 / 首期实现链路","textChars":11,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":12,"text":"智能元数据补全先汇聚上下文和知识库，再由 Agent 和 Tool 生成候选","textPreview":"智能元数据补全先汇聚上下文和知识库，再由 Agent 和 Tool 生成候选","textChars":38,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":12,"text":"这页用于回答“首期能力如何组织上下文、依赖哪些平台能力”。","textPreview":"这页用于回答“首期能力如何组织上下文、依赖哪些平台能力”。","textChars":29,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":12,"bbox":[80,250,210,92]}
+{"kind":"textbox","id":"sh/sji5snel","slide":12,"text":"元数据治理 Agent","textPreview":"元数据治理 Agent","textChars":11,"textLines":1,"bbox":[100,278,170,24]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":12,"bbox":[290,296,65,0]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":12,"bbox":[355,210,220,82]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":12,"text":"数据地图 Agent","textPreview":"数据地图 Agent","textChars":10,"textLines":1,"bbox":[373,226,184,22]}
+{"kind":"textbox","id":"sh/z61032ls","slide":12,"text":"表字段上下文","textPreview":"表字段上下文","textChars":6,"textLines":1,"bbox":[373,258,184,18]}
+{"kind":"shape","id":"sh/al87ed8b","slide":12,"bbox":[615,210,220,82]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":12,"text":"数据标准 Agent","textPreview":"数据标准 Agent","textChars":10,"textLines":1,"bbox":[633,226,184,22]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":12,"text":"标准映射依据","textPreview":"标准映射依据","textChars":6,"textLines":1,"bbox":[633,258,184,18]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":12,"bbox":[355,330,220,82]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":12,"text":"安全扫描 Agent","textPreview":"安全扫描 Agent","textChars":10,"textLines":1,"bbox":[373,346,184,22]}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":12,"text":"敏感识别与等级","textPreview":"敏感识别与等级","textChars":7,"textLines":1,"bbox":[373,378,184,18]}
+{"kind":"shape","id":"sh/sfil0rqd","slide":12,"bbox":[615,330,220,82]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":12,"text":"血缘 Agent","textPreview":"血缘 Agent","textChars":8,"textLines":1,"bbox":[633,346,184,22]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":12,"text":"上下游使用场景","textPreview":"上下游使用场景","textChars":7,"textLines":1,"bbox":[633,378,184,18]}
+{"kind":"shape","id":"sh/ed8bat47","slide":12,"bbox":[835,296,75,0]}
+{"kind":"shape","id":"sh/7u54zido","slide":12,"bbox":[910,230,270,140]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":12,"text":"智能元数据补全能力","textPreview":"智能元数据补全能力","textChars":9,"textLines":1,"bbox":[932,252,226,24]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":12,"text":"生成中文名、备注、安全等级候选\n输出置信度、依据和风险提示\n等待用户确认后再提交","textPreview":"生成中文名、备注、安全等级候选 | 输出置信度、依据和风险提示 | 等待用户确认后再提交","textChars":40,"textLines":3,"bbox":[938,292,214,54]}
+{"kind":"shape","id":"sh/eloj2t83","slide":12,"bbox":[130,455,1020,60]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":12,"text":"上下文与知识库：固化已确认表，召回规则、标准、血缘、安全和历史经验，再生成候选。","textPreview":"上下文与知识库：固化已确认表，召回规则、标准、血缘、安全和历史经验，再生成候选。","textChars":40,"textLines":1,"bbox":[158,474,964,22]}
+{"kind":"notes","id":"nt/4fu18jqh","slide":12,"text":""}
+{"kind":"slide","id":"sl/lwval87e","slide":13,"title":"12 / 首期场景","textShapes":12}
+{"kind":"shape","id":"sh/ed8bat47","slide":13,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":13,"text":"12 / 首期场景","textPreview":"12 / 首期场景","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":13,"text":"首期选择智能元数据补全，是因为价值直观、风险可控、链路完整","textPreview":"首期选择智能元数据补全，是因为价值直观、风险可控、链路完整","textChars":29,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":13,"text":"它既能服务单表元数据治理，也能被资产盘点等入口复用。","textPreview":"它既能服务单表元数据治理，也能被资产盘点等入口复用。","textChars":26,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/eloj2t83","slide":13,"bbox":[75,210,265,180]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":13,"bbox":[75,210,8,180]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":13,"text":"价值直观","textPreview":"价值直观","textChars":4,"textLines":1,"bbox":[99,230,221,30]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":13,"text":"减少技术 Owner 手工补中文名、字段备注、安全等级的工作量。","textPreview":"减少技术 Owner 手工补中文名、字段备注、安全等级的工作量。","textChars":32,"textLines":1,"bbox":[99,272,221,106]}
+{"kind":"shape","id":"sh/epkzupwb","slide":13,"bbox":[365,210,265,180]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":13,"bbox":[365,210,8,180]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":13,"text":"能力可复用","textPreview":"能力可复用","textChars":5,"textLines":1,"bbox":[389,230,221,30]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":13,"text":"同一套补全能力支撑治理入口、盘点工单和后续批量补全。","textPreview":"同一套补全能力支撑治理入口、盘点工单和后续批量补全。","textChars":26,"textLines":1,"bbox":[389,272,221,106]}
+{"kind":"shape","id":"sh/fyxobm58","slide":13,"bbox":[655,210,265,180]}
+{"kind":"shape","id":"sh/8v6psfil","slide":13,"bbox":[655,210,8,180]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":13,"text":"风险可控","textPreview":"风险可控","textChars":4,"textLines":1,"bbox":[679,230,221,30]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":13,"text":"AI 只生成候选和依据，最终由用户确认，不直接改正式元数据。","textPreview":"AI 只生成候选和依据，最终由用户确认，不直接改正式元数据。","textChars":30,"textLines":1,"bbox":[679,272,221,106]}
+{"kind":"shape","id":"sh/fa9w3m94","slide":13,"bbox":[945,210,265,180]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":13,"bbox":[945,210,8,180]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":13,"text":"Demo 好验收","textPreview":"Demo 好验收","textChars":8,"textLines":1,"bbox":[969,230,221,30]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":13,"text":"能展示 Agent 协同、Tool 调用、候选生成、人工确认、流程提交。","textPreview":"能展示 Agent 协同、Tool 调用、候选生成、人工确认、流程提交。","textChars":36,"textLines":1,"bbox":[969,272,221,106]}
+{"kind":"shape","id":"sh/w3m94fu1","slide":13,"bbox":[100,470,1080,68]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":13,"text":"场景口径：元数据治理 Agent 是编排者，智能元数据补全是首期核心能力。","textPreview":"场景口径：元数据治理 Agent 是编排者，智能元数据补全是首期核心能力。","textChars":37,"textLines":1,"bbox":[125,492,1030,26]}
+{"kind":"notes","id":"nt/lwval87e","slide":13,"text":""}
+{"kind":"slide","id":"sl/25kb6xkf","slide":14,"title":"13 / Demo 链路","textShapes":19}
+{"kind":"shape","id":"sh/val87ed8","slide":14,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":14,"text":"13 / Demo 链路","textPreview":"13 / Demo 链路","textChars":12,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":14,"text":"Demo 要证明的是一条可审计的元数据补全闭环能跑通","textPreview":"Demo 要证明的是一条可审计的元数据补全闭环能跑通","textChars":26,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":14,"text":"重点不是炫模型，而是证明入口、编排、工具、候选、确认、提交这条链可交付。","textPreview":"重点不是炫模型，而是证明入口、编排、工具、候选、确认、提交这条链可交付。","textChars":36,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/vixczed8","slide":14,"bbox":[70,250,190,180]}
+{"kind":"shape","id":"sh/k3q5o7qp","slide":14,"bbox":[134,222,62,62]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":14,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[152,238,28,28]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":14,"text":"发起治理","textPreview":"发起治理","textChars":4,"textLines":1,"bbox":[90,302,150,28]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":14,"text":"用户选择单表并发起元数据治理","textPreview":"用户选择单表并发起元数据治理","textChars":14,"textLines":1,"bbox":[90,344,150,58]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":14,"bbox":[260,340,48,0]}
+{"kind":"shape","id":"sh/adsji5sn","slide":14,"bbox":[310,250,190,180]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":14,"bbox":[374,222,62,62]}
+{"kind":"textbox","id":"sh/sji5snel","slide":14,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[392,238,28,28]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":14,"text":"召回知识","textPreview":"召回知识","textChars":4,"textLines":1,"bbox":[330,302,150,28]}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":14,"text":"统一知识库提供规则、指引、FAQ 和历史经验","textPreview":"统一知识库提供规则、指引、FAQ 和历史经验","textChars":22,"textLines":1,"bbox":[330,344,150,58]}
+{"kind":"shape","id":"sh/lszqtcj6","slide":14,"bbox":[500,340,48,0]}
+{"kind":"shape","id":"sh/s72x4nap","slide":14,"bbox":[550,250,190,180]}
+{"kind":"shape","id":"sh/zidonyd0","slide":14,"bbox":[614,222,62,62]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":14,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[632,238,28,28]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":14,"text":"生成候选","textPreview":"生成候选","textChars":4,"textLines":1,"bbox":[570,302,150,28]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":14,"text":"AI 生成中文名、备注、安全等级建议","textPreview":"AI 生成中文名、备注、安全等级建议","textChars":18,"textLines":1,"bbox":[570,344,150,58]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":14,"bbox":[740,340,48,0]}
+{"kind":"shape","id":"sh/9cvixcze","slide":14,"bbox":[790,250,190,180]}
+{"kind":"shape","id":"sh/yxobm58z","slide":14,"bbox":[854,222,62,62]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":14,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[872,238,28,28]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":14,"text":"人工确认","textPreview":"人工确认","textChars":4,"textLines":1,"bbox":[810,302,150,28]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":14,"text":"用户查看置信度和依据后修改确认","textPreview":"用户查看置信度和依据后修改确认","textChars":15,"textLines":1,"bbox":[810,344,150,58]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":14,"bbox":[980,340,48,0]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":14,"bbox":[1030,250,190,180]}
+{"kind":"shape","id":"sh/dsji5sne","slide":14,"bbox":[1094,222,62,62]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":14,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1112,238,28,28]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":14,"text":"提交流程","textPreview":"提交流程","textChars":4,"textLines":1,"bbox":[1050,302,150,28]}
+{"kind":"textbox","id":"sh/61032lsz","slide":14,"text":"生成治理草案并提交 Mock Activiti","textPreview":"生成治理草案并提交 Mock Activiti","textChars":23,"textLines":1,"bbox":[1050,344,150,58]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":14,"text":"验收标准：候选值能说清依据，知识来源可追溯，写操作有确认记录，敏感上下文不进模型。","textPreview":"验收标准：候选值能说清依据，知识来源可追溯，写操作有确认记录，敏感上下文不进模型。","textChars":41,"textLines":1,"bbox":[120,552,1040,28]}
+{"kind":"notes","id":"nt/25kb6xkf","slide":14,"text":""}
+{"kind":"slide","id":"sl/7y1kre1w","slide":15,"title":"14 / 交付计划","textShapes":10}
+{"kind":"shape","id":"sh/90je9cvi","slide":15,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":15,"text":"14 / 交付计划","textPreview":"14 / 交付计划","textChars":9,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":15,"text":"实施路线按“先跑通、再接真、后扩面”推进","textPreview":"实施路线按“先跑通、再接真、后扩面”推进","textChars":20,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":15,"text":"这样能控制范围，也能让业务方尽早看到可演示成果。","textPreview":"这样能控制范围，也能让业务方尽早看到可演示成果。","textChars":24,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":15,"bbox":[110,220,300,245]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":15,"bbox":[110,220,300,54]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":15,"text":"阶段一：Demo 闭环","textPreview":"阶段一：Demo 闭环","textChars":11,"textLines":1,"bbox":[128,236,264,24]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":15,"text":"Mock Gateway\nMock Tool\n本地样例数据\n候选生成与确认","textPreview":"Mock Gateway | Mock Tool | 本地样例数据 | 候选生成与确认","textChars":37,"textLines":4,"bbox":[148,305,224,110]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":15,"bbox":[410,342,65,0]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":15,"bbox":[480,220,300,245]}
+{"kind":"shape","id":"sh/cvixczed","slide":15,"bbox":[480,220,300,54]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":15,"text":"阶段二：试点接入","textPreview":"阶段二：试点接入","textChars":8,"textLines":1,"bbox":[498,236,264,24]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":15,"text":"真实元数据 API\n安全扫描接口\nGoldenDB 任务态\nActiviti 流程","textPreview":"真实元数据 API | 安全扫描接口 | GoldenDB 任务态 | Activiti 流程","textChars":41,"textLines":4,"bbox":[518,305,224,110]}
+{"kind":"shape","id":"sh/54zidony","slide":15,"bbox":[780,342,65,0]}
+{"kind":"shape","id":"sh/cj6tovah","slide":15,"bbox":[850,220,300,245]}
+{"kind":"shape","id":"sh/nyd0z610","slide":15,"bbox":[850,220,300,54]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":15,"text":"阶段三：生产扩展","textPreview":"阶段三：生产扩展","textChars":8,"textLines":1,"bbox":[868,236,264,24]}
+{"kind":"textbox","id":"sh/1032lszq","slide":15,"text":"资产盘点复用\n批量补全\n调度补偿\n多子 Agent 协同","textPreview":"资产盘点复用 | 批量补全 | 调度补偿 | 多子 Agent 协同","textChars":28,"textLines":4,"bbox":[888,305,224,110]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":15,"text":"交付节奏：不等所有系统一次性打通，先用最小闭环证明价值，再按接口成熟度替换 Mock。","textPreview":"交付节奏：不等所有系统一次性打通，先用最小闭环证明价值，再按接口成熟度替换 Mock。","textChars":43,"textLines":1,"bbox":[120,552,1040,28]}
+{"kind":"notes","id":"nt/7y1kre1w","slide":15,"text":""}
+{"kind":"slide","id":"sl/8z25kb6x","slide":16,"title":"15 / 风险与治理","textShapes":15}
+{"kind":"shape","id":"sh/epkzupwb","slide":16,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":16,"text":"15 / 风险与治理","textPreview":"15 / 风险与治理","textChars":10,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/wval87ed","slide":16,"text":"交付管理要把 AI 风险前置成规则，而不是上线后再补","textPreview":"交付管理要把 AI 风险前置成规则，而不是上线后再补","textChars":26,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":16,"text":"资产助手涉及企业内部数据和写操作，必须从第一版就有治理边界。","textPreview":"资产助手涉及企业内部数据和写操作，必须从第一版就有治理边界。","textChars":30,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":16,"bbox":[80,210,330,150]}
+{"kind":"shape","id":"sh/psfil0rq","slide":16,"bbox":[80,210,8,150]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":16,"text":"权限风险","textPreview":"权限风险","textChars":4,"textLines":1,"bbox":[104,230,286,30]}
+{"kind":"textbox","id":"sh/7u54zido","slide":16,"text":"所有调用复用 Gateway 身份透传；Tool 层按用户权限和数据权限校验。","textPreview":"所有调用复用 Gateway 身份透传；Tool 层按用户权限和数据权限校验。","textChars":39,"textLines":1,"bbox":[104,272,286,76]}
+{"kind":"shape","id":"sh/ed8bat47","slide":16,"bbox":[475,210,330,150]}
+{"kind":"shape","id":"sh/onyd0z61","slide":16,"bbox":[475,210,8,150]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":16,"text":"写操作风险","textPreview":"写操作风险","textChars":5,"textLines":1,"bbox":[499,230,286,30]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":16,"text":"AI 只给候选，提交、回写、审批必须进入人工确认和状态机。","textPreview":"AI 只给候选，提交、回写、审批必须进入人工确认和状态机。","textChars":29,"textLines":1,"bbox":[499,272,286,76]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":16,"bbox":[870,210,330,150]}
+{"kind":"shape","id":"sh/ovahoza1","slide":16,"bbox":[870,210,8,150]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":16,"text":"知识与上下文失控","textPreview":"知识与上下文失控","textChars":8,"textLines":1,"bbox":[894,230,286,30]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":16,"text":"知识库召回和业务上下文都先裁剪、脱敏、权限过滤，敏感信息不进模型。","textPreview":"知识库召回和业务上下文都先裁剪、脱敏、权限过滤，敏感信息不进模型。","textChars":33,"textLines":1,"bbox":[894,272,286,76]}
+{"kind":"shape","id":"sh/vahoza1g","slide":16,"bbox":[80,420,330,150]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":16,"bbox":[80,420,8,150]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":16,"text":"长流程中断","textPreview":"长流程中断","textChars":5,"textLines":1,"bbox":[104,440,286,30]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":16,"text":"调度系统负责轮询、补偿、超时提醒，不让会话长期挂起。","textPreview":"调度系统负责轮询、补偿、超时提醒，不让会话长期挂起。","textChars":26,"textLines":1,"bbox":[104,482,286,76]}
+{"kind":"shape","id":"sh/oza1gvy9","slide":16,"bbox":[475,420,330,150]}
+{"kind":"shape","id":"sh/zed8v6ps","slide":16,"bbox":[475,420,8,150]}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":16,"text":"工具失控","textPreview":"工具失控","textChars":4,"textLines":1,"bbox":[499,440,286,30]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":16,"text":"Agent 网关统一注册工具、限制白名单、审计调用和控制限流。","textPreview":"Agent 网关统一注册工具、限制白名单、审计调用和控制限流。","textChars":31,"textLines":1,"bbox":[499,482,286,76]}
+{"kind":"shape","id":"sh/obm58z25","slide":16,"bbox":[870,420,330,150]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":16,"bbox":[870,420,8,150]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":16,"text":"效果不可评估","textPreview":"效果不可评估","textChars":6,"textLines":1,"bbox":[894,440,286,30]}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":16,"text":"OpenTelemetry + Langfuse 记录 Prompt、Tool、Trace 和用户反馈。","textPreview":"OpenTelemetry + Langfuse 记录 Prompt、Tool、Trace 和用户反馈。","textChars":52,"textLines":1,"bbox":[894,482,286,76]}
+{"kind":"notes","id":"nt/8z25kb6x","slide":16,"text":""}
+{"kind":"slide","id":"sl/54zidony","slide":17,"title":"16 / 下一步决策","textShapes":10}
+{"kind":"shape","id":"sh/m94fu18j","slide":17,"bbox":[0,0,1280,64]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":17,"text":"16 / 下一步决策","textPreview":"16 / 下一步决策","textChars":10,"textLines":1,"bbox":[64,22,600,22]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":17,"text":"本次汇报希望确认首期交付范围和试点资源","textPreview":"本次汇报希望确认首期交付范围和试点资源","textChars":19,"textLines":1,"bbox":[64,92,990,86]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":17,"text":"明确边界后，资产助手就可以从 Demo 进入真实接口联调。","textPreview":"明确边界后，资产助手就可以从 Demo 进入真实接口联调。","textChars":29,"textLines":1,"bbox":[66,180,1000,34]}
+{"kind":"shape","id":"sh/qxs72x4n","slide":17,"bbox":[90,210,330,170]}
+{"kind":"shape","id":"sh/xobm58z2","slide":17,"bbox":[90,210,8,170]}
+{"kind":"textbox","id":"sh/83itgfml","slide":17,"text":"确认首期范围","textPreview":"确认首期范围","textChars":6,"textLines":1,"bbox":[114,230,286,30]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":17,"text":"以元数据治理 Agent 的智能元数据补全为首期能力，优先跑通单表治理闭环。","textPreview":"以元数据治理 Agent 的智能元数据补全为首期能力，优先跑通单表治理闭环。","textChars":38,"textLines":1,"bbox":[114,272,286,96]}
+{"kind":"shape","id":"sh/mtwra5gb","slide":17,"bbox":[475,210,330,170]}
+{"kind":"shape","id":"sh/oj2t83it","slide":17,"bbox":[475,210,8,170]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":17,"text":"确认知识库与上下文范围","textPreview":"确认知识库与上下文范围","textChars":11,"textLines":1,"bbox":[499,230,286,30]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":17,"text":"明确接口、知识库调用范围、知识版本，以及哪些上下文可进模型。","textPreview":"明确接口、知识库调用范围、知识版本，以及哪些上下文可进模型。","textChars":30,"textLines":1,"bbox":[499,272,286,96]}
+{"kind":"shape","id":"sh/vy90je9c","slide":17,"bbox":[860,210,330,170]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":17,"bbox":[860,210,8,170]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":17,"text":"确认试点方式","textPreview":"确认试点方式","textChars":6,"textLines":1,"bbox":[884,230,286,30]}
+{"kind":"textbox","id":"sh/61032lsz","slide":17,"text":"先在测试环境联调，选取典型表和盘点任务作为试点样例。","textPreview":"先在测试环境联调，选取典型表和盘点任务作为试点样例。","textChars":26,"textLines":1,"bbox":[884,272,286,96]}
+{"kind":"shape","id":"sh/vmtwra5g","slide":17,"bbox":[120,470,1040,82]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":17,"text":"建议结论：先交付一个可用、可控、知识可引用、上下文可管理、全程可审计的智能元数据补全闭环。","textPreview":"建议结论：先交付一个可用、可控、知识可引用、上下文可管理、全程可审计的智能元数据补全闭环。","textChars":45,"textLines":1,"bbox":[150,492,980,36]}
+{"kind":"notes","id":"nt/54zidony","slide":17,"text":""}
