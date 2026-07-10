@@ -64,11 +64,11 @@
 
 1. 数据资产助手适合采用 LangGraph 做 Agent 编排，用 LangChain Core 做 Prompt、Runnable、Tool Calling 和模型调用适配。
 2. 数据资产助手作为数小智主 Agent 下的数据资产领域专家助手，不直接替代数小智。
-3. 现有数据资产管理平台 Gateway、Java API、ES、Oracle / GoldenDB、Activiti 等能力应优先复用。
+3. 原数据资产平台入口网关不作为 Agent 网关复用，需要新建 Agent 网关；现有 Java API、ES、Oracle / GoldenDB、Activiti 等平台能力应优先复用。
 4. 现有 Java API 是基础能力，第一阶段封装为 Tool；复杂可复用领域能力沉淀为 Skill；跨团队复用能力再演进为 MCP。
 5. 可观测直接对接公司已有 OpenTelemetry + Langfuse 平台，并按测试/生产环境隔离。
 6. 上下文管理需要独立设计，统一组织用户、页面、资产、任务、证据、记忆和权限上下文。
-7. Demo 阶段优先使用 Mock Gateway、Mock Tool、Mock 数据，预留真实接口适配。
+7. Demo 阶段优先使用 Mock Agent 网关、Mock Tool、Mock 数据，预留真实接口适配。
 8. 生产环境正式接口位于核心网，测试环境只用于测试和联调；大模型、可观测、Redis、助手库表均需要分环境接入。
 
 ## 6. 目录结构

@@ -4,11 +4,11 @@
 
 当前已经可以基于技术选型进入 Demo 设计和开发。
 
-Demo 不建议一开始接生产 Oracle、GoldenDB、Elasticsearch、Activiti 和正式 Gateway，而是采用：
+Demo 不建议一开始接生产 Oracle、GoldenDB、Elasticsearch、Activiti 和生产 Agent 网关，而是采用：
 
 ```text
 HTML 交互原型
-  -> Gateway Mock
+  -> Agent 网关 Mock
   -> FastAPI AI 助手服务
   -> LangGraph 编排
   -> Mock Tool Adapter
@@ -339,7 +339,7 @@ Demo 开发前需要补齐以下 Mock 数据：
 
 | 待办项 | 推荐实现方式 | 首版取舍 |
 | --- | --- | --- |
-| Demo 代码工程尚未创建 | 在 `数据资产助手/demo/` 下新建独立 Python 工程，使用 FastAPI + LangGraph + 本地 Mock Tool；不要混入现有文档目录逻辑 | 先做可本地启动的最小工程，不接真实 Gateway、Redis、GoldenDB |
+| Demo 代码工程尚未创建 | 在 `数据资产助手/demo/` 下新建独立 Python 工程，使用 FastAPI + LangGraph + 本地 Mock Tool；不要混入现有文档目录逻辑 | 先做可本地启动的最小工程，不接真实 Agent 网关、Redis、GoldenDB |
 | Mock 数据 JSON 尚未落文件 | 按业务对象拆分为 `assets.json`、`standards.json`、`lineage.json`、`security_scan.json`、`datasource_tasks.json`、`user_preferences.json` | 数据量少但字段完整，每类保留 2 到 3 条样例，优先覆盖演示链路 |
 | 交互原型尚未对接 FastAPI | 保留当前 HTML 原型，新增 `apiClient` 封装，优先对接 `/assistant/chat`、`/assistant/confirm`、`/assistant/tasks/{task_id}` | 不引入 React / Vue，避免 Demo 前端工程化成本过高 |
 | LangGraph 节点边界还需要落实到代码 | 按“意图识别 -> 路由 -> 子 Agent 节点 -> Tool 调用 -> 确认节点 -> 写操作执行 -> 结果生成”拆节点 | 首版可以用规则识别意图，不强依赖真实大模型；保留 LLM 适配接口 |
@@ -357,11 +357,11 @@ Demo 开发前需要补齐以下 Mock 数据：
 6. 最后把 HTML 原型接入 FastAPI
 ```
 
-首版 Demo 可以先把 Redis、GoldenDB、真实 Gateway、真实 Langfuse 都替换成本地内存和日志输出，只要代码里保留替换点即可。
+首版 Demo 可以先把 Redis、GoldenDB、真实 Agent 网关、真实 Langfuse 都替换成本地内存和日志输出，只要代码里保留替换点即可。
 
 ### 9.2 接真实接口前必须确认
 
-1. Gateway 转发 FastAPI 的 Header / Cookie / Body 规范。
+1. Agent 网关转发 FastAPI 的 Header / Cookie / Body 规范。
 2. token 类型、有效期、刷新机制。
 3. 数据地图搜索接口是直接查 ES，还是调用平台 Java 搜索接口。
 4. 元数据详情、数据标准、血缘、安全扫描、Activiti 的真实接口地址、入参、出参和负责人。

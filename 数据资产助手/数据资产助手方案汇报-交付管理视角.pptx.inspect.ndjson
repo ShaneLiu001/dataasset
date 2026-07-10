@@ -28,7 +28,7 @@
 {"kind":"shape","id":"sh/3q5o7qpg","slide":2,"bbox":[670,220,260,230]}
 {"kind":"shape","id":"sh/w3m94fu1","slide":2,"bbox":[670,220,8,230]}
 {"kind":"textbox","id":"sh/loj2t83i","slide":2,"text":"怎么落地","textPreview":"怎么落地","textChars":4,"textLines":1,"bbox":[694,240,216,30]}
-{"kind":"textbox","id":"sh/ex0nuxc3","slide":2,"text":"复用现有 Gateway、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textPreview":"复用现有 Gateway、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textChars":54,"textLines":1,"bbox":[694,282,216,156]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":2,"text":"新建 Agent 网关、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textPreview":"新建 Agent 网关、Java API、ES、Activiti、调度平台，先用 Demo 跑通最小闭环。","textChars":54,"textLines":1,"bbox":[694,282,216,156]}
 {"kind":"shape","id":"sh/3itgfmlk","slide":2,"bbox":[970,220,240,230]}
 {"kind":"shape","id":"sh/szqtcj6t","slide":2,"bbox":[970,220,8,230]}
 {"kind":"textbox","id":"sh/lkjm1cfa","slide":2,"text":"怎么验收","textPreview":"怎么验收","textChars":4,"textLines":1,"bbox":[994,240,196,30]}
@@ -79,7 +79,7 @@
 {"kind":"shape","id":"sh/h0fepkzu","slide":4,"bbox":[900,330,300,170]}
 {"kind":"shape","id":"sh/a9w3m94f","slide":4,"bbox":[900,330,8,170]}
 {"kind":"textbox","id":"sh/zupwb2hw","slide":4,"text":"负责执行","textPreview":"负责执行","textChars":4,"textLines":1,"bbox":[924,350,256,30]}
-{"kind":"textbox","id":"sh/orytsvu9","slide":4,"text":"Gateway、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textPreview":"Gateway、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textChars":46,"textLines":1,"bbox":[924,392,256,96]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":4,"text":"Agent 网关、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textPreview":"Agent 网关、Java API、ES、Activiti、调度平台、GoldenDB、审计。","textChars":46,"textLines":1,"bbox":[924,392,256,96]}
 {"kind":"textbox","id":"sh/hcrmhk3q","slide":4,"text":"一句话：AI 负责把任务组织好，平台负责把动作执行稳。","textPreview":"一句话：AI 负责把任务组织好，平台负责把动作执行稳。","textChars":27,"textLines":1,"bbox":[180,570,920,32]}
 {"kind":"notes","id":"nt/val87ed8","slide":4,"text":""}
 {"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"04 / 产品形态","textShapes":12}
@@ -188,7 +188,7 @@
 {"kind":"textbox","id":"sh/jqh0fepk","slide":8,"text":"Tool Adapter / Tool Registry / Agent 网关 / MCP 演进","textPreview":"Tool Adapter / Tool Registry / Agent 网关 / MCP 演进","textChars":48,"textLines":1,"bbox":[350,403,760,22]}
 {"kind":"shape","id":"sh/q5o7qpg3","slide":8,"bbox":[140,450,1000,44]}
 {"kind":"textbox","id":"sh/1kre1w7m","slide":8,"text":"平台能力","textPreview":"平台能力","textChars":4,"textLines":1,"bbox":[165,461,160,22]}
-{"kind":"textbox","id":"sh/c3ylc7u5","slide":8,"text":"Gateway / Java API / ES / Activiti / 调度平台","textPreview":"Gateway / Java API / ES / Activiti / 调度平台","textChars":41,"textLines":1,"bbox":[350,461,760,22]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":8,"text":"Agent 网关 / Java API / ES / Activiti / 调度平台","textPreview":"Agent 网关 / Java API / ES / Activiti / 调度平台","textChars":41,"textLines":1,"bbox":[350,461,760,22]}
 {"kind":"shape","id":"sh/orytsvu9","slide":8,"bbox":[140,508,1000,44]}
 {"kind":"textbox","id":"sh/hcrmhk3q","slide":8,"text":"数据与观测","textPreview":"数据与观测","textChars":5,"textLines":1,"bbox":[165,519,160,22]}
 {"kind":"textbox","id":"sh/al87ed8b","slide":8,"text":"Redis / GoldenDB / OpenTelemetry / Langfuse / 审计","textPreview":"Redis / GoldenDB / OpenTelemetry / Langfuse / 审计","textChars":48,"textLines":1,"bbox":[350,519,760,22]}
@@ -207,7 +207,7 @@
 {"kind":"shape","id":"sh/nuxc3ylc","slide":9,"bbox":[258,235,165,215]}
 {"kind":"shape","id":"sh/y90je9cv","slide":9,"bbox":[258,235,165,44]}
 {"kind":"textbox","id":"sh/5wjudg7a","slide":9,"text":"接入与服务","textPreview":"接入与服务","textChars":5,"textLines":1,"bbox":[270,247,141,20]}
-{"kind":"textbox","id":"sh/gbq1oryt","slide":9,"text":"现有 Gateway\nFastAPI\n会话管理","textPreview":"现有 Gateway | FastAPI | 会话管理","textChars":23,"textLines":3,"bbox":[274,314,133,92]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":9,"text":"Agent 网关\nFastAPI\n会话管理","textPreview":"Agent 网关 | FastAPI | 会话管理","textChars":23,"textLines":3,"bbox":[274,314,133,92]}
 {"kind":"shape","id":"sh/n29gr2p8","slide":9,"bbox":[423,340,33,0]}
 {"kind":"shape","id":"sh/yhgn29gr","slide":9,"bbox":[458,235,165,215]}
 {"kind":"shape","id":"sh/58z25kb6","slide":9,"bbox":[458,235,165,44]}
@@ -401,7 +401,7 @@
 {"kind":"shape","id":"sh/9s36hcrm","slide":15,"bbox":[110,220,300,245]}
 {"kind":"shape","id":"sh/y1kre1w7","slide":15,"bbox":[110,220,300,54]}
 {"kind":"textbox","id":"sh/rmhk3q5o","slide":15,"text":"阶段一：Demo 闭环","textPreview":"阶段一：Demo 闭环","textChars":11,"textLines":1,"bbox":[128,236,264,24]}
-{"kind":"textbox","id":"sh/g3ex0nux","slide":15,"text":"Mock Gateway\nMock Tool\n本地样例数据\n候选生成与确认","textPreview":"Mock Gateway | Mock Tool | 本地样例数据 | 候选生成与确认","textChars":37,"textLines":4,"bbox":[148,305,224,110]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":15,"text":"Mock Agent 网关\nMock Tool\n本地样例数据\n候选生成与确认","textPreview":"Mock Agent 网关 | Mock Tool | 本地样例数据 | 候选生成与确认","textChars":37,"textLines":4,"bbox":[148,305,224,110]}
 {"kind":"shape","id":"sh/5o7qpg3e","slide":15,"bbox":[410,342,65,0]}
 {"kind":"shape","id":"sh/5gbq1ory","slide":15,"bbox":[480,220,300,245]}
 {"kind":"shape","id":"sh/cvixczed","slide":15,"bbox":[480,220,300,54]}
@@ -422,7 +422,7 @@
 {"kind":"shape","id":"sh/e1w7mp0b","slide":16,"bbox":[80,210,330,150]}
 {"kind":"shape","id":"sh/psfil0rq","slide":16,"bbox":[80,210,8,150]}
 {"kind":"textbox","id":"sh/w7mp0bi9","slide":16,"text":"权限风险","textPreview":"权限风险","textChars":4,"textLines":1,"bbox":[104,230,286,30]}
-{"kind":"textbox","id":"sh/7u54zido","slide":16,"text":"所有调用复用 Gateway 身份透传；Tool 层按用户权限和数据权限校验。","textPreview":"所有调用复用 Gateway 身份透传；Tool 层按用户权限和数据权限校验。","textChars":39,"textLines":1,"bbox":[104,272,286,76]}
+{"kind":"textbox","id":"sh/7u54zido","slide":16,"text":"所有调用新建 Agent 网关身份透传；Tool 层按用户权限和数据权限校验。","textPreview":"所有调用新建 Agent 网关身份透传；Tool 层按用户权限和数据权限校验。","textChars":39,"textLines":1,"bbox":[104,272,286,76]}
 {"kind":"shape","id":"sh/ed8bat47","slide":16,"bbox":[475,210,330,150]}
 {"kind":"shape","id":"sh/onyd0z61","slide":16,"bbox":[475,210,8,150]}
 {"kind":"textbox","id":"sh/d8v6psfi","slide":16,"text":"写操作风险","textPreview":"写操作风险","textChars":5,"textLines":1,"bbox":[499,230,286,30]}

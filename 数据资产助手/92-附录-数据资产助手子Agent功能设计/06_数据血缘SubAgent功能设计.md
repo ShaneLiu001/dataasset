@@ -75,7 +75,7 @@ income_amt 字段是怎么加工出来的？
 数据血缘 SubAgent -> Lineage Tool Adapter -> 现有血缘接口
 
 第二阶段：
-数据血缘 SubAgent -> MCP Tool Gateway -> Lineage MCP Server -> 现有血缘接口
+数据血缘 SubAgent -> Agent 网关 -> Lineage MCP Server -> 现有血缘接口
 ```
 
 | 工具 | 用途 | 数据来源 |
@@ -186,7 +186,7 @@ SQL 注释识别规则
 
 ```mermaid
 flowchart LR
-  Xiaozhi[数小智主 Agent] --> Gateway[MCP Tool Gateway]
+  Xiaozhi[数小智主 Agent] --> Gateway[Agent 网关]
   AssetAgent[数据资产助手] --> Gateway
   ModelingAgent[数据建模助手] --> Gateway
   MetricAgent[数据指标助手] --> Gateway
@@ -302,5 +302,5 @@ flowchart TB
 | 阶段 1：Tool 快速验证 | 跑通血缘查询和 SQL 注释识别 | 封装本地 Lineage Tool Adapter，对接现有血缘接口和 SQL 任务详情接口 | 可用的血缘 Agent Demo |
 | 阶段 2：业务流程固化 | 固化用户问题到工具调用的映射 | 完善意图识别、槽位抽取、血缘解释、SQL 注释识别、目标表备注建议 | 稳定的血缘 Agent 流程 |
 | 阶段 3：工具协议沉淀 | 为 MCP 化做准备 | 统一入参、出参、错误码、trace_id、审计字段、脱敏策略 | 血缘工具协议说明 |
-| 阶段 4：MCP 化 | 支撑多 Agent 复用 | 建设 Lineage MCP Server，接入 MCP Tool Gateway | 可复用的血缘 MCP 能力 |
+| 阶段 4：MCP 化 | 支撑多 Agent 复用 | 建设 Lineage MCP Server，接入 Agent 网关 | 可复用的血缘 MCP 能力 |
 | 阶段 5：平台化运营 | 进入生产运营 | 接入 OpenTelemetry + Langfuse，配置告警、评测、工具版本管理 | 可观测、可评测、可演进的血缘工具体系 |

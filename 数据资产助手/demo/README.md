@@ -3,7 +3,7 @@
 这个 Demo 用于验证数据资产助手的最小可行链路：
 
 ```text
-Gateway Mock -> FastAPI -> LangGraph 风格编排 -> Mock Tool Adapter -> 本地 JSON 数据
+Agent 网关 Mock -> FastAPI -> LangGraph 风格编排 -> Mock Tool Adapter -> 本地 JSON 数据
 ```
 
 首版先实现单表元数据治理主链路，并补充“元数据治理 Agent 首期能力：智能元数据补全”：
@@ -118,7 +118,7 @@ curl http://127.0.0.1:8010/assistant/metadata-prefill/tasks/<task_id>/evidence/i
 
 ## 当前取舍
 
-- 不连接真实 Gateway、ES、Oracle、GoldenDB、Activiti。
+- 不连接真实 Agent 网关、ES、Oracle、GoldenDB、Activiti。
 - 不保存明文 token、密码、连接串。
 - 编排实现采用 LangGraph 风格状态机，保留后续替换为真实 LangGraph `StateGraph` 的边界。
 - 智能元数据补全使用 Mock 数据、规则和历史样例模拟，暂不接真实大模型和真实安全等级确认接口。

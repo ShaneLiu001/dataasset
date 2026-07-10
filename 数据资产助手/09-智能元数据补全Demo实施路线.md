@@ -38,7 +38,7 @@
 
 ### 2.2 技术目标
 
-1. 验证 `Gateway Mock -> FastAPI -> 编排节点 -> Mock Tool -> 本地 JSON` 的最小链路。
+1. 验证 `Agent 网关 Mock -> FastAPI -> 编排节点 -> Mock Tool -> 本地 JSON` 的最小链路。
 2. 验证智能预填能力可以被不同业务入口调用。
 3. 验证候选值、置信度、依据、人工修改和最终提交值的结构化表达。
 4. 为后续接入真实元数据 API、安全等级确认接口、GoldenDB、Activiti 预留边界。
