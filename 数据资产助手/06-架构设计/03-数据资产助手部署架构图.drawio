@@ -8,7 +8,7 @@
         <mxCell id="title" value="03-数据资产助手部署架构图" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="520" y="24" width="760" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，调度平台、大模型与可观测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="生产 / 测试分环境部署，生产正式接口位于核心网，调度平台、大模型与可观测评测平台按环境独立对接" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#4B5563;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="460" y="66" width="880" height="30" as="geometry"/>
         </mxCell>
 
@@ -21,7 +21,7 @@
         <mxCell id="legend-mock" value="Mock / 联调" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1550" y="28" width="110" height="28" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-state" value="状态 / 观测" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="legend-state" value="状态 / 观测 / 评测" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1330" y="64" width="100" height="28" as="geometry"/>
         </mxCell>
         <mxCell id="legend-core" value="生产核心网" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FDECEC;strokeColor=#C7362F;fontSize=12;" vertex="1" parent="1">
@@ -38,7 +38,7 @@
         <mxCell id="test-user" value="测试用户 / 产品经理 / 开发联调" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="120" y="205" width="150" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="test-gateway" value="测试入口&lt;br&gt;Gateway Mock / 测试 Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
+        <mxCell id="test-gateway" value="测试入口&lt;br&gt;Agent 网关 Mock / 测试 Agent 网关" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="320" y="205" width="170" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="test-assistant" value="数据资产助手测试服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 多主控&lt;br&gt;Prompt / Control Router" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
@@ -63,7 +63,7 @@
         <mxCell id="test-db" value="测试助手库表&lt;br&gt;GoldenDB / Schema" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1010" y="350" width="160" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="test-obs" value="测试可观测平台&lt;br&gt;OpenTelemetry + Langfuse" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+        <mxCell id="test-obs" value="测试可观测与评测平台&lt;br&gt;OpenTelemetry + Langfuse&lt;br&gt;评测数据集 / 回归结果" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="1200" y="350" width="220" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="test-scheduler" value="测试调度任务&lt;br&gt;XXL-JOB / Mock 定时器&lt;br&gt;轮询 / 补偿 / 提醒" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9E7;strokeColor=#D99525;fontSize=12;" vertex="1" parent="1">
@@ -73,7 +73,7 @@
         <mxCell id="prod-user" value="正式用户&lt;br&gt;数据资产管理平台入口" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="120" y="690" width="150" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="prod-gateway" value="生产 Gateway&lt;br&gt;登录 Token / 用户身份透传" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=13;" vertex="1" parent="1">
+        <mxCell id="prod-gateway" value="生产 Agent 网关&lt;br&gt;登录 Token / 用户身份透传" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="320" y="690" width="170" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="prod-assistant" value="数据资产助手生产服务&lt;br&gt;FastAPI&lt;br&gt;LangGraph 多主控&lt;br&gt;Prompt / Control Router" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontSize=13;fontStyle=1;" vertex="1" parent="1">
@@ -111,7 +111,7 @@
         <mxCell id="prod-db" value="生产助手库表&lt;br&gt;GoldenDB / Schema" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="1010" y="880" width="160" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="prod-obs" value="生产可观测平台&lt;br&gt;OpenTelemetry + Langfuse&lt;br&gt;敏感字段脱敏" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
+        <mxCell id="prod-obs" value="生产可观测与评测平台&lt;br&gt;OpenTelemetry + Langfuse&lt;br&gt;效果指标 / 脱敏反馈" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="1200" y="880" width="220" height="80" as="geometry"/>
         </mxCell>
 
@@ -119,7 +119,7 @@
           <mxGeometry x="120" y="500" width="260" height="70" as="geometry"/>
         </mxCell>
 
-        <mxCell id="rule-note" value="部署原则：测试与生产配置、密钥、模型、主控路由规则、调度任务、可观测、Redis、助手库表全部隔离；生产写操作必须保留用户确认、流程实例与审计链路。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;align=left;spacingLeft=12;" vertex="1" parent="1">
+        <mxCell id="rule-note" value="部署原则：测试与生产配置、密钥、模型、主控路由规则、调度任务、可观测评测、Redis、助手库表全部隔离；生产写操作必须保留用户确认、流程实例、审计链路与脱敏反馈。" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8DDE5;fontSize=13;align=left;spacingLeft=12;" vertex="1" parent="1">
           <mxGeometry x="430" y="1095" width="940" height="46" as="geometry"/>
         </mxCell>
 
