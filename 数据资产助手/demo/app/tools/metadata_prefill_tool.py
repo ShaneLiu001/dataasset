@@ -60,22 +60,22 @@ def generate_metadata_prefill(
         "fields": fields,
         "collaboration": [
             {
-                "agent": "数据地图 Agent",
+                "agent": "元数据查询能力",
                 "contribution": "提供表、字段、负责人、已有中文名和备注上下文",
                 "tools": ["get_asset_detail_tool"],
             },
             {
-                "agent": "数据标准 Agent",
+                "agent": "数据标准与词根能力",
                 "contribution": "提供字段标准名称、命名规则和标准映射依据",
                 "tools": ["get_data_standard_tool"],
             },
             {
-                "agent": "安全扫描 Agent",
+                "agent": "安全扫描能力",
                 "contribution": "提供敏感字段识别、安全等级推荐和风险说明",
                 "tools": ["scan_security_level_tool"],
             },
             {
-                "agent": "数据血缘 Agent",
+                "agent": "血缘查询能力",
                 "contribution": "补充上下游加工和使用场景依据",
                 "tools": ["query_upstream_lineage_tool", "get_sql_task_detail_tool"],
             },
@@ -131,8 +131,8 @@ def _build_table_candidate(asset: dict[str, Any], lineage: dict[str, Any]) -> di
         "suggested_comment": table_comment,
         "confidence": "medium" if asset.get("description") else "low",
         "evidence": [
-            "数据地图 Agent 返回表基础信息和已有描述",
-            "数据血缘 Agent 返回下游报表和加工任务上下文",
+            "元数据查询能力返回表基础信息和已有描述",
+            "血缘查询能力返回下游报表和加工任务上下文",
         ],
         "review_status": "pending",
     }
@@ -163,15 +163,15 @@ def _build_field_candidate(
     confidence = _confidence(field, standard, history, naming_rule, security_rule)
     evidence = []
     if field.get("cn_name") or field.get("comment"):
-        evidence.append("数据地图 Agent 返回已有人工维护内容，优先保留。")
+        evidence.append("元数据查询能力返回已有人工维护内容，优先保留。")
     if standard:
-        evidence.append(f"数据标准 Agent 命中标准：{standard['standard_name']}。")
+        evidence.append(f"数据标准与词根能力命中标准：{standard['standard_name']}。")
     if history:
         evidence.append(f"历史样例命中：{history['source']}。")
     if naming_rule:
         evidence.append(f"字段命名规则命中：{naming_rule['pattern']}。")
     if security_rule:
-        evidence.append(f"安全扫描 Agent 建议 {security_rule['recommended_security_level']} 级：{security_rule['reason']}")
+        evidence.append(f"安全扫描能力建议 {security_rule['recommended_security_level']} 级：{security_rule['reason']}")
     if sensitive_field:
         evidence.append(f"安全扫描识别敏感类型：{sensitive_field['type']}，脱敏策略：{sensitive_field['masking']}。")
     if not evidence:

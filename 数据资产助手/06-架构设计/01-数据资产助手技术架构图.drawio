@@ -45,7 +45,7 @@
         <mxCell id="graph" value="Agent 运行时&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;LangGraph 多主控主图&lt;br&gt;Prompt Router / Control Mode Router&lt;br&gt;Confirm / Resume / Handoff&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=14;fontStyle=1;" vertex="1" parent="lane_runtime">
           <mxGeometry x="740" y="80" width="215" height="110" as="geometry"/>
         </mxCell>
-        <mxCell id="agents" value="子 Agent 模块&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Python 包 / 运行时模块&lt;br&gt;地图 / 血缘 / 标准 / 安全 / 治理&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=14;fontStyle=1;" vertex="1" parent="lane_runtime">
+        <mxCell id="agents" value="业务专家 Agent 模块&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Python 包 / 运行时模块&lt;br&gt;准备 / 开发 / 运维&lt;br&gt;治理 / 安全&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=14;fontStyle=1;" vertex="1" parent="lane_runtime">
           <mxGeometry x="995" y="80" width="220" height="110" as="geometry"/>
         </mxCell>
         <mxCell id="tool" value="Tool Adapter 模块&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;HTTP Client / SDK&lt;br&gt;参数 Schema / 校验&lt;br&gt;结果规范化 / 错误处理&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAF2FF;strokeColor=#6D99D4;fontColor=#1F4D8F;fontSize=14;fontStyle=1;" vertex="1" parent="lane_runtime">

@@ -1,57 +1,47 @@
-# 92 附录 数据资产助手子 Agent 功能设计
+# 92 附录 数据资产助手模块能力设计
 
 ## 1. 设计目的
 
-本文档目录用于拆分数据资产助手内部的领域子 Agent，便于逐个梳理能力边界、触发意图、工具依赖、输入输出、确认点和后续实现优先级。
+本文档目录用于拆分数据资产助手可调用的平台模块能力，便于逐个梳理能力边界、触发意图、工具依赖、输入输出、确认点和后续实现优先级。
 
-数据资产助手是数小智主 Agent 下的数据资产领域专家助手。数据资产助手内部再细分多个子 Agent，分别处理数据地图、数据源、数据稽核、数据权限、安全扫描、数据血缘、元数据治理、数据标准、数据建模、数据指标等专业任务。
+数据资产助手是数小智主 Agent 下的数据资产领域专家助手。内部 Agent 不再按平台模块拆分，而是按业务视角抽象为数据准备专家、数据开发专家、数据运维专家、数据治理专家、数据安全专家等专家 Agent。数据地图、数据源、数据稽核、数据权限、安全扫描、数据血缘、元数据治理、数据标准、数据建模、数据指标等内容，作为专家 Agent 可调用的平台能力和工具能力沉淀。
 
-本目录作为汇报材料的附录使用，定位是“能力清单 / 专家分工 / 后续填充模板”，不放入主汇报链路。主汇报只需要说明数据资产助手内部有子 Agent 分工，评审追问具体能力边界时再展开本附录。
+本目录作为汇报材料的附录使用，定位是“模块能力清单 / 工具边界 / 后续填充模板”，不放入主汇报链路。主汇报只需要说明数据资产助手内部按业务专家分工，评审追问具体平台能力边界时再展开本附录。
 
-## 2. 子 Agent 清单
+## 2. 模块能力清单
 
-| 子 Agent | 文档 | 主要职责 |
+| 模块能力 | 文档 | 主要职责 | 主要归属专家 |
 | --- | --- | --- |
-| 数据地图 SubAgent | [01_数据地图SubAgent功能设计.md](01_数据地图SubAgent功能设计.md) | 资产搜索、表字段查询、数据地图结果解释 |
-| 数据源 SubAgent | [02_数据源SubAgent功能设计.md](02_数据源SubAgent功能设计.md) | 数据源登记、连通性、采集任务、状态跟踪 |
-| 数据稽核 SubAgent | [03_数据稽核SubAgent功能设计.md](03_数据稽核SubAgent功能设计.md) | 质量规则推荐、稽核配置、结果解释 |
-| 数据权限 SubAgent | [04_数据权限SubAgent功能设计.md](04_数据权限SubAgent功能设计.md) | 权限判断、权限申请、敏感字段访问控制 |
-| 安全扫描 SubAgent | [05_安全扫描SubAgent功能设计.md](05_安全扫描SubAgent功能设计.md) | 敏感数据识别、安全等级、风险扫描 |
-| 数据血缘 SubAgent | [06_数据血缘SubAgent功能设计.md](06_数据血缘SubAgent功能设计.md) | 上下游查询、字段血缘、影响分析 |
-| 元数据治理 SubAgent | [07_元数据治理SubAgent功能设计.md](07_元数据治理SubAgent功能设计.md) | 元数据补全、标准映射、治理审核 |
-| 数据标准 SubAgent | [08_数据标准SubAgent功能设计.md](08_数据标准SubAgent功能设计.md) | 标准查询、标准映射、标准落标建议 |
-| 数据建模 SubAgent | [09_数据建模SubAgent功能设计.md](09_数据建模SubAgent功能设计.md) | 主题域、逻辑模型、物理模型、表结构建议 |
-| 数据指标 SubAgent | [10_数据指标SubAgent功能设计.md](10_数据指标SubAgent功能设计.md) | 指标定义、口径解释、指标血缘、指标治理 |
+| 数据地图能力 | [数据地图能力设计](01_数据地图SubAgent功能设计.md) | 资产搜索、表字段查询、数据地图结果解释 | 数据准备专家、数据治理专家 |
+| 数据源能力 | [数据源能力设计](02_数据源SubAgent功能设计.md) | 数据源登记、连通性、采集任务、状态跟踪 | 数据准备专家 |
+| 数据稽核能力 | [数据稽核能力设计](03_数据稽核SubAgent功能设计.md) | 质量规则推荐、稽核配置、结果解释 | 数据开发专家、数据运维专家 |
+| 数据权限能力 | [数据权限能力设计](04_数据权限SubAgent功能设计.md) | 权限判断、权限申请、敏感字段访问控制 | 数据安全专家 |
+| 安全扫描能力 | [安全扫描能力设计](05_安全扫描SubAgent功能设计.md) | 敏感数据识别、安全等级、风险扫描 | 数据安全专家、数据治理专家 |
+| 数据血缘能力 | [数据血缘能力设计](06_数据血缘SubAgent功能设计.md) | 上下游查询、字段血缘、影响分析 | 数据准备专家、数据治理专家 |
+| 元数据治理能力 | [元数据治理能力设计](07_元数据治理SubAgent功能设计.md) | 元数据补全、标准映射、治理审核 | 数据治理专家 |
+| 数据标准能力 | [数据标准能力设计](08_数据标准SubAgent功能设计.md) | 标准查询、标准映射、标准落标建议 | 数据治理专家、数据准备专家 |
+| 数据建模能力 | [数据建模能力设计](09_数据建模SubAgent功能设计.md) | 主题域、逻辑模型、物理模型、表结构建议 | 数据准备专家 |
+| 数据指标能力 | [数据指标能力设计](10_数据指标SubAgent功能设计.md) | 指标定义、口径解释、指标血缘、指标治理 | 数据准备专家 |
 
 ## 3. 数据资产助手内部编排关系
 
-详细协同规则见：[子Agent协同编排关系.md](子Agent协同编排关系.md)。
+详细协同规则见：[模块能力协同编排关系](子Agent协同编排关系.md)。
 
 ```mermaid
 flowchart TB
   User[数小智主 Agent / 用户请求] --> AssetAgent[数据资产助手编排层<br/>Router / Planner / Executor / Aggregator]
 
-  AssetAgent --> MapAgent[数据地图 SubAgent]
-  AssetAgent --> SourceAgent[数据源 SubAgent]
-  AssetAgent --> QualityAgent[数据稽核 SubAgent]
-  AssetAgent --> PermissionAgent[数据权限 SubAgent]
-  AssetAgent --> SecurityAgent[安全扫描 SubAgent]
-  AssetAgent --> LineageAgent[数据血缘 SubAgent]
-  AssetAgent --> GovernanceAgent[元数据治理 SubAgent]
-  AssetAgent --> StandardAgent[数据标准 SubAgent]
-  AssetAgent --> ModelingAgent[数据建模 SubAgent]
-  AssetAgent --> MetricAgent[数据指标 SubAgent]
+  AssetAgent --> PrepareExpert[数据准备专家 Agent]
+  AssetAgent --> DevExpert[数据开发专家 Agent]
+  AssetAgent --> OpsExpert[数据运维专家 Agent]
+  AssetAgent --> GovernanceExpert[数据治理专家 Agent]
+  AssetAgent --> SecurityExpert[数据安全专家 Agent]
 
-  MapAgent --> Platform[数据资产管理平台接口]
-  SourceAgent --> Platform
-  QualityAgent --> Platform
-  PermissionAgent --> Platform
-  SecurityAgent --> Platform
-  LineageAgent --> Platform
-  GovernanceAgent --> Platform
-  StandardAgent --> Platform
-  ModelingAgent --> Platform
-  MetricAgent --> Platform
+  PrepareExpert --> Platform[数据资产管理平台接口 / Tool Adapter]
+  DevExpert --> Platform
+  OpsExpert --> Platform
+  GovernanceExpert --> Platform
+  SecurityExpert --> Platform
 
   Platform --> ES[Elasticsearch 数据地图搜索引擎]
   Platform --> DB[Oracle / GoldenDB<br/>平台后端数据库]
@@ -61,9 +51,9 @@ flowchart TB
 
 ## 4. 统一填写口径
 
-每个子 Agent 文档建议按以下维度补充：
+每个模块能力文档建议按以下维度补充：
 
-1. **职责边界**：这个子 Agent 负责什么，不负责什么。
+1. **职责边界**：这个模块能力负责什么，不负责什么。
 2. **典型问题**：用户会怎么问。
 3. **触发意图**：Router 如何识别并路由过来。
 4. **必要槽位**：执行任务需要哪些参数。
@@ -78,16 +68,15 @@ flowchart TB
 
 第一阶段建议优先做：
 
-1. 数据地图 SubAgent：最容易出效果，能支持查表、查字段、查指标。
-2. 数据血缘 SubAgent：能支撑影响分析和资产可信解释。
-3. 数据稽核 SubAgent：能展示从问答走向“生成规则草案”的能力。
-4. 数据权限 SubAgent：用于限制敏感字段和写操作风险。
+1. 数据准备专家：优先整合查表、查字段、查指标、查看血缘和数据源准备能力，最容易出效果。
+2. 数据治理专家：优先落 AI 元数据治理，复用标准、词根、血缘和安全扫描能力。
+3. 数据开发专家：先支持配置稽核、查看稽核详情，展示从问答走向规则配置的能力。
+4. 数据安全专家：用于安全扫描和数据权限申请，限制敏感字段和写操作风险。
 
 第二阶段再扩展：
 
-1. 数据源 SubAgent。
-2. 安全扫描 SubAgent。
-3. 元数据治理 SubAgent。
-4. 数据标准 SubAgent。
-5. 数据建模 SubAgent。
-6. 数据指标 SubAgent。
+1. 数据运维专家。
+2. 存储治理能力。
+3. 数据建模能力。
+4. 指标治理能力。
+5. 调度 DAG 分析能力。

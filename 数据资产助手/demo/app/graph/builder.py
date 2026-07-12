@@ -185,7 +185,7 @@ class DemoGraph:
         )
         state.next_actions = ["confirm_metadata_prefill", "edit_metadata_prefill", "view_prefill_evidence"]
         state.status = "waiting_confirm"
-        state.answer = "元数据治理 Agent 已协同数据地图、数据标准、安全扫描和数据血缘 Agent，生成智能元数据补全候选值，请确认后生成治理草案。"
+        state.answer = "数据治理专家已调用元数据查询、数据标准、词根、安全扫描和血缘查询能力，生成智能元数据补全候选值，请确认后生成治理草案。"
         store.save_confirm(confirm_id, state.model_dump())
 
     def _continue_governance_after_prefill_confirm(self, state: GraphState, payload: dict, tools: ToolRegistry) -> None:

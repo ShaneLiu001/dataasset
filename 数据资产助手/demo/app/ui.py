@@ -578,7 +578,7 @@ INDEX_HTML = """
           openDatasourceModal(datasourceFormCard.data.form);
         }
         if (response.need_confirm.type === "start_security_scan") {
-          openDecisionModal("是否立即进行安全扫描？", "元数据采集已完成。是否立即调用安全扫描 Agent，对该数据源采集到的元数据执行安全扫描？", {run_security_scan: true});
+          openDecisionModal("是否立即进行安全扫描？", "元数据采集已完成。是否立即调用数据安全专家，对该数据源采集到的元数据执行安全扫描？", {run_security_scan: true});
         }
         if (response.need_confirm.type === "create_security_ticket") {
           openDecisionModal("是否生成安全等级确认工单？", "安全扫描已完成。是否立即发起元数据及安全等级确认工单？", {create_ticket: true});
@@ -677,7 +677,7 @@ INDEX_HTML = """
         `).join("");
         body.innerHTML = `
           <div class="kv">
-            <div>承载 Agent</div><div>元数据治理 Agent</div>
+            <div>承载 Agent</div><div>数据治理专家 Agent</div>
             <div>能力</div><div>智能元数据补全</div>
             <div>表名</div><div>${escapeHtml(asset.table_name)}</div>
             <div>表中文名</div><div>${escapeHtml(asset.suggested_chinese_name)}</div>

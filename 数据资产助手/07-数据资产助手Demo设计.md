@@ -40,21 +40,21 @@ HTML 交互原型
 
 ```text
 用户输入表名
-  -> 数据地图 SubAgent 查询同名表候选
+  -> 数据准备专家调用元数据查询能力，查询同名表候选
   -> 用户二次确认唯一表
   -> 助手读取用户常用空间、项目、开发账号
   -> 用户确认或修改上下文
-  -> 数据标准 SubAgent 获取标准
-  -> 数据血缘 SubAgent 获取上游血缘和加工任务
-  -> 安全扫描 SubAgent 获取安全等级
-  -> 元数据治理 SubAgent 生成治理草案
+  -> 数据治理专家调用数据标准能力获取标准
+  -> 数据治理专家调用血缘查询能力获取上游血缘和加工任务
+  -> 数据治理专家调用数据安全专家或安全扫描能力获取安全等级
+  -> 数据治理专家生成治理草案
   -> 用户确认
   -> Mock Activiti 返回流程实例 ID
 ```
 
 演示价值：
 
-1. 证明 Agent 编排不是简单问答，而是多 Agent、多 Tool、多确认节点协同。
+1. 证明 Agent 编排不是简单问答，而是专家 Agent、多 Tool、多确认节点协同。
 2. 证明 LangGraph 适合承接状态流转和人工确认。
 3. 证明 Tool Adapter 可以先 Mock，后续替换真实接口。
 
@@ -70,14 +70,14 @@ HTML 交互原型
 
 ```text
 用户输入登记诉求
-  -> 数据源 SubAgent 识别数据源类型、环境、采集策略、安全扫描策略
+  -> 数据准备专家识别数据源类型、环境、采集策略、安全扫描策略
   -> 打开数据源登记表单 Mock
   -> 用户提交登记
   -> Mock 登记审批办结
   -> 创建元数据采集任务
   -> 采集完成后同步 ES 数据地图
-  -> 调用安全扫描 SubAgent
-  -> 安全扫描 SubAgent 返回敏感字段、安全等级和风险建议
+  -> 调用数据安全专家或安全扫描能力
+  -> 返回敏感字段、安全等级和风险建议
   -> 生成安全等级确认工单
   -> 提示后续绑定空间项目
 ```
@@ -85,7 +85,7 @@ HTML 交互原型
 演示价值：
 
 1. 证明数据准备专家可以作为数据资产助手的典型应用场景。
-2. 证明子 Agent 可以相互调用，但由编排层控制主流程。
+2. 证明专家 Agent 可以协同，但由编排层控制主流程。
 3. 证明“登记、采集、扫描、工单”这类异步流程可以用任务状态持续跟踪。
 
 ### 2.3 支撑查询一：数据地图查表
@@ -130,7 +130,7 @@ dwd_customer_income_df 的上游来源和加工任务说明是什么？
 | --- | --- | --- |
 | 前端原型 | HTML / CSS / JavaScript | 已有交互原型，后续可对接 FastAPI |
 | API 服务 | Python + FastAPI | 提供 `/assistant/chat`、`/assistant/confirm`、`/assistant/tasks/{task_id}` |
-| Agent 编排 | LangGraph | 编排意图识别、路由、子 Agent、工具调用、用户确认 |
+| Agent 编排 | LangGraph | 编排意图识别、路由、专家 Agent、工具调用、用户确认 |
 | LLM 适配 | LangChain Core | Prompt、Runnable、Tool Calling、模型调用适配 |
 | Tool 层 | Mock Tool Adapter | 模拟 ES、Java API、Activiti、安全扫描、数据标准、血缘 |
 | 状态 | 内存 / 本地 JSON | Demo 阶段先不依赖 Redis 和 GoldenDB |
@@ -308,7 +308,7 @@ Demo 状态建议先采用一个统一 State：
 | submit_activiti_process_tool | 返回 Mock 流程实例 ID | 是 |
 | create_datasource_register_tool | 返回 Mock 数据源登记流程号 | 是 |
 | create_metadata_collect_task_tool | 返回 Mock 元数据采集任务号 | 是 |
-| create_security_scan_task_tool | 调用安全扫描 Agent 并返回扫描任务号 | 是 |
+| create_security_scan_task_tool | 调用安全扫描能力并返回扫描任务号 | 是 |
 | query_process_status_tool | 查询 Mock 流程状态 | 可选 |
 
 ## 8. Mock 数据缺口
@@ -342,7 +342,7 @@ Demo 开发前需要补齐以下 Mock 数据：
 | Demo 代码工程尚未创建 | 在 `数据资产助手/demo/` 下新建独立 Python 工程，使用 FastAPI + LangGraph + 本地 Mock Tool；不要混入现有文档目录逻辑 | 先做可本地启动的最小工程，不接真实 Agent 网关、Redis、GoldenDB |
 | Mock 数据 JSON 尚未落文件 | 按业务对象拆分为 `assets.json`、`standards.json`、`lineage.json`、`security_scan.json`、`datasource_tasks.json`、`user_preferences.json` | 数据量少但字段完整，每类保留 2 到 3 条样例，优先覆盖演示链路 |
 | 交互原型尚未对接 FastAPI | 保留当前 HTML 原型，新增 `apiClient` 封装，优先对接 `/assistant/chat`、`/assistant/confirm`、`/assistant/tasks/{task_id}` | 不引入 React / Vue，避免 Demo 前端工程化成本过高 |
-| LangGraph 节点边界还需要落实到代码 | 按“意图识别 -> 路由 -> 子 Agent 节点 -> Tool 调用 -> 确认节点 -> 写操作执行 -> 结果生成”拆节点 | 首版可以用规则识别意图，不强依赖真实大模型；保留 LLM 适配接口 |
+| LangGraph 节点边界还需要落实到代码 | 按“意图识别 -> 路由 -> 专家 Agent 节点 -> Tool 调用 -> 确认节点 -> 写操作执行 -> 结果生成”拆节点 | 首版可以用规则识别意图，不强依赖真实大模型；保留 LLM 适配接口 |
 | 统一响应结构、卡片结构、错误结构还需要定稿 | 定义统一 `AssistantResponse`、`Card`、`Action`、`NeedConfirm`、`ToolCallAudit` 结构，所有节点返回同一格式 | 卡片类型先覆盖候选表、治理草案、流程状态、数据源任务四类 |
 | 日志脱敏规则需要形成代码级清单 | 新建 `core/sanitizer.py`，对 token、密码、手机号、身份证号、数据库连接串、连接 Host 等字段做脱敏；日志和 mock Langfuse 输出统一走脱敏函数 | 首版只做规则脱敏和字段名黑名单，不做复杂 DLP 检测 |
 

@@ -39,7 +39,7 @@
         <mxCell id="react" value="React 前端&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;资产盘点页 / 处理确认弹窗 / 依据抽屉 / 轻量本体管理页 / AI问数语义配置&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
           <mxGeometry x="520" y="45" width="760" height="68" as="geometry"/>
         </mxCell>
-        <mxCell id="gateway" value="统一网关 / 认证鉴权&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;SSO、菜单权限、接口鉴权、审计流水&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
+        <mxCell id="gateway" value="Agent 网关 / 认证鉴权&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;SSO、菜单权限、接口鉴权、审计流水&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9F7EF;strokeColor=#4FA36D;fontColor=#263444;fontSize=15;" vertex="1" parent="lane_access">
           <mxGeometry x="1450" y="45" width="320" height="68" as="geometry"/>
         </mxCell>
 

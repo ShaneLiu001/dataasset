@@ -1,8 +1,8 @@
-# 数据血缘 SubAgent 功能设计
+# 数据血缘能力设计
 
-## 1. 子 Agent 定位
+## 1. 能力定位
 
-数据血缘 SubAgent 负责表级、字段级、指标级和报表级血缘查询，以及变更影响分析。它还负责查看 SQL 加工任务信息，识别加工任务代码注释，并将可沉淀的注释信息整理为目标表元数据填充建议。它主要承接“上游是什么、下游影响谁、字段从哪里来、这张表由哪个 SQL 任务加工、任务注释能否补充到目标表”等场景。
+数据血缘能力负责表级、字段级、指标级和报表级血缘查询，以及变更影响分析。它还负责查看 SQL 加工任务信息，识别加工任务代码注释，并将可沉淀的注释信息整理为目标表元数据填充建议。它主要作为 Tool 能力被数据准备专家和数据治理专家调用，承接“上游是什么、下游影响谁、字段从哪里来、这张表由哪个 SQL 任务加工、任务注释能否补充到目标表”等场景。
 
 ## 2. 职责边界
 
@@ -68,14 +68,14 @@ income_amt 字段是怎么加工出来的？
 
 ## 6. 依赖工具
 
-现阶段建议先将现有血缘接口封装为数据血缘 SubAgent 的本地 Tool。待血缘能力稳定、多个专家助手复用需求明确后，再演进为 MCP Server。
+现阶段建议先将现有血缘接口封装为本地 Tool。待血缘能力稳定、多个专家助手复用需求明确后，再演进为 MCP Server。
 
 ```text
 第一阶段：
-数据血缘 SubAgent -> Lineage Tool Adapter -> 现有血缘接口
+数据准备专家 / 数据治理专家 -> Lineage Tool Adapter -> 现有血缘接口
 
 第二阶段：
-数据血缘 SubAgent -> Agent 网关 -> Lineage MCP Server -> 现有血缘接口
+数据准备专家 / 数据治理专家 -> Agent 网关 -> Lineage MCP Server -> 现有血缘接口
 ```
 
 | 工具 | 用途 | 数据来源 |
@@ -113,7 +113,7 @@ MCP 负责在能力稳定后支撑多 Agent 复用。
 
 ```mermaid
 flowchart LR
-  Agent[数据血缘 SubAgent] --> Tool[Lineage Tool Adapter]
+  Agent[数据准备专家 / 数据治理专家] --> Tool[Lineage Tool Adapter]
   Tool --> LineageApi[现有血缘接口]
   Tool --> TaskApi[现有 SQL 任务详情接口]
   Tool --> MetadataApi[元数据治理接口]
@@ -186,13 +186,13 @@ SQL 注释识别规则
 
 ```mermaid
 flowchart LR
-  Xiaozhi[数小智主 Agent] --> Gateway[Agent 网关]
-  AssetAgent[数据资产助手] --> Gateway
-  ModelingAgent[数据建模助手] --> Gateway
-  MetricAgent[数据指标助手] --> Gateway
-  ReportAgent[报表开发助手] --> Gateway
+  Xiaozhi[数小智主 Agent] --> AgentGw[Agent 网关]
+  AssetAgent[数据资产助手] --> AgentGw
+  ModelingAgent[数据建模助手] --> AgentGw
+  MetricAgent[数据指标助手] --> AgentGw
+  ReportAgent[报表开发助手] --> AgentGw
 
-  Gateway --> LineageMcp[Lineage MCP Server]
+  AgentGw --> LineageMcp[Lineage MCP Server]
   LineageMcp --> LineageApi[现有血缘接口]
   LineageMcp --> TaskApi[SQL 任务详情接口]
 ```

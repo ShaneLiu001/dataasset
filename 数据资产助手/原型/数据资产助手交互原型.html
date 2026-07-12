@@ -657,14 +657,14 @@
       },
       prepare: {
         title: "数据准备专家场景",
-        desc: "登记数据源、跟踪审批、执行元数据采集，采集完成后调用安全扫描 Agent。",
+        desc: "登记数据源、跟踪审批、执行元数据采集，采集完成后调用安全扫描能力。",
         input: "帮我登记一个生产 MySQL 数据源，同时采集元数据并做安全扫描",
         steps: [
           ["done", "意图识别", "识别为数据源登记"],
           ["active", "唤醒登记页", "复用现有数据源登记页面"],
           ["", "审批跟踪", "直属领导审批、登记人复核"],
           ["", "元数据采集", "采集后同步 ES 数据地图"],
-          ["", "安全扫描", "调用安全扫描 Agent"],
+          ["", "安全扫描", "调用安全扫描能力"],
           ["", "空间绑定", "绑定中台空间项目"]
         ]
       }
@@ -926,7 +926,7 @@
       const card = el("div", "cards");
       card.innerHTML = `
         <div class="card">
-          <div class="card-head"><strong>血缘与 SQL 注释识别</strong><span class="badge purple">数据血缘 SubAgent</span></div>
+          <div class="card-head"><strong>血缘与 SQL 注释识别</strong><span class="badge purple">数据准备专家</span></div>
           <div class="card-body">
             <div class="evidence-grid">
               <div class="evidence"><strong>上游表</strong><span>ods_crm_order、ods_contract_income、dim_customer。</span></div>
@@ -947,7 +947,7 @@
 
     function renderPrepareScene() {
       prepareStage = 0;
-      msg("assistant", "我将复用数据准备专家流程，唤醒现有数据源登记页面，并持续跟踪审批。登记办结后会自动采集元数据，采集完成后调用安全扫描 Agent。");
+      msg("assistant", "我将复用数据准备专家流程，唤醒现有数据源登记页面，并持续跟踪审批。登记办结后会自动采集元数据，采集完成后调用安全扫描能力。");
       const card = el("div", "cards");
       card.innerHTML = `
         <div class="card">
@@ -956,7 +956,7 @@
             <table class="table">
               <tbody>
                 <tr><th>数据源类型</th><td>MySQL</td><th>环境</th><td>PRD</td></tr>
-                <tr><th>采集策略</th><td>立即采集表结构</td><th>安全扫描</th><td>采集完成后调用安全扫描 Agent</td></tr>
+                <tr><th>采集策略</th><td>立即采集表结构</td><th>安全扫描</th><td>采集完成后调用安全扫描能力</td></tr>
               </tbody>
             </table>
             <div class="action-row">
@@ -1012,7 +1012,7 @@
           ["", "空间绑定", "待进入后续流程"]
         ];
       } else if (prepareStage === 2) {
-        msg("assistant", "数据源登记审批已办结。我已通过数据源 SubAgent 创建元数据采集任务 META_20260703_0188，正在采集库、表、字段和注释信息。");
+        msg("assistant", "数据源登记审批已办结。我已通过数据准备专家创建元数据采集任务 META_20260703_0188，正在采集库、表、字段和注释信息。");
         scenes.prepare.steps = [
           ["done", "意图识别", "识别为数据源登记"],
           ["done", "唤醒登记页", "表单已提交"],
@@ -1022,13 +1022,13 @@
           ["", "空间绑定", "待进入后续流程"]
         ];
       } else if (prepareStage === 3) {
-        msg("assistant", "元数据采集已完成，已同步 ES 数据地图。现在调用安全扫描 Agent 创建扫描任务 SEC_SCAN_20260703_0096，扫描字段敏感类型和安全等级。");
+        msg("assistant", "元数据采集已完成，已同步 ES 数据地图。现在调用安全扫描能力创建扫描任务 SEC_SCAN_20260703_0096，扫描字段敏感类型和安全等级。");
         scenes.prepare.steps = [
           ["done", "意图识别", "识别为数据源登记"],
           ["done", "唤醒登记页", "表单已提交"],
           ["done", "审批跟踪", "登记流程已办结"],
           ["done", "元数据采集", "已同步 ES 数据地图"],
-          ["active", "安全扫描", "安全扫描 Agent 执行中"],
+          ["active", "安全扫描", "安全扫描能力执行中"],
           ["", "空间绑定", "等待扫描结果"]
         ];
       } else {
@@ -1050,7 +1050,7 @@
       modalBody.innerHTML = `
         <div class="evidence-grid">
           <div class="evidence"><strong>数小智主 Agent</strong><span>意图识别、助手路由、跨专家协同、结果汇总。</span></div>
-          <div class="evidence"><strong>数据资产助手</strong><span>LangGraph 编排，调度数据地图、血缘、标准、安全扫描、治理等子 Agent。</span></div>
+          <div class="evidence"><strong>数据资产助手</strong><span>LangGraph 编排，调度数据准备、开发、运维、治理、安全等专家 Agent。</span></div>
           <div class="evidence"><strong>Tool Adapter</strong><span>封装现有 Java API、ES、Activiti，统一参数、异常和审计。</span></div>
           <div class="evidence"><strong>状态存储</strong><span>Redis 保存短期运行态，GoldenDB 保存任务、确认、记忆和审计摘要。</span></div>
           <div class="evidence"><strong>可观测</strong><span>OpenTelemetry 上报 Trace，Langfuse 记录 Prompt、LLM 调用和 Agent Trace。</span></div>

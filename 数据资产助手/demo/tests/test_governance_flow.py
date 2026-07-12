@@ -107,4 +107,4 @@ def test_metadata_prefill_capability_can_start_directly() -> None:
     fields = response.cards[0].data["fields"]
     mobile = next(item for item in fields if item["field_name"] == "mobile_no")
     assert mobile["recommended_security_level"] == "3"
-    assert "安全扫描 Agent" in "\n".join(mobile["evidence"])
+    assert "安全扫描能力" in "\n".join(mobile["evidence"])

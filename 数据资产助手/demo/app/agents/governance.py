@@ -75,7 +75,7 @@ def build_governance_card(draft: dict) -> Card:
 def build_metadata_prefill_card(prefill: dict) -> Card:
     return Card(
         type="metadata_prefill_review",
-        title="元数据治理 Agent · 智能元数据补全",
+        title="数据治理专家 Agent · 智能元数据补全",
         data=prefill,
         actions=[
             Action(code="confirm_metadata_prefill", label="确认补全结果并生成治理草案"),
