@@ -50,7 +50,7 @@
           <mxGeometry x="760" y="75" width="260" height="135" as="geometry"/>
         </mxCell>
 
-        <mxCell id="agent_step" value="agent_task_step&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;PK step_id&lt;br&gt;FK task_id&lt;br&gt;node_name / subagent_code&lt;br&gt;control_mode / step_type&lt;br&gt;step_status / duration_ms&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_model">
+        <mxCell id="agent_step" value="agent_task_step&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;PK step_id&lt;br&gt;FK task_id&lt;br&gt;node_name / expert_code&lt;br&gt;control_mode / step_type&lt;br&gt;step_status / duration_ms&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_model">
           <mxGeometry x="360" y="70" width="250" height="125" as="geometry"/>
         </mxCell>
         <mxCell id="agent_confirm" value="agent_user_confirm&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;PK confirm_id&lt;br&gt;FK task_id / draft_id&lt;br&gt;confirm_type / status&lt;br&gt;confirmed_time&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E6;strokeColor=#D97822;fontColor=#263444;fontSize=14;fontStyle=1;" vertex="1" parent="lane_model">
