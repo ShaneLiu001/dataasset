@@ -18,6 +18,9 @@
 | 上下文管理和 Redis、助手记忆有什么区别？ | [上下文管理为什么要单独设计](01-数据资产助手AI架构问答知识储备.md#45-上下文管理为什么要单独设计) |
 | 为什么需要加调度系统？ | [为什么需要加上调度系统](01-数据资产助手AI架构问答知识储备.md#5-为什么需要加上调度系统) |
 | 为什么需要建设 Agent 网关？ | [为什么需要建设 Agent 网关](01-数据资产助手AI架构问答知识储备.md#6-为什么需要建设-agent-网关) |
+| Harness 是什么，解决什么问题？ | [Harness 的含义和作用](../01-数据资产助手为何需要Agent编排.md#11-什么是-harness解决什么问题) |
+| Loop Engineering 是什么，解决什么问题？ | [Loop Engineering 的含义和作用](../01-数据资产助手为何需要Agent编排.md#12-什么是-loop-engineering解决什么问题) |
+| Agentic Loop 和 Loop Engineering 有什么区别？ | [Agentic Loop 和 Loop Engineering 的区别](../01-数据资产助手为何需要Agent编排.md#13-agentic-loop-和-loop-engineering-的区别) |
 | 什么时候用 Agentic Loop，什么时候不用？ | [Loop 使用判断](02-数据资产助手Loop使用判断.md#1-结论) |
 | Tool、Skill、MCP、Java API 到底怎么分层？ | [Java API、Tool、Skill、MCP 分层演进](03-JavaAPI_Tool_Skill_MCP分层演进.md#1-核心结论) |
 
@@ -26,7 +29,7 @@
 | 架构层 | 重点问题 | 快速入口 |
 | --- | --- | --- |
 | 理解与路由层 | 意图识别为什么弱化，Prompt Router / Control Mode Router 怎么解释 | [意图识别与路由](01-数据资产助手AI架构问答知识储备.md#1-为什么现在不强调传统意图识别) / [Control Mode Router](01-数据资产助手AI架构问答知识储备.md#15-control-mode-router-的具体含义) |
-| 会话内编排层 | Loop 解决什么，不解决什么 | [Loop 使用判断](02-数据资产助手Loop使用判断.md#2-loop-解决什么问题) |
+| 会话内编排层 | Harness、Loop Engineering、Loop 解决什么，不解决什么 | [Agent 编排关系](../01-数据资产助手为何需要Agent编排.md#14-这三者和数据资产助手-agent-编排的关系) / [Loop 使用判断](02-数据资产助手Loop使用判断.md#2-loop-解决什么问题) |
 | 会话外任务层 | 长流程等待、轮询、补偿、提醒谁来做 | [调度系统](01-数据资产助手AI架构问答知识储备.md#5-为什么需要加上调度系统) |
 | 输出控制层 | 长文本报告、进度推送、流式输出怎么做 | [流式生成控制器](01-数据资产助手AI架构问答知识储备.md#2-什么是流式生成控制器) |
 | 状态存储层 | Redis、GoldenDB、任务态、运行态怎么分工 | [Redis / GoldenDB 分工](01-数据资产助手AI架构问答知识储备.md#4-redis-存运行态为什么-goldendb-不直接存) |
@@ -38,11 +41,11 @@
 | 文件 | 用途 |
 | --- | --- |
 | [01-数据资产助手AI架构问答知识储备.md](01-数据资产助手AI架构问答知识储备.md) | 汇总意图识别、Control Mode Router、流式生成、SSE、上下文管理、Redis / GoldenDB 分工、调度系统、Agent 网关等问答口径 |
-| [02-数据资产助手Loop使用判断.md](02-数据资产助手Loop使用判断.md) | 说明什么时候用 Agentic Loop，什么时候用固定流程、Tool、调度系统 |
+| [02-数据资产助手Loop使用判断.md](02-数据资产助手Loop使用判断.md) | 说明什么时候用 Agentic Loop，什么时候用固定流程、Tool、调度系统，并补充 Loop Engineering 的控制口径 |
 | [03-JavaAPI_Tool_Skill_MCP分层演进.md](03-JavaAPI_Tool_Skill_MCP分层演进.md) | 说明 Java API、Tool、Skill、MCP 的分层关系和演进路线 |
 
 ## 使用建议
 
 1. 汇报主线优先看根目录的 [00-汇报思路与阅读顺序.md](../00-汇报思路与阅读顺序.md)。
-2. 当被问到“为什么不全部用 Loop”“Tool 和 MCP 有什么区别”“SSE 是什么”时，再引用本目录材料。
+2. 当被问到“Harness 是什么”“为什么不全部用 Loop”“Loop Engineering 和 Agentic Loop 有什么区别”“Tool 和 MCP 有什么区别”“SSE 是什么”时，再引用本目录材料。
 3. 本目录内容偏方法论，不直接替代业务方案、应用架构和 Demo 实施路线。
